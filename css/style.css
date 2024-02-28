@@ -1,10 +1,11 @@
 body{
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto 1fr ;
+    grid-template-rows: auto 1fr 5% ;
     grid-template-areas: 
     "header"
     "main"
+    "footer"
     ;
     height: 100vh;
 }
@@ -16,6 +17,14 @@ main{
 
 header{
     background-color: violet;
+    border-bottom: 1px solid black;
     grid-area: header;
+}
+footer{
+    grid-area: footer;
+}
+
+button{
+    width: 6rem;
 }
 
