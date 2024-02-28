@@ -1,0 +1,22 @@
+body{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr ;
+    grid-template-areas: 
+    "header"
+    "main"
+    ;
+    height: 100vh;
+
+}
+
+main{
+    grid-area: main;
+    background-color: aquamarine;
+}
+
+header{
+    background-color: violet;
+    grid-area: header;
+}
+
