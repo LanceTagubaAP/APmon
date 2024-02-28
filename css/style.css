@@ -1,0 +1,47 @@
+body{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr ;
+    grid-template-areas:
+    "header"
+    "main"
+    "footer"
+    ;
+    height: 95vh;
+    /*background-image: url(/assets/img/placeholder.jpg);*/
+}
+
+header{
+    display: flex;
+    grid-area: "header";
+    font-size: 15px;
+    background-color: lightcoral;
+}
+
+main{
+    grid-area: "main";
+    background-color: skyblue;
+}
+
+main > img{
+    margin: 50px;
+    display: grid;
+    justify-content: center;
+    
+}
+main > section{
+display: grid;
+padding: 20px;
+}
+main>section>button{
+    margin: 20px;
+}
+footer{
+    display: flex;
+    flex-direction: row-reverse;
+}
+img{
+    background-color: plum;
+}
+
+@
