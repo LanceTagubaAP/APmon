@@ -1,47 +1,119 @@
-body{
+body {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto 1fr ;
+    grid-template-rows: auto 1fr;
     grid-template-areas:
-    "header"
-    "main"
-    "footer"
+        "header"
+        "main"
+        "footer"
     ;
     height: 95vh;
-    /*background-image: url(/assets/img/placeholder.jpg);*/
+    background-image: url(/assets/img/placeholder-background-2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 
-header{
+header {
     display: flex;
     grid-area: "header";
     font-size: 15px;
-    background-color: lightcoral;
+
 }
 
-main{
+main {
     grid-area: "main";
-    background-color: skyblue;
+
 }
 
-main > img{
+main>img {
     margin: 50px;
     display: grid;
     justify-content: center;
-    
+
 }
-main > section{
-display: grid;
-padding: 20px;
+
+main>section {
+    display: grid;
+    padding: 20px;
 }
-main>section>button{
+
+main>section>button {
     margin: 20px;
 }
-footer{
+
+footer {
     display: flex;
     flex-direction: row-reverse;
 }
-img{
-    background-color: plum;
+
+#test {
+    height: auto;
+    max-width: 500px;
 }
 
-@
+header>img {
+    height: auto;
+    width: 80px;
+}
+
+
+
+
+
+@media only screen and (min-width: 1024px) {
+
+    body {}
+
+    header {
+        display: flex;
+        grid-area: "header";
+        font-size: 15px;
+
+    }
+
+    #een {
+        grid-template-areas:
+            "img vecht pokedex "
+            "img gues  how ";
+        margin-top: 250px;
+        padding: 50px;
+    }
+
+    #test {
+        grid-area: img;
+    }
+
+    #vecht {
+        width: 100px;
+        grid-area: vecht;
+        margin-left: 400px;
+    }
+
+    #pokedex {
+        width: 100px;
+        grid-area: pokedex;
+    }
+
+    #gues {
+        width: 100px;
+        grid-area: gues;
+        margin-left: 400px;
+    }
+
+    #how {
+        width: 100px;
+        grid-area: how
+    }
+
+
+
+    footer {
+        display: flex;
+        flex-direction: row-reverse;
+        max-height: 50px;
+        margin-top: 10px;
+    }
+
+}
