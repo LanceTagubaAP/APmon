@@ -1,0 +1,68 @@
+body {
+    grid-template-areas:
+        "header header ja"
+        "ja main ja"
+        "ja main ja"
+        "footer footer footer";
+
+    background-image: url(/assets/img/placeholder-background-2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+
+header {
+    display: flex;
+    grid-area: header;
+    border: solid black;
+}
+
+header>img {
+    height: auto;
+    width: 80px;
+}
+
+main {
+    display: grid;
+    grid-area: main;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+
+main>h1 {
+    margin-left: 50px;
+}
+
+main>form {
+    margin-left: 100px;
+}
+
+main>form>input {
+    margin-top: 50px;
+    height: 20px;
+}
+
+main>form>button {
+    width: 0px;
+    height: 0px;
+    border-top: solid 10px transparent;
+    border-right: solid 10px transparent;
+    border-bottom: solid 10px transparent;
+    border-left: solid 10px red;
+    background: transparent;
+}
+
+main>img {
+    height: auto;
+    width: 400px;
+    border: solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+footer {
+    grid-area: footer;
+}
