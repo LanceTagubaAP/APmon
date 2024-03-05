@@ -1,7 +1,7 @@
 body {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.2fr 1.6fr 2fr 0.2fr;
+
+
     gap: 0px 0px;
     grid-template-areas:
         "header header header header"
@@ -34,11 +34,13 @@ header>img {
 
 #yourPokemon>section,
 #otherPokemon>section {
+    display: grid;
     border: solid black;
-    width: max-content;
+
     padding: 15px;
-    margin-left: 133px;
     margin-top: 25px;
+    justify-content: center;
+    align-items: center;
 }
 
 #yourPokemon>h1,
@@ -71,4 +73,64 @@ footer {
     width: max-content;
     border-radius: 5px;
     padding: 5px;
+}
+
+@media (max-width: 666px) {
+    body {
+        display: grid;
+        grid-template-areas:
+            "header"
+            "yourpokemon"
+            "otherpokemon"
+            "footer"
+        ;
+        height: 100vh;
+    }
+
+    header {
+        grid-area: header;
+    }
+
+    header>img {
+        height: auto;
+        width: 50px;
+    }
+
+    #yourPokemon {
+        grid-area: yourpokemon;
+    }
+
+    #otherPokemon {
+        grid-area: otherpokemon;
+    }
+
+    #yourPokemon>section,
+    #otherPokemon>section {
+        display: grid;
+        border: solid black;
+        padding: 5px;
+        margin-top: 15px;
+        justify-content: center;
+    }
+
+    #yourPokemon>h1,
+    #otherPokemon>h1 {
+        margin-bottom: 25px;
+    }
+
+    #otherPokemon,
+    #yourPokemon {
+        display: grid;
+        margin-top: 50px;
+        justify-content: center;
+        text-align: center;
+
+    }
+
+    #otherPokemon>img,
+    #yourPokemon>img {
+        height: auto;
+        width: 125px;
+    }
+
 }
