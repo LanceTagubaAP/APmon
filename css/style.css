@@ -21,6 +21,8 @@ body {
 header {
     display: flex;
     grid-area: header;
+    border: solid black;
+    max-width: fit-content;
 }
 
 header>img {
