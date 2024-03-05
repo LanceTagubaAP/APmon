@@ -1,0 +1,74 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 1.6fr 2fr 0.2fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "header header header header"
+        "articel yourpokemon otherpokemon article"
+        "articel yourpokemon otherpokemon article"
+        "footer footer footer footer ";
+
+
+    background-image: url(/assets/img/placeholder-background3.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+
+header {
+    display: flex;
+    grid-area: header;
+}
+
+header>img {
+    height: auto;
+    width: 80px;
+}
+
+#yourPokemon {
+    grid-area: yourpokemon;
+}
+
+#yourPokemon>section,
+#otherPokemon>section {
+    border: solid black;
+    width: max-content;
+    padding: 15px;
+    margin-left: 133px;
+    margin-top: 25px;
+}
+
+#yourPokemon>h1,
+#otherPokemon>h1 {
+    margin-bottom: 50px;
+}
+
+#otherPokemon {
+    grid-area: otherpokemon;
+}
+
+#otherPokemon,
+#yourPokemon {
+    display: grid;
+    margin-top: 150px;
+    justify-content: center;
+    text-align: center;
+}
+
+img {
+    height: auto;
+    width: 400px;
+}
+
+footer {
+    grid-area: footer;
+    margin-left: 250px;
+    margin-top: 50px;
+    border: solid black;
+    width: max-content;
+    border-radius: 5px;
+    padding: 5px;
+}
