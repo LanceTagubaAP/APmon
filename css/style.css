@@ -36,11 +36,13 @@ main {
     grid-area: main;
     justify-content: center;
     align-items: center;
-    margin-top: 150px;
+    margin-top: 100px;
 }
 
 main>h1 {
-    margin-left: 50px;
+    display: grid;
+    justify-content: center;
+    margin-right: 20px;
 }
 
 main>form {
@@ -72,7 +74,8 @@ main>img {
 }
 
 main>h2 {
-    margin-left: 120px;
+    display: grid;
+    justify-content: center;
 }
 
 footer {
@@ -83,7 +86,6 @@ footer {
     padding: 5px;
     margin-left: 10px;
     margin-top: 40px;
-
 
 }
 
