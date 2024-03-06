@@ -31,3 +31,28 @@ footer{
     grid-area: footer;
 }
 
+.healthbar{
+    
+    width: 16rem;
+    padding: 1.5rem;
+    border: 2px solid black;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+.pokemonsprite{
+    
+}
+
+
+#play-area{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr auto auto 1fr ;
+    grid-template-areas: 
+    "healthbar"
+    "pokemonsprite"
+    "pokemonsprite"
+    "healthbar"
+    ;
+}
