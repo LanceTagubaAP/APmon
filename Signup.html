@@ -16,37 +16,28 @@
 <body>
     <main>
         <form> 
-            <div class="titlesignup"><h1>Create account</h1></div>
-            <div class="signupform">
-              <label for="exampleInputEmail1" class="form-label">Choose a username</label>
-              <input type="email" class="form-control" id="usernameInput">
-              <label for="exampleInputPassword1" class="form-label">Choose a password</label>
-              <input type="password" class="form-control" id="passwordInput">
- 
-            </div>
-            
-            <div class="character">
-                <h2>Are you a...</h2>
-                <div class="radiobuttons">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                    <label class="form-check-label" for="flexRadioDefault1">
-                      Boy
-                    </label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
-                        <label class="form-check-label" for="flexRadioDefault2">
-                          Girl
-                        </label>
-                      </div>
-                  </div>
-                
-                  <div class="genderImage">
-                    <img src="./assets/images/boy.png" alt="boy">
-                  </div>
-    
-            </div>
-            <button type="submit"  class="loginSubmit">Finish </button>
-           
+          <main class="mainSignup">
+            <form> 
+                <div class="signupform">
+                    <div class="signupTitle"> <h1 >Create account </h1></div> 
+                    <div class="avatar"></div> 
+                    <div class="signupArrows">
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>                   
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>    
+                    
+                    <input type="username" class="form-control" id="usernameInput" placeholder="Kies een gebruikersnaam">
+                  <input type="password" class="form-control" id="passwordInput" placeholder="Kies een wachtwoord">
+                  <button type="submit"  class="loginSubmit">Account maken</button>
+                </div>
+              </form>
+        </main>   
           </form>
 
 

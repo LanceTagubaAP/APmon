@@ -9,14 +9,15 @@ body{
   body{
     background-color: lightgray;
     text-align: center
+
   }
 
   .mainTitleScreen{
     background-image: url("../assets/images/Background2.jpg");
      background-size: cover;
      background-position: center;
-  height: 100vh;
-  width: 100%;
+    height: 100vh;
+    width: 100%;
   }
 
   /*Image by <a href="https://www.freepik.com/free-vector/abstract-pixel-rain-background_6348966.htm#page=2&query=nintendo%20background&position=1&from_view=keyword&track=ais&uuid=07f2dc6a-393f-4c02-bbbc-7a87032429a1">Freepik</a>*/
@@ -26,6 +27,25 @@ body{
     background-position: center;
     height: 100vh;
     width: 100%;
+    padding-top: 5vh;
+  }
+
+  .mainLogin{
+    background-image: url("../assets/images/login-background.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    padding-top: 20vh;
+  }
+
+  .mainSignup{
+    background-image: url("../assets/images/login-background.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    padding-top: 20vh;
   }
 
   .transparancyTitleScreen{
@@ -47,6 +67,7 @@ body{
   .btn-primary:hover{
     background-color: gray;
   }
+
   .buttonLoginContainer{
     margin-top: 20rem;
     text-align: center;   
@@ -72,6 +93,13 @@ body{
   }
   .bottomProjectScreen{
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 8rem; 
+    padding:0 16px;
+  margin:0 auto;
+  width: 30rem;
+  border-radius: 15px;
+
   }
 
   .thumbnailImage{
@@ -81,23 +109,34 @@ body{
     border-color: black;
   }
 
-  .carousel-inner{
- padding-top: 4rem;
-  }
-   
  .gameName{
   font-size: 2rem;
   margin-top: 2rem;
+  padding-top: 2.5rem;
   margin-left: 2rem;
   text-align: center;
   color: white;
+  
  }
 
- .loginform{
-  margin-left: 10rem;
-margin-top: 20rem;
-  margin-right: 10rem;
- }
+ input {
+  display:block;
+  border-radius: 25px;
+  height: 45px;
+  width: 15rem;
+  padding:0 16px;
+  margin:0 auto;
+  }
+
+.loginform{
+  background:transparent;
+  border: 2px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+  padding-bottom: 2rem;
+   margin-left: 15vw;
+   margin-right: 15vw;
+   border-radius: 25px;
+}
 
 .loginSubmit{
     background-color: white;
@@ -106,24 +145,66 @@ margin-top: 20rem;
     border-radius: 25px; 
     height: 4rem;   
     width: 12rem;  
-    margin-top: 3rem;
-    margin-left: 14rem;
-    text-align: center;
+    margin-top: 2rem;
+
  }
  
  .loginTitle{
+  color: black;
   margin-top: 5rem;
+  font-size: 2rem;
   text-align: center;
+  padding-top: 2rem;
+ }
 
+ .form-control{
+  height: 3rem;   
+  width: 20rem;   
+  margin-top: 2rem;
+ }
+
+ .avatar{
+  background-image: url("../assets/images/Boy-headshot.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  padding:0 16px;
+  margin:0 auto;
+ }
+
+ .projectScreenImage{
+  background-image: url("../assets/images/APmon-game.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 22rem;
+  width: 22rem;
+  padding:0 16px;
+  margin:0 auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+ }
+.carousel-indicators{
+  margin-top: 2rem;
+  padding-top: 5rem;
+}
+
+ .signupTitle{
+  color: black;
+  margin-top: 2rem;
+  font-size: 2rem;
+  text-align: center;
  }
 
  .signupform{
-  margin-left: 10rem;
-margin-top: 3rem;
-  margin-right: 10rem;
-  border: solid black;
-  padding: 2rem;
-  border-radius: 25px ;
+  background:transparent;
+  border: 2px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+  padding-bottom: 2rem;
+   margin-left: 15vw;
+   margin-right: 15vw;
+   border-radius: 25px;
  }
  
  .radiobuttons{
@@ -138,34 +219,31 @@ margin-top: 3rem;
  
  }
 
+ .projectScreenContainer{
+  background:transparent;
+  border: 2px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  background-color: rgb(0, 0, 0, 0.2);
+  padding-bottom: 2rem;
+   margin-left: 15vw;
+   margin-right: 15vw;
+   border-radius: 25px;
+   padding: 2rem;
+   margin-bottom: 5rem;
+ }
 
 .titlescreen-image{
-  padding: 2rem;
- background-color:  rgb(0 ,0, 0,0.8);
+padding: 2rem;
  border-radius: 25px;
  display: inline-block;
-}
-
-.carousel-item{
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  background-color:  rgb(0 ,0, 0,0.6);
-  text-align: center;
-}
-
-.titlesignup{
-  text-align: center;
+ border: 2px solid rgba(255,255,255,0.3);
+ backdrop-filter: blur(25px);
 }
 
 .titlesignup,h2{
   text-align: center;
 }
 
-.placeholdertextproject{
-  color: white;
-  text-align: center;
-  margin-top: 14rem;
-}
 
 .character{
   border: solid black ;
@@ -183,6 +261,7 @@ margin-top: 3rem;
   color: white;
   margin-left: 1rem;
   margin-top: 5rem;
+  font-size: 0.5rem;
 }
 
 }
@@ -200,10 +279,14 @@ margin-top: 3rem;
   
   .titlescreen-image{
     padding: 2rem;
-   background-color:  rgb(0 ,0, 0,0.8);
    border-radius: 25px;
    text-align: center;
   }
+
+  .signupform{
+    margin-left: 20vw;
+  margin-right: 20vw;
+}
 
  
 }
@@ -227,7 +310,6 @@ margin-top: 3rem;
     padding-top: 5rem;
   }
 
-
   .titlescreen-image{
     padding: 2rem;
    background-color:  rgb(0 ,0, 0,0.8);
@@ -235,14 +317,12 @@ margin-top: 3rem;
    text-align: center;
   }
 
-  .carousel-control-prev{
-    margin-left: 10rem;
-  }
 
-  .carousel-control-next{
-    margin-right: 10rem;
-  }
-
+  .signupform{
+       margin-left: 30vw;
+     margin-right: 30vw;
+   }
+   
 
 
 }
