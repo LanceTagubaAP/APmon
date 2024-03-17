@@ -1,84 +1,94 @@
-body {
+@import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
+
+#whosThatPokemon{
     grid-template-areas:
         "header header ja"
         "ja main ja"
         "ja main ja"
         "footer footer footer";
 
-    background-image: url(/assets/img/placeholder-background3.png);
+    background-image: url(/assets/img/swsh-large-fallback.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-
+    font-family: "Pokemon Classic Regular";
 }
 
 
-header {
+#whosThatPokemon>header{
     display: flex;
-    grid-area: header;
+    grid-area: "header";
+    font-size: 15px;
     border: solid black;
     max-width: fit-content;
-
+    background-color: purple;
+    border-radius: 10%;
 }
 
-header>img {
+header>img{
     height: auto;
     width: 80px;
 }
 
-header>p {
-    margin: 5px;
-}
-
-main {
+#whosThatPokemon>main {
     display: grid;
     grid-area: main;
     justify-content: center;
     align-items: center;
     margin-top: 100px;
+    color: white;
+    
 }
 
-main>h1 {
+#whosThatPokemon>main>h1 {
     display: grid;
     justify-content: center;
     margin-right: 20px;
 }
 
-main>form {
-    margin-left: 100px;
-}
-
-main>form>input {
+#whosThatPokemon>main>form>input {
     margin-top: 50px;
     height: 20px;
-    background-color: yellow;
+    background-color: purple;
+    border: solid black 2px;
 }
 
-main>form>button {
-    width: 0px;
-    height: 0px;
-    border-top: solid 10px transparent;
-    border-right: solid 10px transparent;
-    border-bottom: solid 10px transparent;
-    border-left: solid 10px red;
-    background: transparent;
+#whosThatPokemon>main>form>button{
+    text-shadow: 2px 2px 2px black;
+    font-size: 25px;
 }
 
-main>img {
+#whosThatPokemon>main>img {
     height: auto;
     width: 400px;
     border: solid black;
     margin-top: 20px;
     margin-bottom: 20px;
+    background: linear-gradient( purple, rgb(106, 59, 225), purple );
 }
 
-main>h2 {
+#whosThatPokemon>main>h2 {
+    margin-top: 10px;
     display: grid;
     justify-content: center;
 }
+#whosThatPokemon>main>h2>img{
+    display: grid;
+    height: auto;
+    width: 30px;
+}
+#whosThatPokemon>main>h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#whosThatPokemon>main>form>button{
+    color: purple;
+}
 
-footer {
+
+#whosThatPokemon>footer {
     grid-area: footer;
     border: solid black;
     max-width: fit-content;
@@ -86,7 +96,6 @@ footer {
     padding: 5px;
     margin-left: 10px;
     margin-top: 40px;
-
 }
 
 
@@ -99,36 +108,53 @@ footer {
         font-size: 14px;
     }
 
-    header>img {
+    #whosThatPokemon>header>img {
         height: auto;
-        width: 50px;
+        width: 40px;
     }
 
-    main {
+    #whosThatPokemon>main {
         margin-top: 50px;
+       
     }
 
-    main>img {
+    #whosThatPokemon>main>img {
         height: auto;
         width: 300px;
         margin-top: 20px;
         margin-bottom: 20px;
-    }
-
-    main>h1 {
-        margin-left: 30px;
-    }
-
-    main>form {
         margin-left: 60px;
     }
 
-    main>form>input {
-        margin-top: 20px;
-        height: 20px;
+    #whosThatPokemon>main>h1 {
+        margin-left: 30px;
+    }
+    #whosThatPokemon>main>h2{
+        margin-top: 10px;
+        display: flex;
+        justify-content: left;
+        align-items: left;
     }
 
-    main>h2 {
+    #whosThatPokemon>main>form {
+        margin-left: 60px;
+    }
+
+    #whosThatPokemon>main>form>input {
+        margin-top: 20px;
+        height: 20px;
+        width: 300px;
+    }
+
+    #whosThatPokemon>main>h2 {
         margin-left: 90px;
+    }
+    #whosThatPokemon>main>form{
+        display: flex;
+    }
+    #whosThatPokemon>main>form>button{
+        font-size: 25px;
+        margin-right: 20px;
+        margin-top: 5px;
     }
 }
