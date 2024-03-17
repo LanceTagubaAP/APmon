@@ -1,7 +1,8 @@
+
+
+@import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
 body {
     display: grid;
-
-
     gap: 0px 0px;
     grid-template-areas:
         "header header header header"
@@ -10,48 +11,65 @@ body {
         "footer footer footer footer ";
 
 
-    background-image: url(/assets/img/placeholder-background3.png);
+    background-image: url(/assets/img/swsh-large-fallback.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    font-family: "Pokemon Classic Regular";
 }
 
 
 header {
     display: flex;
-    grid-area: header;
+    grid-area: "header";
+    font-size: 15px;
     border: solid black;
     max-width: fit-content;
+    background-color: purple;
+    border-radius: 10%;
 }
 
-header>img {
+header>img{
     height: auto;
     width: 80px;
 }
 
+
 #yourPokemon {
     grid-area: yourpokemon;
+    background-color: darkgoldenrod;
+    border: solid 5px black;
+    margin-right: 50px;
+    padding: 5px;
+    
 }
 
 #yourPokemon>section,
 #otherPokemon>section {
     display: grid;
     border: solid black;
-
     padding: 15px;
     margin-top: 25px;
     justify-content: center;
     align-items: center;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
 }
 
 #yourPokemon>h1,
 #otherPokemon>h1 {
-    margin-bottom: 50px;
+    
+}
+hr{
+    border: solid black ;
 }
 
 #otherPokemon {
     grid-area: otherpokemon;
+    background-color: darkgreen;
+    border: solid 5px black;
+    padding: 5px;
 }
 
 #otherPokemon,
@@ -65,6 +83,10 @@ header>img {
 img {
     height: auto;
     width: 400px;
+}
+#yourPokemon>h1,
+#otherPokemon>h1{
+    color:#fff;
 }
 
 footer {
@@ -95,16 +117,13 @@ footer {
 
     header>img {
         height: auto;
-        width: 50px;
+        width: 40px;
+    }
+    header>{
+        font-size: 10px;
     }
 
-    #yourPokemon {
-        grid-area: yourpokemon;
-    }
 
-    #otherPokemon {
-        grid-area: otherpokemon;
-    }
 
     #yourPokemon>section,
     #otherPokemon>section {
@@ -126,6 +145,8 @@ footer {
         margin-top: 50px;
         justify-content: center;
         text-align: center;
+        margin-right: 50px;
+        margin-left: 50px;
 
     }
 
