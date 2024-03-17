@@ -1,22 +1,25 @@
 body{
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto 1fr 5% ;
+    grid-template-rows: 10% auto 10% ;
     grid-template-areas: 
     "header"
     "main"
     "footer"
     ;
     height: 100vh;
+    width: 100%;
 }
 
 main{
     grid-area: main;
-    background-color: aquamarine;
+    
+    background-color: darkgreen;
 }
 main>section {
     padding: 3rem;
 }
+
 
 header{
     /* background-color: violet;
@@ -27,32 +30,57 @@ header{
     max-width: fit-content;
     grid-area: header;
 }
+header>img{
+    width: 5rem;
+    border-radius: 50%;
+}
 footer{
     grid-area: footer;
 }
-
-.healthbar{
+.enemyPokemon{
     
-    width: 16rem;
-    padding: 1.5rem;
-    border: 2px solid black;
-    border-radius: 25px;
+    
+    flex-direction: column;
+    text-align: right;
+    
+   
+    background-color: aqua;
+}
+.myPokemon{
+    
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    
+    text-align: left;
+    
+    background-color: brown;
+    
 }
-.pokemonsprite{
+#enemySprite{
+    
+    min-width: 10rem;
+    width: 15rem;
     
 }
 
 
-#play-area{
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 1fr auto auto 1fr ;
-    grid-template-areas: 
-    "healthbar"
-    "pokemonsprite"
-    "pokemonsprite"
-    "healthbar"
-    ;
+#mySprite{
+   
+   
+    width: 15rem;
+    min-width: 10rem;
 }
+
+  @media only screen and (min-width: 600px){
+    .myPokemon{
+        max-width: fit-content;
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .enemyPokemon{
+        
+        max-width: fit-content;
+    }
+  }
+
