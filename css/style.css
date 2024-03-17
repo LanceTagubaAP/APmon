@@ -1,0 +1,111 @@
+
+@import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
+
+
+
+#pokeDex{
+    display: grid;
+    grid-template-areas: 
+    "header header nav"
+    "main main aside"
+    "main main aside"
+    "main main aside"
+    "footer ul ul ";
+    font-family: "Pokemon Classic Regular";
+    padding: 10px;
+    
+    
+    background-image: url(/assets/img/swsh-large-fallback.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    color: white;
+
+}
+
+header {
+    display: flex;
+    grid-area: "header";
+    font-size: 10px;
+    border: solid black;
+    max-width: fit-content;
+    background-color: purple;
+    border-radius: 10%;
+}
+#pokeDex>nav{
+    grid-area: nav;
+    margin-top: 30px;
+}
+#pokeDex>main{
+    display: grid;
+    grid-area: main;
+   justify-content: center;
+   align-items: center;
+   margin-top:100px;
+   margin-left: 200px;
+}
+#pokeDex>aside{
+    display: grid;
+    grid-area: aside;
+    justify-content: right;
+    align-items: center;
+}
+#pokeDex>footer{
+    grid-area: footer;
+}
+
+header>img{
+    height: auto;
+    width: 80px;
+}
+
+#searchBar{
+   border: solid 2px black;
+   height: 50px;
+   background: linear-gradient( purple, rgb(106, 59, 225), purple );
+}
+#filterBar{
+    border: solid 2px black;
+    height: 50px;
+    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+}
+
+#pokeDex>aside>ul{
+    height:70%; 
+    width:100%;
+    overflow:hidden; 
+    overflow-y:scroll;
+    border: solid black 5px;
+    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+   
+    
+}
+#pokeDex>aside>ul>li{
+    display: flex;
+    border: solid 2px black;
+    margin: 10px;
+    padding: 2px;
+    justify-content: center;
+    align-items: center;
+}
+#pokeDex>aside>ul>li>img{
+    height: auto;
+    width: 50px;
+    border: black solid 2px ;
+}
+#pokeDex>main>img{
+    border: solid black 5px ;
+    height: auto;
+    width: 500px;
+    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+}
+#pokeDex>main>section{
+    border: solid black 2px;
+    margin-top: 5px;
+    padding: 2px;
+    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+}
+#pokeDex>aside>ul>#charmander{
+    background-color: green;
+}
