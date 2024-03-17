@@ -1,3 +1,5 @@
+@import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
+
 body {
     display: grid;
     grid-template-columns: auto;
@@ -8,20 +10,23 @@ body {
         "footer"
     ;
     height: 95vh;
-    background-image: url(/assets/img/placeholder-background3.png);
+    background-image: url(/assets/img/background.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    font-family: "Pokemon Classic Regular";
+    
 }
 
 header {
     display: flex;
     grid-area: "header";
-    font-size: 15px;
+    font-size: 10px;
     border: solid black;
     max-width: fit-content;
-
+    background-color: purple;
+    border-radius: 10%;
 }
 
 main {
@@ -48,20 +53,36 @@ main>section>button {
 footer {
     display: flex;
     flex-direction: row-reverse;
+    
 }
 
-#test {
+header>img{
     height: auto;
-    max-width: 500px;
+    width: 40px;
+}
+#een>button>img{
+    height: auto;
+    width: 280px;
 }
 
-header>img {
+#een>button{
+    background-color: transparent;
+     border: none;
+}
+#een>button :hover{
+    scale: 110%;
+}
+footer>button{
+    background-color: transparent;
+    border: none;
+}
+footer>button>img{
     height: auto;
     width: 80px;
 }
-
-
-
+footer>button :hover{
+    scale: 120%;
+}
 
 
 @media only screen and (min-width: 1024px) {
@@ -72,50 +93,28 @@ header>img {
         display: flex;
         grid-area: "header";
         font-size: 15px;
-
     }
-
-    #een {
-        grid-template-areas:
-            "img vecht pokedex "
-            "img gues  how ";
-        margin-top: 250px;
-        padding: 50px;
+    header>img{
+        height: auto;
+        width: 80px;
     }
-
-    #test {
-        grid-area: img;
+    #een{
+        margin: 50px;
     }
-
-    #vecht {
-        width: 100px;
-        grid-area: vecht;
-        margin-left: 400px;
+    #een>button>img{
+        height: auto;
+        width: 400px;
+        margin: 20px;
+        border: solid white 2px;
     }
-
-    #pokedex {
-        width: 100px;
-        grid-area: pokedex;
+    footer>button>img{
+        height: auto;
+        width: 140px;
     }
-
-    #gues {
-        width: 100px;
-        grid-area: gues;
-        margin-left: 400px;
-    }
-
-    #how {
-        width: 100px;
-        grid-area: how
-    }
-
-
 
     footer {
         display: flex;
         flex-direction: row-reverse;
-        max-height: 50px;
-        margin-top: 10px;
     }
 
 }
