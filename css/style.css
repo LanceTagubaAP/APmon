@@ -1,6 +1,6 @@
 @import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
 @media only screen and (min-width: 100px) {
-  body{
+  .bodys{
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 10% auto ;
@@ -607,7 +607,7 @@ font-size: 1.2rem;
 
 @media only screen and (min-width: 1200px) {
  
-  body{
+  .bodys{
     background-color: black;
   }
 
