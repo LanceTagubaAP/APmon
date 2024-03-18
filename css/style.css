@@ -1,6 +1,6 @@
 @import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
 
-body {
+#MainPage {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto 1fr;
@@ -19,7 +19,7 @@ body {
     
 }
 
-header {
+#MainPage>header {
     display: flex;
     grid-area: "header";
     font-size: 10px;
@@ -29,7 +29,7 @@ header {
     border-radius: 10%;
 }
 
-main {
+#MainPage>main {
     grid-area: "main";
 
 }
@@ -41,78 +41,78 @@ main>img {
 
 }
 
-main>section {
+#MainPage>main>section {
     display: grid;
     padding: 20px;
 }
 
-main>section>button {
+#MainPage>main>section>button {
     margin: 10px;
 }
 
-footer {
+#MainPage>footer {
     display: flex;
     flex-direction: row-reverse;
     
 }
 
-header>img{
+#MainPage>header>img{
     height: auto;
     width: 40px;
 }
-#een>button>img{
+#menu>button>img{
     height: auto;
     width: 280px;
 }
 
-#een>button{
+#menu>button{
     background-color: transparent;
      border: none;
 }
-#een>button :hover{
+#menu>button :hover{
     scale: 110%;
 }
-footer>button{
+#MainPage>footer>button{
     background-color: transparent;
     border: none;
 }
-footer>button>img{
+#MainPage>footer>button>img{
     height: auto;
     width: 80px;
 }
-footer>button :hover{
+#MainPage>footer>button :hover{
     scale: 120%;
 }
 
 
 @media only screen and (min-width: 1024px) {
 
-    body {}
+    
 
-    header {
+    #MainPage>header {
         display: flex;
         grid-area: "header";
         font-size: 15px;
     }
-    header>img{
+    #MainPage>header>img{
         height: auto;
         width: 80px;
     }
-    #een{
+    #menu{
         margin: 50px;
     }
-    #een>button>img{
+    #menu>button>img{
         height: auto;
         width: 400px;
         margin: 20px;
         border: solid white 2px;
     }
-    footer>button>img{
+    #MainPage>footer>button>img{
         height: auto;
         width: 140px;
     }
 
-    footer {
+    #MainPage>footer {
         display: flex;
         flex-direction: row-reverse;
     }
