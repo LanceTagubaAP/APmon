@@ -1,20 +1,22 @@
+@import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
+@media only screen and (min-width: 100px) {
 body{
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 10% auto 10% ;
+    grid-template-rows: 10% auto ;
     grid-template-areas: 
     "header"
     "main"
-    "footer"
     ;
     height: 100vh;
     width: 100%;
+    
 }
 
 main{
     grid-area: main;
+    background-color:gray;
     
-    background-color: darkgreen;
 }
 main>section {
     padding: 3rem;
@@ -29,6 +31,7 @@ header{
     border: solid black;
     max-width: fit-content;
     grid-area: header;
+    font-family: "Pokemon Classic Regular";
 }
 header>img{
     width: 5rem;
@@ -37,25 +40,49 @@ header>img{
 footer{
     grid-area: footer;
 }
-.enemyPokemon{
-    
-    
-    flex-direction: column;
-    text-align: right;
-    
-   
-    background-color: aqua;
+article{
+    font-family: "Pokemon Classic Regular";
 }
+
+
+.enemyPokemon{
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 10px;
+    min-width: none;
+    width: 60%;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color:lightgray;
+}
+
+
+.textBeforeHP{
+    font-family: "Pokemon Classic Regular";
+    background-color: black;
+    color: white;
+    font-size: 0.5rem;
+    height: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
 .myPokemon{
     
-    display: flex;
     flex-direction: column;
     
-    text-align: left;
-    
-    background-color: brown;
-    
+    border-radius: 10px;
+    min-width: none;
+    width: 60%;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color:lightgray;
 }
+
 #enemySprite{
     
     min-width: 10rem;
@@ -65,15 +92,125 @@ footer{
 
 
 #mySprite{
-   
-   
     width: 15rem;
     min-width: 10rem;
 }
 
-  @media only screen and (min-width: 600px){
+.progress{
+    margin-bottom: 2rem;
+    height: 1.5rem;
+    border: solid white;
+
+}
+
+
+
+.gridEnemy{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.EnemyHP{
+    grid-column: 1/3;
+    text-align: left;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    padding-top:1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-radius: 10px;
+    height: 6rem;
+    background-color: red;
+
+
+}
+
+
+.EnemyPokemon{
+    grid-column: 3/5;
+    text-align: center;
+}
+
+.gridAlly{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.AllyHP{
+    grid-column: 3/5;
+    text-align: left;
+    margin-top: 4rem;
+    margin-right: 2rem;
+    padding-left: 1rem;
+    padding-top:1rem;
+    border-radius: 10px;
+    height: 6rem;
+    background-color:blue;
+    grid-row:1 ;
+    padding-right: 1rem;
+    
+}
+
+.AllyPokemon{
+    grid-column: 1/3;
+    text-align: center;
+    grid-row:1 ;
+}
+
+.battleName{
+    font-size: 1rem;
+    font-family: "Pokemon Classic Regular";
+}
+
+}
+
+.infoBattle{
+    border: solid black;
+    background-color:white;
+    padding: 1rem;
+    
+}
+
+.commands{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    background-color: white;
+    border: solid black;
+    font-family: "Pokemon Classic Regular";
+
+}
+
+.attack{
+    grid-column: 1;
+    border: solid black;
+    padding-top: 0.5rem;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.catch{
+    grid-column: 2;
+    border: solid black;
+    padding-top: 0.5rem;
+    border-radius: 10px;
+    background-color: white;
+
+}
+
+.run{
+  grid-column: 3;
+  border: solid black;
+  padding-top: 0.5rem;
+  border-radius: 10px;
+  background-color: white;
+
+}
+
+  @media only screen and (min-width: 800px){
     .myPokemon{
-        max-width: fit-content;
+        max-width: 100%;
         padding-top: 1rem;
         padding-left: 1rem;
         padding-right: 1rem;
@@ -82,5 +219,20 @@ footer{
         
         max-width: fit-content;
     }
+
+  }
+  @media only screen and (min-width: 1200px){
+    .myPokemon{
+        
+        max-width: fit-content;
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .enemyPokemon{
+        text-align: left;
+        max-width: 100%;
+    }
+   
   }
 
