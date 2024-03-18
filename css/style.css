@@ -12,12 +12,24 @@
     background-image: url(/assets/img/swsh-large-fallback.jpg);
 }
 
-#compare,#MainPage,#pokeDex{
+#compare,#MainPage,#pokeDex,#whosThatPokemon{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
     font-family: "Pokemon Classic Regular";
+}
+
+
+#whosThatPokemon{
+    grid-template-areas:
+        "header header ja"
+        "ja main ja"
+        "ja main ja"
+        "footer footer footer";
+
+    background-image: url(/assets/img/swsh-large-fallback.jpg);
+
 }
 
 
@@ -38,7 +50,7 @@
 
 
 
-#compare>header {
+#compare>header,#whosThatPokemon>header {
     display: flex;
     grid-area: "header";
     font-size: 15px;
@@ -46,12 +58,10 @@
     max-width: fit-content;
     background-color: purple;
     border-radius: 10%;
-    
+
 }
 
-
-
-#compare>header>img{
+#whosThatPokemon>header>img{
     height: auto;
     width: 80px;
 }
@@ -222,6 +232,7 @@ main>img {
     #compare>header {
         grid-area: header;
         font-size: 10px;
+        
     }
 
     #compare>header>img {
@@ -430,4 +441,128 @@ main>img {
 }
 #pokeDex>aside>ul>#charmander{
     background-color: green;
+}
+#whosThatPokemon>main {
+    display: grid;
+    grid-area: main;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    color: white;
+    
+}
+
+#whosThatPokemon>main>h1 {
+    display: grid;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+#whosThatPokemon>main>form>input {
+    margin-top: 50px;
+    height: 20px;
+    background-color: purple;
+    border: solid black 2px;
+}
+
+#whosThatPokemon>main>form>button{
+    text-shadow: 2px 2px 2px black;
+    font-size: 25px;
+}
+
+#whosThatPokemon>main>img {
+    height: auto;
+    width: 400px;
+    border: solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+}
+
+#whosThatPokemon>main>h2 {
+    margin-top: 10px;
+    display: grid;
+    justify-content: center;
+}
+#whosThatPokemon>main>h2>img{
+    display: grid;
+    height: auto;
+    width: 30px;
+}
+#whosThatPokemon>main>h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#whosThatPokemon>main>form>button{
+    color: purple;
+}
+
+#whosThatPokemon>footer {
+    grid-area: footer;
+    border: solid black;
+    max-width: fit-content;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-top: 40px;
+}
+@media only screen and (max-width: 768px) {
+    #whosThatPokemon {
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
+        font-size: 14px;
+    }
+
+    #whosThatPokemon>header>img {
+        height: auto;
+        width: 40px;
+    }
+
+    #whosThatPokemon>main {
+        margin-top: 50px;
+       
+    }
+
+    #whosThatPokemon>main>img {
+        height: auto;
+        width: 300px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 60px;
+    }
+
+    #whosThatPokemon>main>h1 {
+        margin-left: 30px;
+    }
+    #whosThatPokemon>main>h2{
+        margin-top: 10px;
+        display: flex;
+        justify-content: left;
+        align-items: left;
+    }
+
+    #whosThatPokemon>main>form {
+        margin-left: 60px;
+    }
+
+    #whosThatPokemon>main>form>input {
+        margin-top: 20px;
+        height: 20px;
+        width: 300px;
+    }
+
+    #whosThatPokemon>main>h2 {
+        margin-left: 90px;
+    }
+    #whosThatPokemon>main>form{
+        display: flex;
+    }
+    #whosThatPokemon>main>form>button{
+        font-size: 25px;
+        margin-right: 20px;
+        margin-top: 5px;
+    }
 }
