@@ -61,6 +61,8 @@ body{
     height: 100vh;
     width: 100%;
     padding-top: 5vh;
+    margin-top: -5.9rem;
+
   }
 
   .mainLogin{
@@ -70,6 +72,8 @@ body{
     height: 100vh;
     width: 100%;
     padding-top: 20vh;
+    margin-top: -5.9rem;
+
   }
 
   .mainSignup{
@@ -79,6 +83,7 @@ body{
     height: 100vh;
     width: 100%;
     padding-top: 20vh;
+    margin-top: -5.9rem;
   }
 
 .battleHeader{
