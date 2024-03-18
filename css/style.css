@@ -24,7 +24,7 @@
 
 }
 
-header {
+#pokeDex>header {
     display: flex;
     grid-area: "header";
     font-size: 10px;
