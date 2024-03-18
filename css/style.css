@@ -55,7 +55,7 @@
     grid-area: footer;
 }
 
-header>img{
+#pokeDex>header>img{
     height: auto;
     width: 80px;
 }
