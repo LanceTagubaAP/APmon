@@ -61,7 +61,7 @@
 
 }
 
-#whosThatPokemon>header>img{
+#compare>header>img,#whosThatPokemon>header>img{
     height: auto;
     width: 80px;
 }
