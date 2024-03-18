@@ -552,9 +552,7 @@ font-size: 1.2rem;
 }
 
 main{
-    grid-area: main;
-    background-color:gray;
-    
+    grid-area: main;  
 }
 main>section {
     padding: 3rem;
@@ -922,4 +920,579 @@ article{
     }
    
   }
+  @import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
+#compare {
+    display: grid;
+    gap: 0px 0px;
+    grid-template-areas:
+        "header header header header"
+        "articel yourpokemon otherpokemon article"
+        "articel yourpokemon otherpokemon article"
+        "footer footer footer footer ";
+    background-image: url(/assets/img/swsh-large-fallback.jpg);
+}
+
+#compare,#MainPage,#pokeDex,#whosThatPokemon{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    font-family: "Pokemon Classic Regular";
+}
+
+
+#whosThatPokemon{
+    grid-template-areas:
+        "header header ja"
+        "ja main ja"
+        "ja main ja"
+        "footer footer footer";
+
+    background-image: url(/assets/img/swsh-large-fallback.jpg);
+
+}
+
+
+
+
+#pokeDex{
+    display: grid;
+    grid-template-areas: 
+    "header header nav"
+    "main main aside"
+    "main main aside"
+    "main main aside"
+    "footer ul ul ";
+    padding: 10px;
+    background-image: url(/assets/img/swsh-large-fallback.jpg);
+}
+
+
+
+
+#compare>header,#whosThatPokemon>header {
+    display: flex;
+    grid-area: "header";
+    font-size: 15px;
+    border: solid black;
+    max-width: fit-content;
+    background-color: purple;
+    border-radius: 10%;
+
+}
+
+#compare>header>img,#whosThatPokemon>header>img{
+    height: auto;
+    width: 80px;
+}
+
+
+#yourPokemon {
+    grid-area: yourpokemon;
+    background-color: darkgoldenrod;
+    border: solid 5px black;
+    margin-right: 50px;
+    padding: 5px;
+    
+}
+
+#yourPokemon>section,
+#otherPokemon>section {
+    display: grid;
+    border: solid black;
+    padding: 15px;
+    margin-top: 25px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+}
+
+
+hr{
+    border: solid black ;
+}
+
+#otherPokemon {
+    grid-area: otherpokemon;
+    background-color: darkgreen;
+    border: solid 5px black;
+    padding: 5px;
+}
+
+#otherPokemon,
+#yourPokemon {
+    display: grid;
+    margin-top: 150px;
+    justify-content: center;
+    text-align: center;
+}
+
+#compare>section>img{
+    height: auto;
+    width: 400px;
+}
+#yourPokemon>h1,
+#otherPokemon>h1{
+    color:#fff;
+}
+
+
+#compare>footer {
+    grid-area: footer;
+    margin-left: 250px;
+    margin-top: 50px;
+    border: solid black;
+    width: max-content;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#MainPage {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer"
+    ;
+    height: 95vh;
+    background-image: url(/assets/img/backgroundMainPage.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    font-family: "Pokemon Classic Regular";
+    
+}
+
+#MainPage>header {
+  display: flex;
+  grid-area: "header";
+  font-size: 15px;
+  border: solid black;
+  max-width: fit-content;
+  background-color: purple;
+  border-radius: 10%;
+
+}
+
+#pokeDex>header {
+    display: flex;
+    grid-area: "header";
+    font-size: 10px;
+    border: solid black;
+    max-width: fit-content;
+    background-color: purple;
+    border-radius: 10%;
+}
+
+#MainPage>main {
+    grid-area: "main";
+
+}
+
+main>img {
+    margin: 50px;
+    display: grid;
+    justify-content: center;
+
+}
+
+#MainPage>main>section {
+    display: grid;
+    padding: 20px;
+}
+
+#MainPage>main>section>button {
+    margin: 10px;
+}
+
+#MainPage>footer {
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+
+#MainPage>header>img{
+    height: auto;
+    width: 40px;
+}
+#menu>button>img{
+    height: auto;
+    width: 280px;
+}
+
+#menu>button{
+    background-color: transparent;
+     border: none;
+}
+#menu>button :hover{
+    scale: 110%;
+}
+#MainPage>footer>button{
+    background-color: transparent;
+    border: none;
+}
+#MainPage>footer>button>img{
+    height: auto;
+    width: 80px;
+}
+#MainPage>footer>button :hover{
+    scale: 120%;
+}
+
+@media (max-width: 666px) {
+    #compare {
+        display: grid;
+        grid-template-areas:
+            "header"
+            "yourpokemon"
+            "otherpokemon"
+            "footer"
+        ;
+        height: 100vh;
+    }
+
+    #compare>header {
+        grid-area: header;
+        font-size: 10px;
+        
+    }
+
+    #compare>header>img {
+        height: auto;
+        width: 40px;
+    }
+ 
+    #yourPokemon>section,
+    #otherPokemon>section {
+        display: grid;
+        border: solid black;
+        padding: 5px;
+        margin-top: 15px;
+        justify-content: center;
+    }
+
+    #yourPokemon>h1,
+    #otherPokemon>h1 {
+        margin-bottom: 25px;
+    }
+
+    #otherPokemon,
+    #yourPokemon {
+        display: grid;
+        margin-top: 50px;
+        justify-content: center;
+        text-align: center;
+        margin-right: 50px;
+        margin-left: 50px;
+
+    }
+
+    #otherPokemon>img,
+    #yourPokemon>img {
+        height: auto;
+        width: 125px;
+    }
+    #MainPage>main {
+        grid-area: "main";
+
+    }
+
+    main>img {
+        margin: 50px;
+        display: grid;
+        justify-content: center;
+
+    }
+
+    #MainPage>main>section {
+        display: grid;
+        padding: 20px;
+    }
+
+    #MainPage>main>section>button {
+        margin: 10px;
+    }
+
+    #MainPage>footer {
+        display: flex;
+        flex-direction: row-reverse;
+        
+    }
+
+    #MainPage>header>img{
+        height: auto;
+        width: 40px;
+    }
+
+    #menu>button>img{
+        height: auto;
+        width: 280px;
+        border: solid white 2px
+        
+    }
+
+    #menu>button{
+        background-color: transparent;
+        border: none;
+       
+    }
+    #menu>button :hover{
+        scale: 110%;
+    }
+    #MainPage>footer>button{
+        background-color: transparent;
+        border: none;
+    }
+    #MainPage>footer>button>img{
+        height: auto;
+        width: 80px;
+    }
+    #MainPage>footer>button :hover{
+        scale: 120%;
+    }
+}
+
+
+@media only screen and (min-width: 1024px) {
+
+    
+
+    #MainPage>header {
+        display: flex;
+        grid-area: "header";
+        font-size: 15px;
+        border: solid black;
+        max-width: fit-content;
+        background-color: purple;
+        border-radius: 10%;
+        
+    }
+    #MainPage>header>img{
+        height: auto;
+        width: 80px;
+    }
+    #menu{
+        margin: 50px;
+    }
+    #menu>button>img{
+        height: auto;
+        width: 400px;
+        margin: 20px;
+        border: solid white 2px;
+    }
+    #MainPage>footer>button>img{
+        height: auto;
+        width: 140px;
+    }
+
+    #MainPage>footer {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+}
+#pokeDex>nav{
+    grid-area: nav;
+    margin-top: 30px;
+}
+#pokeDex>main{
+    display: grid;
+    grid-area: main;
+   justify-content: center;
+   align-items: center;
+   margin-top:100px;
+   margin-left: 200px;
+}
+#pokeDex>aside{
+    display: grid;
+    grid-area: aside;
+    justify-content: right;
+    align-items: center;
+}
+#pokeDex>footer{
+    grid-area: footer;
+}
+
+#pokeDex>header>img{
+    height: auto;
+    width: 80px;
+}
+
+#searchBar{
+   border: solid 2px black;
+   height: 50px;
+   background: linear-gradient( purple, rgb(106, 59, 225), purple );
+}
+#filterBar{
+    border: solid 2px black;
+    height: 50px;
+    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+}
+
+#pokeDex>aside>ul{
+    height:70%; 
+    width:100%;
+    overflow:hidden; 
+    overflow-y:scroll;
+    border: solid black 5px;
+    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+   
+    
+}
+#pokeDex>aside>ul>li{
+    display: flex;
+    border: solid 2px black;
+    margin: 10px;
+    padding: 2px;
+    justify-content: center;
+    align-items: center;
+}
+#pokeDex>aside>ul>li>img{
+    height: auto;
+    width: 50px;
+    border: black solid 2px ;
+}
+#pokeDex>main>img{
+    border: solid black 5px ;
+    height: auto;
+    width: 500px;
+    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+}
+#pokeDex>main>section{
+    border: solid black 2px;
+    margin-top: 5px;
+    padding: 2px;
+    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+}
+#pokeDex>aside>ul>#charmander{
+    background-color: green;
+}
+#whosThatPokemon>main {
+    display: grid;
+    grid-area: main;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    color: white;
+    
+}
+
+#whosThatPokemon>main>h1 {
+    display: grid;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+#whosThatPokemon>main>form>input {
+    margin-top: 50px;
+    height: 20px;
+    background-color: purple;
+    border: solid black 2px;
+}
+
+#whosThatPokemon>main>form>button{
+    text-shadow: 2px 2px 2px black;
+    font-size: 25px;
+}
+
+#whosThatPokemon>main>img {
+    height: auto;
+    width: 400px;
+    border: solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+}
+
+#whosThatPokemon>main>h2 {
+    margin-top: 10px;
+    display: grid;
+    justify-content: center;
+}
+#whosThatPokemon>main>h2>img{
+    display: grid;
+    height: auto;
+    width: 30px;
+}
+#whosThatPokemon>main>h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#whosThatPokemon>main>form>button{
+    color: purple;
+}
+
+#whosThatPokemon>footer {
+    grid-area: footer;
+    border: solid black;
+    max-width: fit-content;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-top: 40px;
+}
+@media only screen and (max-width: 768px) {
+    #whosThatPokemon {
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
+        font-size: 14px;
+    }
+
+    #whosThatPokemon>header>img {
+        height: auto;
+        width: 40px;
+    }
+
+    #whosThatPokemon>main {
+        margin-top: 50px;
+       
+    }
+
+    #whosThatPokemon>main>img {
+        height: auto;
+        width: 300px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 60px;
+    }
+
+    #whosThatPokemon>main>h1 {
+        margin-left: 30px;
+    }
+    #whosThatPokemon>main>h2{
+        margin-top: 10px;
+        display: flex;
+        justify-content: left;
+        align-items: left;
+    }
+
+    #whosThatPokemon>main>form {
+        margin-left: 60px;
+    }
+
+    #whosThatPokemon>main>form>input {
+        margin-top: 20px;
+        height: 20px;
+        width: 300px;
+    }
+
+    #whosThatPokemon>main>h2 {
+        margin-left: 90px;
+    }
+    #whosThatPokemon>main>form{
+        display: flex;
+    }
+    #whosThatPokemon>main>form>button{
+        font-size: 25px;
+        margin-right: 20px;
+        margin-top: 5px;
+    }
+}
 
