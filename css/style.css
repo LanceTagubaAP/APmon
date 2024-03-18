@@ -11,29 +11,15 @@
         "footer footer footer footer ";
 
     background-image: url(/assets/img/swsh-large-fallback.jpg);}
-
-    #compare,#MainPage{
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        background-size: cover;
-        font-family: "Pokemon Classic Regular";
-
-    }
-
-#MainPage {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-        "header"
-        "main"
-        "footer"
-    ;
-    height: 95vh;
-    background-image: url(/assets/img/background.png);
-
+#compare,#MainPage{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    font-family: "Pokemon Classic Regular";
 }
+
+
 
 
 #compare>header {
@@ -47,15 +33,7 @@
     
 }
 
-#MainPage>header {
-    display: flex;
-    grid-area: "header";
-    font-size: 10px;
-    border: solid black;
-    max-width: fit-content;
-    background-color: purple;
-    border-radius: 10%;
-}
+
 
 #compare>header>img{
     height: auto;
@@ -122,6 +100,90 @@ hr{
     width: max-content;
     border-radius: 5px;
     padding: 5px;
+}
+
+#MainPage {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer"
+    ;
+    height: 95vh;
+    background-image: url(/assets/img/background.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    font-family: "Pokemon Classic Regular";
+    
+}
+
+#MainPage>header {
+    display: flex;
+    grid-area: "header";
+    font-size: 10px;
+    border: solid black;
+    max-width: fit-content;
+    background-color: purple;
+    border-radius: 10%;
+}
+
+#MainPage>main {
+    grid-area: "main";
+
+}
+
+main>img {
+    margin: 50px;
+    display: grid;
+    justify-content: center;
+
+}
+
+#MainPage>main>section {
+    display: grid;
+    padding: 20px;
+}
+
+#MainPage>main>section>button {
+    margin: 10px;
+}
+
+#MainPage>footer {
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+
+#MainPage>header>img{
+    height: auto;
+    width: 40px;
+}
+#menu>button>img{
+    height: auto;
+    width: 280px;
+}
+
+#menu>button{
+    background-color: transparent;
+     border: none;
+}
+#menu>button :hover{
+    scale: 110%;
+}
+#MainPage>footer>button{
+    background-color: transparent;
+    border: none;
+}
+#MainPage>footer>button>img{
+    height: auto;
+    width: 80px;
+}
+#MainPage>footer>button :hover{
+    scale: 120%;
 }
 
 @media (max-width: 666px) {
