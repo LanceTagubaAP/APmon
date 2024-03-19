@@ -989,21 +989,9 @@ article{
 
 
 
-#compare>header,#whosThatPokemon>header {
-    display: flex;
-    grid-area: "header";
-    font-size: 15px;
-    border: solid black;
-    max-width: fit-content;
-    background-color: purple;
-    border-radius: 10%;
 
-}
 
-#compare>header>img,#whosThatPokemon>header>img{
-    height: auto;
-    width: 80px;
-}
+
 
 
 #yourPokemon {
@@ -1086,26 +1074,9 @@ hr{
     
 }
 
-#MainPage>header {
-  display: flex;
-  grid-area: "header";
-  font-size: 15px;
-  border: solid black;
-  max-width: fit-content;
-  background-color: purple;
-  border-radius: 10%;
 
-}
 
-#pokeDex>header {
-    display: flex;
-    grid-area: "header";
-    font-size: 10px;
-    border: solid black;
-    max-width: fit-content;
-    background-color: purple;
-    border-radius: 10%;
-}
+
 
 #MainPage>main {
     grid-area: "main";
@@ -1174,16 +1145,8 @@ main>img {
         height: 100vh;
     }
 
-    #compare>header {
-        grid-area: header;
-        font-size: 10px;
-        
-    }
 
-    #compare>header>img {
-        height: auto;
-        width: 40px;
-    }
+
  
     #yourPokemon>section,
     #otherPokemon>section {
@@ -1242,10 +1205,7 @@ main>img {
         
     }
 
-    #MainPage>header>img{
-        height: auto;
-        width: 40px;
-    }
+   
 
     #menu>button>img{
         height: auto;
@@ -1279,21 +1239,6 @@ main>img {
 @media only screen and (min-width: 1024px) {
 
     
-
-    #MainPage>header {
-        display: flex;
-        grid-area: "header";
-        font-size: 15px;
-        border: solid black;
-        max-width: fit-content;
-        background-color: purple;
-        border-radius: 10%;
-        
-    }
-    #MainPage>header>img{
-        height: auto;
-        width: 80px;
-    }
     #menu{
         margin: 50px;
     }
@@ -1336,10 +1281,6 @@ main>img {
     grid-area: footer;
 }
 
-#pokeDex>header>img{
-    height: auto;
-    width: 80px;
-}
 
 #searchBar{
    border: solid 2px black;
@@ -1464,10 +1405,7 @@ main>img {
         font-size: 14px;
     }
 
-    #whosThatPokemon>header>img {
-        height: auto;
-        width: 40px;
-    }
+
 
     #whosThatPokemon>main {
         margin-top: 50px;
