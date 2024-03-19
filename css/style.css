@@ -21,6 +21,18 @@ body{
     padding-right: 2rem;
 
   }
+  .howtoplayMain{
+    background-image: url("../assets/img/backgroundBattle.jpg");
+    background-position: bottom;
+    background-size: cover;
+  }
+  .howtoplayMain > article{
+    color: white;
+    text-shadow:3px 3px 3px black
+  }
+  .howtoplayAccordion{
+    text-align: left;
+  }
 
   .allyPartnerHeader{
     display: flex;
@@ -48,6 +60,7 @@ body{
     width: 100%;
     
   }
+  
 
   .headerRankText{
     font-size: 2rem;
