@@ -161,6 +161,9 @@ text-align: center;
     background-image: url("../assets/img/light-blue.jpg");
     
   }
+  .backBtn{
+    
+  }
   .pokemonList{
     text-align: left;
   }
@@ -628,6 +631,7 @@ header{
     max-width: fit-content;
     grid-area: header;
     font-family: "Pokemon Classic Regular";
+    backdrop-filter: blur(10px);
 }
 header>img{
     width: 5rem;
