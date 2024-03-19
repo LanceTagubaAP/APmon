@@ -1003,7 +1003,7 @@ background-size: cover;
         "articel yourpokemon otherpokemon article"
         "articel yourpokemon otherpokemon article"
         "footer footer footer footer ";
-    background-image: url(/assets/img/swsh-large-fallback.jpg);
+    background-image: url(/assets/img/pokemonLab.jpg);
 }
 
 #compare,#MainPage,#pokeDex,#whosThatPokemon{
@@ -1017,9 +1017,9 @@ background-size: cover;
 
 #whosThatPokemon{
     grid-template-areas:
-        "header header ja"
-        "ja main ja"
-        "ja main ja"
+        "header header "
+        " main "
+        " main "
         "footer footer footer";
 
     background-image: url(/assets/img/swsh-large-fallback.jpg);
@@ -1054,11 +1054,22 @@ background-size: cover;
 
 #yourPokemon {
     grid-area: yourpokemon;
-    background-color: darkgoldenrod;
+   
     border: solid 5px black;
     margin-right: 50px;
-    padding: 5px;
-    
+    padding: 5px;   
+}
+
+
+#yourPokemon,#otherPokemon{
+  background-image: url(/assets/img/light-blue.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+.pokemonCompare{
+  filter: drop-shadow(10px 5px 2px black);
 }
 
 #yourPokemon>section,
@@ -1110,7 +1121,13 @@ hr{
     width: max-content;
     border-radius: 5px;
     padding: 5px;
+    border-radius: 15px;
+    background-color: white;
 }
+#compare>footer:hover{
+ background-color: grey;
+}
+
 
 #MainPage {
     display: grid;

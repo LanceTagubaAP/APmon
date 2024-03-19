@@ -7,16 +7,16 @@ function preLoad() {
 
   function showDidYouKnow(){
     const img = document.querySelector('img');
-    const weetje = document.querySelector('#weetje');
+    const didYouKnow= document.querySelector('#didYouKnow');
 
    
     img.addEventListener('mouseover', function() {
-        weetje.style.display = 'block';
+      didYouKnow.style.display = 'block';
     });
 
     
-    weetje.addEventListener('mouseout', function() {
-        weetje.style.display = 'none';
+    didYouKnow.addEventListener('mouseout', function() {
+      didYouKnow.style.display = 'none';
     });
 
   }
