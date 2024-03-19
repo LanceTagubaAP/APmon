@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="javascript.js">
     <title>APMon</title>
 </head>
 <body id="pokeDex">
@@ -21,9 +22,7 @@
         <input id="searchBar" type="text" placeholder="Search..">
         <input id="filterBar" type="text" id="myInput" onkeyup="Function()" placeholder="Filter">
     </nav>
-    <main>
 
-    </main>
     <aside>
         <ul>
             <li id="charmander">01 <img src="assets/img/charmander.png" alt="Charmander">Charmander</li>
@@ -37,15 +36,18 @@
     </aside>
     <main>
         <img src="assets/img/charmander.png" alt="">
+        <section id="didYouKnow">
+            <h2>wist je dat:</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia, consequuntur?</p>
+        </section>
+       
         <section>
             <h2>beschrijving:</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, ullam.dolor sit amet consectetur adipisicing elit. Quidem, ullam.</p>
             
         </section>
-        <form action="click"><button>Compare</button></form>
+        <button id="CompareButton"><a href="Compare.html"> Compare</a></button>
     </main>
-    <footer><button>Terug</button></footer>
-
-    
+    <footer><button><a href="mainpage.html">Terug</a></button></footer>
 </body>
 </html>

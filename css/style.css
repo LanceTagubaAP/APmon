@@ -11,7 +11,7 @@ body:not(.no-grid-layout){
     height: 100vh;
     width: 100%;
     text-align: center;
-  
+
   }
 
   .no-grid-layout{
@@ -19,14 +19,14 @@ body:not(.no-grid-layout){
     margin: 0;
     padding: 0;
   }
-  
+
   .headerText{
     padding-top:2rem;
     margin-left: 1rem;
     padding-right: 2rem;
 
   }
-  .howtoplayMain{
+.howtoplayMain{
     background-image: url("../assets/img/backgroundBattle.jpg");
     background-position: bottom;
     background-size: cover;
@@ -49,7 +49,7 @@ body:not(.no-grid-layout){
     visibility: hidden;
   }
 
-  
+
   main{
     grid-area: main;
   }
@@ -63,7 +63,7 @@ body:not(.no-grid-layout){
      background-position: center;
     height: 100vh;
     width: 100%;
-    text-align: center;
+text-align: center;
     position: fixed;
     background-repeat: no-repeat;
     
@@ -74,7 +74,7 @@ body:not(.no-grid-layout){
   }
 
   /*Image by <a href="https://www.freepik.com/free-vector/abstract-pixel-rain-background_6348966.htm#page=2&query=nintendo%20background&position=1&from_view=keyword&track=ais&uuid=07f2dc6a-393f-4c02-bbbc-7a87032429a1">Freepik</a>*/
-  
+
   .mainProjectScreen{
     background-image: url("../assets/imgs/Nintendo-background.jpg");
     background-size: cover;
@@ -82,7 +82,7 @@ body:not(.no-grid-layout){
     height: 100vh;
     width: 100%;
     padding-top: 5vh;
-    text-align: center;
+text-align: center;
 
   }
 
@@ -93,7 +93,7 @@ body:not(.no-grid-layout){
     height: 100vh;
     width: 100%;
     padding-top: 10vh;
-    text-align: center;
+text-align: center;
 
   }
 
@@ -104,7 +104,7 @@ body:not(.no-grid-layout){
     height: 100vh;
     width: 100%;
     padding-top: 10vh;
-    text-align: center;
+text-align: center;
   }
 
   .main header{
@@ -663,7 +663,7 @@ article{
      background-position: center;
   height: 100vh;
   width: 100%;
-  text-align: center;
+text-align: center;
   }
 
   
@@ -683,7 +683,7 @@ article{
 
 @media only screen and (min-width: 1200px) {
  
-  .apmon-logo{
+.apmon-logo{
     width: 350px;
     height: 100px;
   }
@@ -926,7 +926,7 @@ article{
   }
   #battleMain2{
     background-image: url("../assets/img/BattleBackground2.jpg");
-    background-size: cover;
+background-size: cover;
     background-position:center;
     height: 100vh;
     width: 100%;
@@ -1006,14 +1006,17 @@ article{
     "main main aside"
     "footer ul ul ";
     padding: 10px;
-    background-image: url(/assets/img/swsh-large-fallback.jpg);
+   
+    background-image: url(/assets/img/light-blue.jpg);
+    
 }
-
-
-
-
-
-
+#pokeDex>main{
+  
+  background-size: cover;
+  
+  filter: drop-shadow(10px 10px 4px black);
+  
+}
 
 
 
@@ -1067,7 +1070,6 @@ hr{
     color:#fff;
 }
 
-
 #compare>footer {
     grid-area: footer;
     margin-left: 250px;
@@ -1088,7 +1090,7 @@ hr{
         "footer"
     ;
     height: 95vh;
-    background-image: url(/assets/img/backgroundMainPage.png);
+    background-image: url(/assets/img/backgroundmainpage.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -1096,10 +1098,6 @@ hr{
     font-family: "Pokemon Classic Regular";
     
 }
-
-
-
-
 
 #MainPage>main {
     grid-area: "main";
@@ -1115,7 +1113,6 @@ main>img {
 
 #MainPage>main>section {
     display: grid;
-    padding: 20px;
 }
 
 #MainPage>main>section>button {
@@ -1132,9 +1129,9 @@ main>img {
     height: auto;
     width: 40px;
 }
-#menu>button>img{
+#menu>button>a>img{
     height: auto;
-    width: 280px;
+    width: 400px;
 }
 
 #menu>button{
@@ -1168,9 +1165,9 @@ main>img {
         height: 100vh;
     }
 
-
-
- 
+            
+    
+     
     #yourPokemon>section,
     #otherPokemon>section {
         display: grid;
@@ -1228,13 +1225,11 @@ main>img {
         
     }
 
-   
+    
 
-    #menu>button>img{
+    #menu>button>a>img{
         height: auto;
         width: 280px;
-        border: solid white 2px
-        
     }
 
     #menu>button{
@@ -1263,13 +1258,11 @@ main>img {
 
     
     #menu{
-        margin: 50px;
+        
     }
     #menu>button>img{
         height: auto;
         width: 400px;
-        margin: 20px;
-        border: solid white 2px;
     }
     #MainPage>footer>button>img{
         height: auto;
@@ -1285,7 +1278,9 @@ main>img {
 #pokeDex>nav{
     grid-area: nav;
     margin-top: 30px;
+    display: flex;
 }
+
 #pokeDex>main{
     display: grid;
     grid-area: main;
@@ -1305,34 +1300,67 @@ main>img {
 }
 
 
-#searchBar{
+#searchBar,#filterBar,#CompareButton>a{
    border: solid 2px black;
    height: 50px;
-   background: linear-gradient( purple, rgb(106, 59, 225), purple );
+   background-color: #fff;
+   margin-bottom: 10px;
 }
-#filterBar{
-    border: solid 2px black;
-    height: 50px;
-    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+#CompareButton{
+  margin-top: 10px;
+  
+}
+#CompareButton>a:hover{
+  background-color: grey;
+}
+
+#filterBar:hover{
+  background-color: grey;
+}
+#searchBar:hover{
+  background-color: grey;
+  
+}
+
+#pokeDex>aside{
+  background-image: url(/assets/img/wp3170171.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; 
+  margin-left: 10px;
 }
 
 #pokeDex>aside>ul{
-    height:70%; 
-    width:100%;
+    height:55%; 
+    width: 100%;
     overflow:hidden; 
     overflow-y:scroll;
-    border: solid black 5px;
-    background: linear-gradient( purple, rgb(106, 59, 225), purple );
-   
+    margin-right: 170px;
     
 }
+
+#didYouKnow {
+  display: none;
+  position: absolute;
+  top: 56%;
+  left:65%;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid black;
+  margin-bottom: 5px;
+}
+img:hover + #didYouKnow {
+  display: block;
+  margin-bottom: 150px;
+  background-color: white
+
+}
+
 #pokeDex>aside>ul>li{
     display: flex;
     border: solid 2px black;
     margin: 10px;
-    padding: 2px;
-    justify-content: center;
-    align-items: center;
+    padding: 2px; 
 }
 #pokeDex>aside>ul>li>img{
     height: auto;
@@ -1340,19 +1368,31 @@ main>img {
     border: black solid 2px ;
 }
 #pokeDex>main>img{
-    border: solid black 5px ;
     height: auto;
     width: 500px;
-    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+    margin-left: 250px;
+    border: 1px solid black;
+  
+    &:hover {
+      border: 3px solid black;
+      background-image: url(/assets/img/lol.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover; 
+    }
 }
 #pokeDex>main>section{
     border: solid black 2px;
     margin-top: 5px;
     padding: 2px;
-    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+    background-color: white;   
 }
 #pokeDex>aside>ul>#charmander{
     background-color: green;
+}
+
+#compareBackground{
+  background-color:white;
 }
 #whosThatPokemon>main {
     display: grid;
@@ -1360,9 +1400,13 @@ main>img {
     justify-content: center;
     align-items: center;
     margin-top: 100px;
-    color: white;
-    
+    color: white; 
 }
+
+
+
+
+
 
 #whosThatPokemon>main>h1 {
     display: grid;
@@ -1428,7 +1472,7 @@ main>img {
         font-size: 14px;
     }
 
-   
+    
 
     #whosThatPokemon>main {
         margin-top: 50px;
