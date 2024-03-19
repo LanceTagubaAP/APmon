@@ -11,9 +11,7 @@ body:not(.no-grid-layout){
     height: 100vh;
     width: 100%;
     text-align: center;
-    box-sizing:border-box;
-    margin: 0;
-    padding: 0;
+  
   }
 
   .no-grid-layout{
@@ -70,13 +68,13 @@ body:not(.no-grid-layout){
     background-repeat: no-repeat;
     
   }
-  
 
   .headerRankText{
     font-size: 2rem;
   }
 
   /*Image by <a href="https://www.freepik.com/free-vector/abstract-pixel-rain-background_6348966.htm#page=2&query=nintendo%20background&position=1&from_view=keyword&track=ais&uuid=07f2dc6a-393f-4c02-bbbc-7a87032429a1">Freepik</a>*/
+  
   .mainProjectScreen{
     background-image: url("../assets/imgs/Nintendo-background.jpg");
     background-size: cover;
@@ -94,7 +92,7 @@ body:not(.no-grid-layout){
     background-position: center;
     height: 100vh;
     width: 100%;
-    padding-top: 20vh;
+    padding-top: 10vh;
     text-align: center;
 
   }
@@ -105,7 +103,7 @@ body:not(.no-grid-layout){
     background-position: center;
     height: 100vh;
     width: 100%;
-    padding-top: 20vh;
+    padding-top: 10vh;
     text-align: center;
   }
 
@@ -185,7 +183,7 @@ body:not(.no-grid-layout){
   }
 
   .buttonLoginContainer{
-    margin-top: 20rem;
+    margin-top: 10rem;
     text-align: center;  
   }
 
@@ -203,7 +201,7 @@ body:not(.no-grid-layout){
     height: 4rem;   
     width: 15rem;  
     text-align: center; 
-    margin-top: 4rem;
+    margin-top: 2rem;
 
   }
   .bottomProjectScreen{
@@ -212,7 +210,7 @@ body:not(.no-grid-layout){
     height: 6rem; 
     padding:0 16px;
   margin:0 auto;
-  width: 30rem;
+  width: 20rem;
   border-radius: 15px;
 
   }
@@ -225,10 +223,10 @@ body:not(.no-grid-layout){
   }
 
  .gameName{
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-top: 2rem;
   padding-top: 2rem;
-  margin-left: 2rem;
+  margin-left: 1rem;
   text-align: center;
   color: white;
   
@@ -685,6 +683,11 @@ article{
 
 @media only screen and (min-width: 1200px) {
  
+  .apmon-logo{
+    width: 350px;
+    height: 100px;
+  }
+
   .projectScreenContainer{
     margin-left: 30vw;
     margin-right: 30vw;
@@ -716,7 +719,7 @@ article{
   }
    
   .buttonLoginContainer{
-    margin-top: 20rem;
+    margin-top: 5rem;
     text-align: center;  
   }
 }
@@ -923,6 +926,12 @@ article{
   }
   #battleMain2{
     background-image: url("../assets/img/BattleBackground2.jpg");
+    background-size: cover;
+    background-position:center;
+    height: 100vh;
+    width: 100%;
+    padding-top: 10rem;
+    
   }
   
 
@@ -1419,7 +1428,7 @@ main>img {
         font-size: 14px;
     }
 
-
+   
 
     #whosThatPokemon>main {
         margin-top: 50px;
