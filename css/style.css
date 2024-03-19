@@ -11,12 +11,15 @@ body:not(.no-grid-layout){
     height: 100vh;
     width: 100%;
     text-align: center;
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
   }
 
   .no-grid-layout{
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
   }
   
   .headerText{
@@ -63,6 +66,8 @@ body:not(.no-grid-layout){
     height: 100vh;
     width: 100%;
     text-align: center;
+    position: fixed;
+    background-repeat: no-repeat;
     
   }
   
