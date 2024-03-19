@@ -1,6 +1,6 @@
 @import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
 @media only screen and (min-width: 100px) {
-body{
+body:not(.no-grid-layout){
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 10% auto ;
@@ -12,6 +12,7 @@ body{
     width: 100%;
     text-align: center;
   }
+
 
   
   
@@ -58,6 +59,7 @@ body{
      background-position: center;
     height: 100vh;
     width: 100%;
+    text-align: center;
     
   }
   
@@ -74,6 +76,7 @@ body{
     height: 100vh;
     width: 100%;
     padding-top: 5vh;
+    text-align: center;
 
   }
 
@@ -84,6 +87,7 @@ body{
     height: 100vh;
     width: 100%;
     padding-top: 20vh;
+    text-align: center;
 
   }
 
@@ -94,6 +98,7 @@ body{
     height: 100vh;
     width: 100%;
     padding-top: 20vh;
+    text-align: center;
   }
 
   .main header{
@@ -652,6 +657,7 @@ article{
      background-position: center;
   height: 100vh;
   width: 100%;
+  text-align: center;
   }
 
   
