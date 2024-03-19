@@ -29,14 +29,21 @@ body:not(.no-grid-layout){
 .howtoplayMain{
     background-image: url("../assets/img/backgroundBattle.jpg");
     background-position: bottom;
+    
     background-size: cover;
   }
   .howtoplayMain > article{
     color: white;
     text-shadow:3px 3px 3px black
   }
+  .howtoplayMain>a{
+    margin-top: 5rem;
+  }
   .howtoplayAccordion{
     text-align: left;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
   }
 
   .allyPartnerHeader{
@@ -136,6 +143,28 @@ text-align: center;
     width: 100%;
     padding-top: 10rem;
   }
+  .battleChoose{
+    background-image: url("../assets/img/pokemonLab.jpg");
+    background-size: cover;
+    background-position:center;
+    font-family: "Pokemon Classic Regular";
+    
+  }
+  .battleChoose > main > h2 {
+    color: white;
+    text-shadow: 1px 5px 2px black;
+  }
+  .chooseCards{
+    
+    font-family: "Pokemon Classic Regular";
+    font-size: 0.6rem;
+    background-image: url("../assets/img/light-blue.jpg");
+    
+  }
+  .pokemonList{
+    text-align: left;
+  }
+  
 
   .transparancyTitleScreen{
     height: 100vh;
@@ -469,6 +498,7 @@ padding: 2rem;
   padding-right: 1rem;
   border: solid black;
   
+  
 }
 
 
@@ -786,6 +816,7 @@ text-align: center;
     border-radius: 10px;
     height: 6rem;
     background-color: red;
+    width: 75%;
 
 
 }
@@ -814,6 +845,7 @@ text-align: center;
     background-color:blue;
     grid-row:1 ;
     padding-right: 1rem;
+    width: 75%;
     
 }
 
@@ -930,7 +962,7 @@ background-size: cover;
     background-position:center;
     height: 100vh;
     width: 100%;
-    padding-top: 10rem;
+    padding-top: 3rem;
     
   }
   

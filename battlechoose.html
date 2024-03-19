@@ -14,7 +14,7 @@
   <title>Pokemon kiezen</title>
 </head>
 
-<body>
+<body class="battleChoose">
   <header>
     <img src="./assets/img/Boy-headshot.jpg" alt="man/vrouw">
     <p>Lance T</p>
@@ -28,7 +28,7 @@
     <h2>Aanbevolen pokemons</h2>
     <section class="d-flex flex-wrap justify-content-center mw-100 gap-5">
       
-      <div class="card border border-2 border-black" style="width: 18rem;">
+      <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" class="card-img-top border-bottom border-2 border-black "
             alt="...">
         <div class="card-body">
@@ -40,10 +40,10 @@
             <li>Aanvalspunten:100</li>
             <li>Verdedigingspunten:50</li>
           </ul>
-
+          <a href="./battle.html" type="button" class="btn btn-primary">Vechten!</a>
         </div>
       </div>
-      <div class="card border border-2 border-black" style="width: 18rem;">
+      <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" class="card-img-top border-bottom border-2 border-black"
             alt="...">
         <div class="card-body">
@@ -55,10 +55,11 @@
             <li>Aanvalspunten:100</li>
             <li>Verdedigingspunten:50</li>
           </ul>
+          <a href="./battle.html" type="button" class="btn btn-primary">Vechten!</a>
 
         </div>
       </div>
-      <div class="card border border-2 border-black" style="width: 18rem;">
+      <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" class="card-img-top border-bottom border-2 border-black"
             alt="...">
 
@@ -72,11 +73,12 @@
             <li>Aanvalspunten:100</li>
             <li>Verdedigingspunten:50</li>
           </ul>
+          <a href="./battle.html" type="button" class="btn btn-primary">Vechten!</a>
 
         </div>
       </div>
     </section>
-    <section>
+    <section class="pokemonList">
       <div class="list-group ">
         <button type="button " data-bs-toggle="button" class="list-group-item list-group-item-action" aria-current="true">
           <img
