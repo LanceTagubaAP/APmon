@@ -631,6 +631,7 @@ header{
     max-width: fit-content;
     grid-area: header;
     font-family: "Pokemon Classic Regular";
+    backdrop-filter: blur(10px);
 }
 header>img{
     width: 5rem;
