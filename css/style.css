@@ -158,7 +158,11 @@ body:not(.no-grid-layout){
     
     font-family: "Pokemon Classic Regular";
     font-size: 0.6rem;
+    background-image: url("../assets/img/light-blue.jpg");
     
+  }
+  .pokemonList{
+    text-align: left;
   }
   
 
