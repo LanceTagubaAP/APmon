@@ -307,8 +307,8 @@ body:not(.no-grid-layout){
   background-image: url("../assets/imgs/APmon-game.jpg");
   background-size: cover;
   background-position: center;
-  height: 22rem;
-  width: 22rem;
+  height: 18rem;
+  width: 18rem;
   padding:0 16px;
   margin:0 auto;
   border-radius: 8px;
