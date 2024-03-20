@@ -1182,10 +1182,7 @@ main>img {
     
 }
 
-#MainPage>header>img{
-    height: auto;
-    width: 40px;
-}
+
 #menu>button>a>img{
     height: auto;
     width: 400px;
@@ -1372,19 +1369,25 @@ main>img {
     padding: 5px;
     margin-left: 10px;
     margin-top: 40px;
-    background-color: white;
-
-    
+    background-color: white;  
+}
+#pokeDex>footer>button{
+  background-color: none;
 }
 
 #searchBar,#filterBar,#CompareButton>a{
-   border: solid 2px black;
    height: 50px;
    background-color: #fff;
    margin-bottom: 10px;
+   border: black solid 3px;
+}
+#CompareButton>a{
+  width: 500px;
 }
 #CompareButton{
   margin-top: 10px;
+  background-color: transparent;
+  border: none;
   
 }
 #CompareButton>a:hover{
@@ -1406,7 +1409,6 @@ main>img {
   background-size: cover; 
   margin-left: 10px;
 }
-
 
 #pokeDex>aside>ul{
     height:55%; 
