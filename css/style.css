@@ -1,6 +1,6 @@
 @import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
 @media only screen and (min-width: 100px) {
-body:not(.no-grid-layout){
+.Pages:not(.no-grid-layout){
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 10% auto ;
@@ -44,10 +44,6 @@ body:not(.no-grid-layout){
     padding-left: 2rem;
     padding-right: 2rem;
 
-  }
-
-  .inputSignup{
-    text-align: center;
   }
 
   .allyPartnerHeader{
@@ -118,8 +114,6 @@ text-align: center;
 text-align: center;
   }
 
-
-
   .main header{
     display: none;
   }
@@ -165,9 +159,6 @@ text-align: center;
     font-family: "Pokemon Classic Regular";
     font-size: 0.6rem;
     background-image: url("../assets/img/light-blue.jpg");
-    
-  }
-  .backBtn{
     
   }
   .pokemonList{
@@ -270,13 +261,17 @@ text-align: center;
   
  }
 
- input {
-  display:block;
-  border-radius: 25px;
-  height: 45px;
-  width: 15rem;
-  padding:0 16px;
-  margin:0 auto;
+
+
+  .textField{
+    display:block;
+    height: 45px;
+    width: 20rem;
+    padding:0 16px;
+    margin:0 auto;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
   }
 
 .loginform{
@@ -637,7 +632,6 @@ header{
     max-width: fit-content;
     grid-area: header;
     font-family: "Pokemon Classic Regular";
-    backdrop-filter: blur(10px);
 }
 header>img{
     width: 5rem;
@@ -1027,13 +1021,15 @@ background-size: cover;
 
 #whosThatPokemon{
     grid-template-areas:
-        "header header "
-        " main "
-        " main "
+        "header header ja"
+        "ja main ja"
+        "ja main ja"
         "footer footer footer";
-
-    background-image: url(/assets/img/swsh-large-fallback.jpg);
-
+        background-image: url(/assets/img/pokemonLab.jpg);
+        background-repeat: no-repeat;
+        background-position: left;
+        background-size: cover;
+        color: black;
 }
 
 
@@ -1110,6 +1106,7 @@ hr{
     background-color: darkgreen;
     border: solid 5px black;
     padding: 5px;
+    filter: drop-shadow(30px 50px 50px black);
 }
 
 #otherPokemon,
@@ -1188,12 +1185,10 @@ main>img {
     display: flex;
     flex-direction: row-reverse;
     
+    
 }
 
-#MainPage>header>img{
-    height: auto;
-    width: 40px;
-}
+
 #menu>button>a>img{
     height: auto;
     width: 400px;
@@ -1210,12 +1205,19 @@ main>img {
     background-color: transparent;
     border: none;
 }
-#MainPage>footer>button>img{
-    height: auto;
-    width: 80px;
-}
+
 #MainPage>footer>button :hover{
     scale: 120%;
+}
+#MainPage>footer>button{
+  background-color: white;
+  border: solid black 3px;
+  border-radius: 10px;
+  width: 100px;
+}
+#footer{
+  height: auto;
+  width: 50px;
 }
 
 @media (max-width: 666px) {
@@ -1257,6 +1259,7 @@ main>img {
         margin-left: 50px;
 
     }
+  
 
     #otherPokemon>img,
     #yourPokemon>img {
@@ -1306,12 +1309,16 @@ main>img {
         scale: 110%;
     }
     #MainPage>footer>button{
-        background-color: transparent;
-        border: none;
+      
+        background-color: white;
+        border: solid black 3px;
+        border-radius: 10px;
+        
+      
     }
     #MainPage>footer>button>img{
         height: auto;
-        width: 80px;
+        width: 200px;
     }
     #MainPage>footer>button :hover{
         scale: 120%;
@@ -1362,17 +1369,31 @@ main>img {
 }
 #pokeDex>footer{
     grid-area: footer;
+    border: solid black;
+    max-width: fit-content;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-top: 40px;
+    background-color: white;  
+}
+#pokeDex>footer>button{
+  background-color: none;
 }
 
-
 #searchBar,#filterBar,#CompareButton>a{
-   border: solid 2px black;
    height: 50px;
    background-color: #fff;
    margin-bottom: 10px;
+   border: black solid 3px;
+}
+#CompareButton>a{
+  width: 500px;
 }
 #CompareButton{
   margin-top: 10px;
+  background-color: transparent;
+  border: none;
   
 }
 #CompareButton>a:hover{
@@ -1400,8 +1421,7 @@ main>img {
     width: 100%;
     overflow:hidden; 
     overflow-y:scroll;
-    margin-right: 170px;
-    
+    margin-right: 170px;   
 }
 
 #didYouKnow {
@@ -1418,7 +1438,6 @@ img:hover + #didYouKnow {
   display: block;
   margin-bottom: 150px;
   background-color: white
-
 }
 
 #pokeDex>aside>ul>li{
@@ -1465,30 +1484,35 @@ img:hover + #didYouKnow {
     justify-content: center;
     align-items: center;
     margin-top: 100px;
-    color: white; 
+    
 }
-
-
-
-
-
 
 #whosThatPokemon>main>h1 {
     display: grid;
     justify-content: center;
     margin-right: 20px;
+    background-color: white;
+    border-radius: 10px;
+    border: solid black 3px;
 }
 
 #whosThatPokemon>main>form>input {
+    display: flex;
     margin-top: 50px;
     height: 20px;
-    background-color: purple;
-    border: solid black 2px;
+    background-color: lightblue;
+    border: solid black 3px;
+    width: 350px;
+    margin-left: 60px;
+    border-radius: 10px;
 }
 
 #whosThatPokemon>main>form>button{
     text-shadow: 2px 2px 2px black;
-    font-size: 25px;
+    font-size: 25px;   
+}
+#whosThatPokemon>main>form{
+    display: flex;
 }
 
 #whosThatPokemon>main>img {
@@ -1496,8 +1520,11 @@ img:hover + #didYouKnow {
     width: 400px;
     border: solid black;
     margin-top: 20px;
-    margin-bottom: 20px;
-    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+    margin-bottom: 20px; 
+    background-image: url(/assets/img/testo2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 #whosThatPokemon>main>h2 {
@@ -1516,7 +1543,15 @@ img:hover + #didYouKnow {
     align-items: center;
 }
 #whosThatPokemon>main>form>button{
-    color: purple;
+    color: lightblue;
+    margin-top: 33px;
+
+}
+#guesStreak{
+  background-color: white;
+  color: black;
+  border: black 3px solid;
+  border-radius: 10px;
 }
 
 #whosThatPokemon>footer {
@@ -1527,7 +1562,10 @@ img:hover + #didYouKnow {
     padding: 5px;
     margin-left: 10px;
     margin-top: 40px;
+    background-color: white;
 }
+
+
 @media only screen and (max-width: 768px) {
     #whosThatPokemon {
         grid-template-areas:
@@ -1563,13 +1601,16 @@ img:hover + #didYouKnow {
     }
 
     #whosThatPokemon>main>form {
-        margin-left: 60px;
+        margin-left: 20px;
+    }
+    #guesStreak{
+      margin-right: 80px;
     }
 
     #whosThatPokemon>main>form>input {
         margin-top: 20px;
         height: 20px;
-        width: 300px;
+        width: 250px;
     }
 
     #whosThatPokemon>main>h2 {
