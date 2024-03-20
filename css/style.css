@@ -28,7 +28,7 @@
   }
 .howtoplayMain{
     background-image: url("../assets/img/backgroundBattle.jpg");
-    background-position: bottom;
+    background-position: center;
     
     background-size: cover;
   }
@@ -632,6 +632,8 @@ header{
     max-width: fit-content;
     grid-area: header;
     font-family: "Pokemon Classic Regular";
+    backdrop-filter: blur(10px);
+
 }
 header>img{
     width: 5rem;
