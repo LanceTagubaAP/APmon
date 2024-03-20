@@ -263,7 +263,7 @@ text-align: center;
 
 
 
-  .tl{
+  .textField{
     display:block;
     height: 45px;
     width: 20rem;
@@ -1179,6 +1179,7 @@ main>img {
     display: flex;
     flex-direction: row-reverse;
     
+    
 }
 
 #MainPage>header>img{
@@ -1201,12 +1202,19 @@ main>img {
     background-color: transparent;
     border: none;
 }
-#MainPage>footer>button>img{
-    height: auto;
-    width: 80px;
-}
+
 #MainPage>footer>button :hover{
     scale: 120%;
+}
+#MainPage>footer>button{
+  background-color: white;
+  border: solid black 3px;
+  border-radius: 10px;
+  width: 100px;
+}
+#footer{
+  height: auto;
+  width: 50px;
 }
 
 @media (max-width: 666px) {
@@ -1248,6 +1256,7 @@ main>img {
         margin-left: 50px;
 
     }
+  
 
     #otherPokemon>img,
     #yourPokemon>img {
@@ -1297,12 +1306,16 @@ main>img {
         scale: 110%;
     }
     #MainPage>footer>button{
-        background-color: transparent;
-        border: none;
+      
+        background-color: white;
+        border: solid black 3px;
+        border-radius: 10px;
+        
+      
     }
     #MainPage>footer>button>img{
         height: auto;
-        width: 80px;
+        width: 200px;
     }
     #MainPage>footer>button :hover{
         scale: 120%;
