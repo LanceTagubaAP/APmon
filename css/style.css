@@ -261,13 +261,17 @@ text-align: center;
   
  }
 
- input {
-  display:block;
-  border-radius: 25px;
-  height: 45px;
-  width: 15rem;
-  padding:0 16px;
-  margin:0 auto;
+
+
+  .tl{
+    display:block;
+    height: 45px;
+    width: 20rem;
+    padding:0 16px;
+    margin:0 auto;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
   }
 
 .loginform{
@@ -1021,9 +1025,11 @@ background-size: cover;
         "ja main ja"
         "ja main ja"
         "footer footer footer";
-
-    background-image: url(/assets/img/swsh-large-fallback.jpg);
-
+        background-image: url(/assets/img/pokemonLab.jpg);
+        background-repeat: no-repeat;
+        background-position: left;
+        background-size: cover;
+        color: black;
 }
 
 
@@ -1347,8 +1353,16 @@ main>img {
 }
 #pokeDex>footer{
     grid-area: footer;
-}
+    border: solid black;
+    max-width: fit-content;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-top: 40px;
+    background-color: white;
 
+    
+}
 
 #searchBar,#filterBar,#CompareButton>a{
    border: solid 2px black;
@@ -1380,13 +1394,13 @@ main>img {
   margin-left: 10px;
 }
 
+
 #pokeDex>aside>ul{
     height:55%; 
     width: 100%;
     overflow:hidden; 
     overflow-y:scroll;
-    margin-right: 170px;
-    
+    margin-right: 170px;   
 }
 
 #didYouKnow {
@@ -1403,7 +1417,6 @@ img:hover + #didYouKnow {
   display: block;
   margin-bottom: 150px;
   background-color: white
-
 }
 
 #pokeDex>aside>ul>li{
@@ -1450,27 +1463,27 @@ img:hover + #didYouKnow {
     justify-content: center;
     align-items: center;
     margin-top: 100px;
-    color: white; 
+    
 }
-
-
-
-
-
 
 #whosThatPokemon>main>h1 {
     display: grid;
     justify-content: center;
     margin-right: 20px;
+    background-color: white;
+    border-radius: 10px;
+    border: solid black 3px;
 }
 
 #whosThatPokemon>main>form>input {
     display: flex;
     margin-top: 50px;
     height: 20px;
-    background-color: purple;
-    border: solid black 2px;
-
+    background-color: lightblue;
+    border: solid black 3px;
+    width: 350px;
+    margin-left: 60px;
+    border-radius: 10px;
 }
 
 #whosThatPokemon>main>form>button{
@@ -1481,14 +1494,16 @@ img:hover + #didYouKnow {
     display: flex;
 }
 
-
 #whosThatPokemon>main>img {
     height: auto;
     width: 400px;
     border: solid black;
     margin-top: 20px;
-    margin-bottom: 20px;
-    background: linear-gradient( purple, rgb(106, 59, 225), purple );
+    margin-bottom: 20px; 
+    background-image: url(/assets/img/testo2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 #whosThatPokemon>main>h2 {
@@ -1507,7 +1522,15 @@ img:hover + #didYouKnow {
     align-items: center;
 }
 #whosThatPokemon>main>form>button{
-    color: purple;
+    color: lightblue;
+    margin-top: 33px;
+
+}
+#guesStreak{
+  background-color: white;
+  color: black;
+  border: black 3px solid;
+  border-radius: 10px;
 }
 
 #whosThatPokemon>footer {
@@ -1518,7 +1541,9 @@ img:hover + #didYouKnow {
     padding: 5px;
     margin-left: 10px;
     margin-top: 40px;
+    background-color: white;
 }
+
 
 @media only screen and (max-width: 768px) {
     #whosThatPokemon {
@@ -1555,13 +1580,16 @@ img:hover + #didYouKnow {
     }
 
     #whosThatPokemon>main>form {
-        margin-left: 60px;
+        margin-left: 20px;
+    }
+    #guesStreak{
+      margin-right: 80px;
     }
 
     #whosThatPokemon>main>form>input {
         margin-top: 20px;
         height: 20px;
-        width: 300px;
+        width: 250px;
     }
 
     #whosThatPokemon>main>h2 {
