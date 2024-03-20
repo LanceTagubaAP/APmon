@@ -1381,22 +1381,22 @@ main>img {
   background-color: none;
 }
 
-#searchBar,#filterBar,#CompareButton>a{
+#searchBar,#filterBar,.CompareButton>a{
    height: 50px;
    background-color: #fff;
    margin-bottom: 10px;
    border: black solid 3px;
 }
-#CompareButton>a{
+.CompareButton>a{
   width: 500px;
 }
-#CompareButton{
+.CompareButton{
   margin-top: 10px;
   background-color: transparent;
   border: none;
   
 }
-#CompareButton>a:hover{
+.CompareButton>a:hover{
   background-color: grey;
 }
 
