@@ -1553,6 +1553,9 @@ img:hover + #didYouKnow {
   border: black 3px solid;
   border-radius: 10px;
 }
+#guesStreak>img{
+  margin-right: 20px;
+}
 
 #whosThatPokemon>footer {
     grid-area: footer;
