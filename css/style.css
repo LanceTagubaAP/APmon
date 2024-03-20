@@ -1,6 +1,6 @@
 @import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
 @media only screen and (min-width: 100px) {
-.Pages:not(.no-grid-layout){
+body:not(.no-grid-layout){
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 10% auto ;
@@ -159,6 +159,9 @@ text-align: center;
     font-family: "Pokemon Classic Regular";
     font-size: 0.6rem;
     background-image: url("../assets/img/light-blue.jpg");
+    
+  }
+  .backBtn{
     
   }
   .pokemonList{
@@ -628,6 +631,7 @@ header{
     max-width: fit-content;
     grid-area: header;
     font-family: "Pokemon Classic Regular";
+    backdrop-filter: blur(10px);
 }
 header>img{
     width: 5rem;
@@ -1017,9 +1021,9 @@ background-size: cover;
 
 #whosThatPokemon{
     grid-template-areas:
-        "header header ja"
-        "ja main ja"
-        "ja main ja"
+        "header header "
+        " main "
+        " main "
         "footer footer footer";
 
     background-image: url(/assets/img/swsh-large-fallback.jpg);
@@ -1094,7 +1098,6 @@ hr{
     background-color: darkgreen;
     border: solid 5px black;
     padding: 5px;
-    filter: drop-shadow(30px 50px 50px black);
 }
 
 #otherPokemon,
@@ -1465,22 +1468,16 @@ img:hover + #didYouKnow {
 }
 
 #whosThatPokemon>main>form>input {
-    display: flex;
     margin-top: 50px;
     height: 20px;
     background-color: purple;
     border: solid black 2px;
-
 }
 
 #whosThatPokemon>main>form>button{
     text-shadow: 2px 2px 2px black;
-    font-size: 25px;   
+    font-size: 25px;
 }
-#whosThatPokemon>main>form{
-    display: flex;
-}
-
 
 #whosThatPokemon>main>img {
     height: auto;
@@ -1519,7 +1516,6 @@ img:hover + #didYouKnow {
     margin-left: 10px;
     margin-top: 40px;
 }
-
 @media only screen and (max-width: 768px) {
     #whosThatPokemon {
         grid-template-areas:
