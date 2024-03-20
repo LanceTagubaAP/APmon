@@ -1069,8 +1069,9 @@ background-size: cover;
     margin-right: 50px;
     padding: 5px;   
 }
-
-
+main{
+  
+}
 #yourPokemon,#otherPokemon{
   background-image: url(/assets/img/light-blue.jpg);
   background-repeat: no-repeat;
