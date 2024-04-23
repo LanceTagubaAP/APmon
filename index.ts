@@ -8,7 +8,16 @@ app.set("view engine", "ejs");
 
 app.get("/",(req,res)=>{
     /**Hier komt eerste pagina */
+
+    res.render("index");
 });
+
+
+app.get("/titleScreen",(req,res)=>{
+    /**Hier komt how to play pagina */
+    res.render("titleScreen");
+});
+
 
 app.get("/mainpage",(req,res)=>{
     /**Hier komt menu pagina */
