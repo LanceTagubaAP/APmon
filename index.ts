@@ -18,6 +18,10 @@ app.get("/titleScreen",(req,res)=>{
     res.render("titleScreen");
 });
 
+app.get("/signup",(req,res)=>{
+    /**Hier komt how to play pagina */
+    res.render("signup");
+});
 
 app.get("/mainpage",(req,res)=>{
     /**Hier komt menu pagina */

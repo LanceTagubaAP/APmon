@@ -164,6 +164,61 @@ text-align: center;
   .pokemonList{
     text-align: left;
   }
+
+  .beginPokemon{
+    margin-top: 2rem;
+  }
+
+  .starterPokemonText{
+    font-family: "Pokemon Classic Regular";
+    text-shadow: 1px 3px 2px black;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .beginPokemonImg{
+    background-image: url("../assets/img/charmander.png");
+    background-color: white;
+    background-size: cover;
+    background-position:center;
+    width: 100px;
+    height: 100px;
+  }
+
+  .beginPokemonImg2{
+    background-image: url("../assets/img/balbasaur.png");
+    background-color: white;
+    background-size: cover;
+    background-position:center;
+    width: 100px;
+    height: 100px;
+  }
+
+  .beginPokemonImg3{
+    background-image: url("../assets/img/squirtle.png");
+    background-color: white;
+
+    background-size: cover;
+    background-position:center;
+    width: 100px;
+    height: 100px;
+  }
+
+  input{
+    display: none;
+}
+
+label{
+    display: inline-block;
+    width: 108px;
+    height: 108px;    
+    border: 10px solid transparent;
+    margin-right: 1rem;
+}
+input:checked + label{
+    border: 4px solid black;  
+    z-index: 1;   
+}
   
 
   .transparancyTitleScreen{
