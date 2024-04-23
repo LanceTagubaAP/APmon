@@ -23,4 +23,5 @@ export interface User{
     userPokemons : Pokemon[]
     rank : Rank
     icon : string
+    streak : number
 }
