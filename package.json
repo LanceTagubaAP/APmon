@@ -4,12 +4,17 @@
   "description": "Stappen plan werkwijze",
   "main": "javascript.js",
   "scripts": {
+    "start": "nodemon index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.21",
-    "@types/node": "^20.12.7"
+    "@types/node": "^20.12.7",
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
   }
 }
