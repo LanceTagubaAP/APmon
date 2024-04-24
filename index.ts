@@ -78,7 +78,15 @@ app.get("/pokedex", (req, res) => {
 
 app.get("/whosthatpokemon", (req, res) => {
     /**Hier komt Who's that pokemon pagina */
-    res.render("whosthatpokemon");
+
+    let randomNumber: number = Math.floor(Math.random() * 151) + 1;
+    let randomPokemon : Pokemon = data[randomNumber];
+    
+    console.log(randomPokemon);
+    res.render("whosthatpokemon",{
+        randomSprite : randomPokemon.sprite
+
+    });
 });
 
 app.get("/howtoplay", (req, res) => {
