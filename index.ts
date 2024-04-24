@@ -12,23 +12,37 @@ let data : Pokemon[] = [];
 
 app.get("/", (req, res) => {
     /**Hier komt eerste pagina */
-
     res.render("index");
 });
 
-
-app.get("/titleScreen", (req, res) => {
-    /**Hier komt how to play pagina */
+app.get("/titleScreen",(req,res)=>{
+    /**Hier komt titleScreen pagina */
     res.render("titleScreen");
 });
 
 app.get("/signup",(req,res)=>{
-    /**Hier komt how to play pagina */
+    /**Hier komt signup pagina */
     res.render("signup");
 });
 
-app.get("/mainpage", (req, res) => {
+app.get("/login",(req,res)=>{
+    /**Hier komt login pagina */
+    res.render("login");
+});
+
+app.get("/battle",(req,res)=>{
+    /**Hier komt battle pagina */
+    res.render("battle");
+});
+
+app.get("/compare",(req,res)=>{
+    /**Hier komt compare pagina */
+    res.render("compare");
+});
+
+app.get("/mainpage",(req,res)=>{
     /**Hier komt menu pagina */
+    res.render("mainpage");
 });
 app.get("/battlechoose", (req, res) => {
     /**Hier komt pokemon vechten pagina */
@@ -59,14 +73,17 @@ app.get("/battlechoose", (req, res) => {
 
 app.get("/pokedex", (req, res) => {
     /**Hier komt pokedex pagina */
+    res.render("pokedex");
 });
 
 app.get("/whosthatpokemon", (req, res) => {
     /**Hier komt Who's that pokemon pagina */
+    res.render("whosthatpokemon");
 });
 
 app.get("/howtoplay", (req, res) => {
     /**Hier komt how to play pagina */
+    res.render("howtoplay");
 });
 
 
