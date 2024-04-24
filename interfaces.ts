@@ -8,7 +8,7 @@ enum Rank {
 export interface Pokemon{
     id : number
     name : string
-    type : string[]
+    types : string[]
     health : number
     attack : number
     defense : number

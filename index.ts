@@ -1,4 +1,6 @@
 import express from "express";
+import { getFirst151Pokemon } from "./apicall";
+import { Pokemon } from "./interfaces";
 
 const app = express();
 
@@ -6,38 +8,73 @@ app.set("port", 3000);
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-app.get("/",(req,res)=>{
+let data : Pokemon[] = [];
+
+app.get("/", (req, res) => {
     /**Hier komt eerste pagina */
 
     res.render("index");
 });
 
 
-app.get("/titleScreen",(req,res)=>{
+app.get("/titleScreen", (req, res) => {
     /**Hier komt how to play pagina */
     res.render("titleScreen");
 });
 
 
-app.get("/mainpage",(req,res)=>{
+app.get("/mainpage", (req, res) => {
     /**Hier komt menu pagina */
 });
-app.get("/fightchoose",(req,res)=>{
+app.get("/battlechoose", (req, res) => {
     /**Hier komt pokemon vechten pagina */
+    /** TODO: Random pokemons voor aanbevolen pokemons tonen 
+     *  Gebruik een fetch om naam,sprite,HP,Attack en defense op te halen
+     */
+    /**Eerst random nummers genereren om dan daarop API call te doen voor random pokemons
+     * 
+     * getName() geeft een promise terug en doen pas render als deze voltooid is
+     * 
+     * 
+     * 
+     */
+    let randomNumber: number = Math.floor(Math.random() * 151) + 1;
+    let randomPokemon : Pokemon = data[randomNumber];
+    console.log(randomPokemon);
+    res.render("battlechoose",{
+        randomName : randomPokemon.name,
+        randomSprite : randomPokemon.sprite,
+        randomHP : randomPokemon.health,
+        randomAD : randomPokemon.attack,
+        randomDF : randomPokemon.defense
+    });
+
+   
+    
 });
 
-app.get("/pokedex",(req,res)=>{
+app.get("/pokedex", (req, res) => {
     /**Hier komt pokedex pagina */
 });
 
-app.get("/whosthatpokemon",(req,res)=>{
+app.get("/whosthatpokemon", (req, res) => {
     /**Hier komt Who's that pokemon pagina */
 });
 
-app.get("/howtoplay",(req,res)=>{
+app.get("/howtoplay", (req, res) => {
     /**Hier komt how to play pagina */
 });
 
-app.listen(app.get("port"), () =>
-    console.log("[server] http://localhost:" + app.get("port"))
-  );
+
+/**Bij opstarten van server data inladen van DB van API/DB */
+/**
+ * 
+ */
+
+app.listen(app.get("port"), async () => {
+    console.log("[server] http://localhost:" + app.get("port"));
+   
+    data = await getFirst151Pokemon();
+
+    }
+);

@@ -44,16 +44,16 @@
         </div>
       </div>
       <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= randomNumber %>.png"
+        <img src=<%= randomSprite %>
           class="card-img-top border-bottom border-2 border-black" alt="...">
         <div class="card-body">
 
           <h5 class="card-title"><%= randomName %></h5>
 
           <ul>
-            <li>Levenspunten:150</li>
-            <li>Aanvalspunten:100</li>
-            <li>Verdedigingspunten:50</li>
+            <li>Levenspunten:<%= randomHP %></li>
+            <li>Aanvalspunten:<%= randomAD %></li>
+            <li>Verdedigingspunten:<%= randomDF %></li>
           </ul>
           <a href="./battle.html" type="button" class="btn btn-primary">Vechten!</a>
 
