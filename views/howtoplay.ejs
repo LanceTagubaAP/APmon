@@ -1,0 +1,105 @@
+<%- include("partials/top") %>
+  <title>How to play</title>
+</head>
+<body class="howtoplayBody">
+  <%- include("partials/header") %>
+  <main>
+    <article>
+      <div class="howtoplayDescription">
+        <h2>Welkom bij APmon</h2>
+        <p>Op deze pagina leggen we je uit hoe het spel werkt</p>
+      </div>
+      
+    </article>
+
+    <div class="howtoplayQuestions">
+      <div class="howtoplayAccordion accordion accordion-flush d-flex flex-column " id="accordionFlush">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapse5" aria-expanded="false" aria-controls="flush-collapse5">
+              Doel van het spel
+            </button>
+          </h2>
+          <div id="flush-collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <p>Het doel van het spel is om alle 151 pokemons te vangen. Hoe meer pokemons je vangt hoe hoger je rank is.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Hoe moet je een pokemon vangen?
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              Je kan een pokemon vangen door het te verslaan of je kan het proberen vangen met een pokeball op basis van geluk.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Pokemon vechten
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <p>Hier kan je kiezen tegen welke pokemon je wilt vechten. Op deze pagina wordt er aanbevolen pokemons getoond om te vechten.
+                Deze pokemons zijn gebaseerd op de sterkte van je huidige pokemon.
+              </p> 
+              <p>
+                Je hebt tijdens het vechten 3 opties:
+              </p>
+              <ul>
+                <li><b>Aanvallen</b>: Jouw pokemon valt de vijandige pokemon aan en vermindert de levenspunten van die pokemon</li>
+                <li><b>Vangen</b>: Je gooit een bal en probeert de andere pokemon te vangen. Hoe minder de levenspunten van de andere pokemon hoe hoger de kans je deze kan vangen.</li>
+                <li><b>Wegrennen</b>: Als je niet meer wilt vechten dan kan je altijd wegrennen en wordt het gevecht beeïndigd. </li>
+                
+                <p></p>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              Pokemon sterker maken
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <p>Als je pokemon niet sterk genoeg is, dan kan je jouw pokemon sterker maken door "Who's that pokemon" te spelen.
+                  Bij elk succesvol gok krijgt je gekozen pokemon 1 punt bij aanvalspunt/verdedigingspunt.
+                </p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapse4" aria-expanded="false" aria-controls="flush-collapse4">
+              Pokedex
+            </button>
+          </h2>
+          <div id="flush-collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <p>Op deze pagina kan je alle details zien van elke pokemon en kan je ze ook vergelijken. Ook gevangen pokemons kan je hier bekijken.</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+   
+    <div class="howtoplayButton">
+      <a href="./mainpage" type="button" class="btn btn-primary">Verder gaan</a>
+    </div>    
+  </main>
+  
+  <%- include("partials/bottom") %>

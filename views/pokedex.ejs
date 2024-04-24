@@ -1,28 +1,11 @@
-<!DOCTYPE html>
-<html lang="nl-be">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="javascript.js">
+<%- include("partials/top") %>
     <title>APMon</title>
 </head>
 <body id="pokeDex">
-    <header>
-        <img src="./assets/img/Boy-headshot.jpg" alt="man/vrouw">
-        <p>Lance T</p>
-    
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/149.png"
-          alt="huidige pokemon">
-        
-        <h2>Rank: beginner</h2>
-    </header>
+<%- include("partials/header") %>
     <nav>
         <input id="searchBar" type="text" placeholder="Search..">
-        <input id="filterBar" type="text" id="myInput" onkeyup="Function()" placeholder="Filter">
     </nav>
-
     <aside>
         <ul>
             <li id="charmander">01 <img src="assets/img/charmander.png" alt="Charmander">Charmander</li>
@@ -42,22 +25,19 @@
         </ul>
     </aside>
     <main>
-        <img src="assets/img/charmander.png" alt="">
+        <img class="imgPokedex" src="assets/img/charmander.png" alt="">
         <section id="didYouKnow">
             <h2>wist je dat:</h2>
             <p> Als ze worden gevangen, liggen ze ook graag voor de open haard in een huis.</p>
         </section>
-       
-        <section>
-            <h2>Beschrijving:</h2>
-            <p>Salamander achtige</p>
-            <p>Type vuur</p>
-            <p>Beginner pokemon</p>
-            
+        <section class="pokedexDescription">
+            <h3 class="pokedexNameDescription">Charmander:</h3>
+            <p class="pokedexDescriptionText">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </p>
         </section>
-        <button class="CompareButton"><a href="Compare.html"> Compare</a></button>
-        
+        <div class="pokedexBottom">
+         <button class="PokedexBottomButtons"><a href="compare"> Compare</a></button>
+         <button class="PokedexBottomButtons"><a href="mainpage">Terug</a></button>
+        </div>
     </main>
-    <footer><button ><a href="mainpage.html">Terug</a></button></footer>
-</body>
-</html>
+<%- include("partials/bottom") %>

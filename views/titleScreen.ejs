@@ -1,40 +1,30 @@
-<!DOCTYPE html>
-<html lang="nl-be">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">            
+<%- include("partials/top") %>
+<title>Title Screen</title>
 </head>
 
-<body class="no-grid-layout" class="Pages">
+<body class="no-grid-layout" >
         <main class="mainTitleScreen">
             <div class="transparancyTitleScreen">
             <div class="titlescreen-image">
                 <img class="apmon-logo" src="./assets/imgs/apmon-logo.png" height="50px" width="200px" alt="">
             </div>     
-
         <div class="buttonLoginContainer">
-            <a href="./Login.html">
+            <a href="./login">
             <button type="button"  class="btn btn-primary">Login</button>
         </a>
         </div>
-        
         <div class="buttonSignupContainer">
-            <a href="./Signup.html">
+            <a href="./signup">
             <button type="button" class="btn btn-primary">Registreren</button>
         </a>
         </div>
 
         <div class="buttonExitGameContainer">
-            <a href="./projectScreen.html">
+            <a href="./index">
             <button type="button" class="btn btn-primary">Afsluiten</button>
         </a>
         </div>
 
     </div>
         </main>
-    
-</bodya>
-</html>
+<%- include("partials/bottom") %>
