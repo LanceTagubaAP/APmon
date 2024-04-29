@@ -17,6 +17,7 @@ export async function getFirst151Pokemon(): Promise<Pokemon[]> {
                 name: pokemon.name.charAt(0).toUpperCase() +pokemon.name.slice(1) ,
                 types: pokemon.types.map((type: any) => type.type.name),
                 health: pokemon.stats[0].base_stat,
+                maxHealth : pokemon.stats[0].base_stat,
                 attack: pokemon.stats[1].base_stat,
                 defense: pokemon.stats[2].base_stat,
                 description: description,

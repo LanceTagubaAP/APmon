@@ -10,6 +10,7 @@ export interface Pokemon{
     name : string
     types : string[]
     health : number
+    maxHealth : number
     attack : number
     defense : number
     description : string

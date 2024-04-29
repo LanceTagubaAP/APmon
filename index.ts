@@ -58,7 +58,7 @@ app.get("/battlechoose", (req, res) => {
      */
     let randomNumber: number = Math.floor(Math.random() * 151) + 1;
     let randomPokemon : Pokemon = data[randomNumber];
-    console.log(randomPokemon);
+    
     res.render("battlechoose",{
         randomName : randomPokemon.name,
         randomSprite : randomPokemon.sprite,
@@ -82,7 +82,7 @@ app.get("/whosthatpokemon", (req, res) => {
     let randomNumber: number = Math.floor(Math.random() * 151) + 1;
     let randomPokemon : Pokemon = data[randomNumber];
     
-    console.log(randomPokemon);
+    
     res.render("whosthatpokemon",{
         randomSprite : randomPokemon.sprite
 
