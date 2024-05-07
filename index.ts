@@ -8,39 +8,39 @@ app.set("port", 3000);
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-let data : Pokemon[] = [];
+let data: Pokemon[] = [];
 
 app.get("/", (req, res) => {
     /**Hier komt eerste pagina */
     res.render("index");
 });
 
-app.get("/titleScreen",(req,res)=>{
+app.get("/titleScreen", (req, res) => {
     /**Hier komt titleScreen pagina */
     res.render("titleScreen");
 });
 
-app.get("/signup",(req,res)=>{
+app.get("/signup", (req, res) => {
     /**Hier komt signup pagina */
     res.render("signup");
 });
 
-app.get("/login",(req,res)=>{
+app.get("/login", (req, res) => {
     /**Hier komt login pagina */
     res.render("login");
 });
 
-app.get("/battle",(req,res)=>{
+app.get("/battle", (req, res) => {
     /**Hier komt battle pagina */
     res.render("battle");
 });
 
-app.get("/compare",(req,res)=>{
+app.get("/compare", (req, res) => {
     /**Hier komt compare pagina */
     res.render("compare");
 });
 
-app.get("/mainpage",(req,res)=>{
+app.get("/mainpage", (req, res) => {
     /**Hier komt menu pagina */
     res.render("mainpage");
 });
@@ -57,18 +57,18 @@ app.get("/battlechoose", (req, res) => {
      * 
      */
     let randomNumber: number = Math.floor(Math.random() * 151) + 1;
-    let randomPokemon : Pokemon = data[randomNumber];
+    let randomPokemon: Pokemon = data[randomNumber];
     console.log(randomPokemon);
-    res.render("battlechoose",{
-        randomName : randomPokemon.name,
-        randomSprite : randomPokemon.sprite,
-        randomHP : randomPokemon.health,
-        randomAD : randomPokemon.attack,
-        randomDF : randomPokemon.defense
+    res.render("battlechoose", {
+        randomName: randomPokemon.name,
+        randomSprite: randomPokemon.sprite,
+        randomHP: randomPokemon.health,
+        randomAD: randomPokemon.attack,
+        randomDF: randomPokemon.defense
     });
 
-   
-    
+
+
 });
 
 app.get("/pokedex", (req, res) => {
@@ -80,13 +80,30 @@ app.get("/whosthatpokemon", (req, res) => {
     /**Hier komt Who's that pokemon pagina */
 
     let randomNumber: number = Math.floor(Math.random() * 151) + 1;
-    let randomPokemon : Pokemon = data[randomNumber];
-    
+    let randomPokemon: Pokemon = data[randomNumber];
+
     console.log(randomPokemon);
-    res.render("whosthatpokemon",{
-        randomSprite : randomPokemon.sprite
+    res.render("whosthatpokemon", {
+        randomSprite: randomPokemon.sprite
 
     });
+
+    let clickCount: number = 0;
+    document.getElementById("arrow")?.addEventListener("click", () => {
+        if (clickCount === 5) {
+            showPokemonSprite();
+            clickCount = 0;
+        }
+    });
+
+    function showPokemonSprite() {
+        const randomSprite: HTMLImageElement | null = document.getElementById("pokemon") as HTMLImageElement;
+        if (randomSprite) {
+            randomSprite.style.filter = "brightness(100%)";
+        }
+
+    }
+
 });
 
 app.get("/howtoplay", (req, res) => {
@@ -102,8 +119,8 @@ app.get("/howtoplay", (req, res) => {
 
 app.listen(app.get("port"), async () => {
     console.log("[server] http://localhost:" + app.get("port"));
-   
+
     data = await getFirst151Pokemon();
 
-    }
+}
 );

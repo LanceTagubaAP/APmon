@@ -1,12 +1,12 @@
 @import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
 @media only screen and (min-width: 100px) {
-.Pages:not(.no-grid-layout){
+  .Pages:not(.no-grid-layout) {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 10% auto ;
-    grid-template-areas: 
-    "header"
-    "main"
+    grid-template-rows: 10% auto;
+    grid-template-areas:
+      "header"
+      "main"
     ;
     height: 100vh;
     width: 100%;
@@ -14,20 +14,20 @@
 
   }
 
-  .no-grid-layout{
-    box-sizing:border-box;
+  .no-grid-layout {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
 
-  .headerText{
-    padding-top:2rem;
+  .headerText {
+    padding-top: 2rem;
     margin-left: 1rem;
     padding-right: 2rem;
 
-  }  
+  }
 
-.howtoplayBody{
+  .howtoplayBody {
     background-image: url("../assets/img/backgroundBattle.jpg");
     background-size: cover;
     background-position: center;
@@ -36,30 +36,32 @@
     text-align: center;
   }
 
-  .howtoplayDescription{
+  .howtoplayDescription {
     margin-top: 3rem;
     margin-bottom: 2rem;
     color: white;
     text-shadow: 1px 3px 2px black;
   }
 
-  
 
-  .howtoplayMain > article{
+
+  .howtoplayMain>article {
     color: white;
-    text-shadow:3px 3px 3px black
+    text-shadow: 3px 3px 3px black
   }
-  .howtoplayMain>a{
+
+  .howtoplayMain>a {
     margin-top: 5rem;
   }
-  .howtoplayAccordion{
+
+  .howtoplayAccordion {
     text-align: left;
     padding-left: 2rem;
     padding-right: 2rem;
 
   }
 
-  .playerName{
+  .playerName {
     margin-top: 1rem;
     font-size: small;
     margin-left: 1rem;
@@ -67,36 +69,36 @@
     text-shadow: 1px 3px 2px black;
   }
 
-  .playerRank{
+  .playerRank {
     font-size: small;
     margin-left: 1rem;
     color: white;
     text-shadow: 1px 3px 2px black;
   }
 
-  .currentPokemonName{
+  .currentPokemonName {
     margin-top: 2rem;
     margin-left: 1rem;
     color: white;
     text-shadow: 1px 3px 2px black;
   }
 
-  .headerPlayer{
+  .headerPlayer {
     display: grid;
-    grid-template-columns: 1fr 1fr ;
-    background:transparent;
-    background-color: rgba(0,0,0,0.8) ;
-    border: 2px solid rgba(255,255,255,0.3);
+    grid-template-columns: 1fr 1fr;
+    background: transparent;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-left: 2rem;
     padding-right: 2rem;
-     width: 65rem;
-     gap: 2rem  ;
+    width: 65rem;
+    gap: 2rem;
   }
-  
-  .playerProfile{
+
+  .playerProfile {
     display: flex;
     grid-column: 1;
     grid-row: 1;
@@ -104,662 +106,674 @@
 
 
 
-  .pokemonInfo{
+  .pokemonInfo {
     grid-column: 2;
     grid-row: 1;
     display: flex;
-    
+
   }
 
-  .allyPartnerHeader{
+  .allyPartnerHeader {
     display: flex;
     position: fixed;
     right: 0;
   }
 
-  .playerProfileAvatar{
+  .playerProfileAvatar {
     background-size: cover;
     background-position: center;
     height: 6rem;
     width: 6rem;
     border-radius: 25%;
-    border:solid black;
+    border: solid black;
   }
 
-  .rankHeader{
+  .rankHeader {
     visibility: hidden;
   }
 
 
-  main{
+  main {
     grid-area: main;
   }
+
   main>section {
     padding: 3rem;
   }
 
-  .mainTitleScreen{
+  .mainTitleScreen {
     background-image: url("../assets/imgs/Background2.jpg");
-     background-size: cover;
-     background-position: center;
+    background-size: cover;
+    background-position: center;
     height: 100vh;
     width: 100%;
-text-align: center;
+    text-align: center;
     position: fixed;
     background-repeat: no-repeat;
-    
+
   }
 
-  .headerRankText{
+  .headerRankText {
     font-size: 2rem;
   }
 
   /*Image by <a href="https://www.freepik.com/free-vector/abstract-pixel-rain-background_6348966.htm#page=2&query=nintendo%20background&position=1&from_view=keyword&track=ais&uuid=07f2dc6a-393f-4c02-bbbc-7a87032429a1">Freepik</a>*/
 
-  .mainProjectScreen{
+  .mainProjectScreen {
     background-image: url("../assets/imgs/Nintendo-background.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
     width: 100%;
     padding-top: 5vh;
-text-align: center;
+    text-align: center;
 
   }
 
-  .mainLogin{
+  .mainLogin {
     background-image: url("../assets/imgs/login-background.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
     width: 100%;
     padding-top: 10vh;
-text-align: center;
+    text-align: center;
 
   }
 
-  .mainSignup{
+  .mainSignup {
     background-image: url("../assets/imgs/login-background.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
     width: 100%;
     padding-top: 10vh;
-text-align: center;
+    text-align: center;
   }
 
-  .main header{
+  .main header {
     display: none;
   }
 
-.battleHeader{
-  position: fixed;
-  top: 0;
-  background-color: lightgray;
-  padding: 1rem;
-  display: flex;
-  font-size: 1rem;
-  font-weight: bolder;
-  border:  black;
-  border-style: double;
-  width: 100%;
-  border-width: 1rem;
-  font-family: "Pokemon Classic Regular";    
-}
+  .battleHeader {
+    position: fixed;
+    top: 0;
+    background-color: lightgray;
+    padding: 1rem;
+    display: flex;
+    font-size: 1rem;
+    font-weight: bolder;
+    border: black;
+    border-style: double;
+    width: 100%;
+    border-width: 1rem;
+    font-family: "Pokemon Classic Regular";
+  }
 
   /* battle background link: https://www.smogon.com/forums/threads/battle-backgrounds-for-pokemon-showdown.3457276/#lg=_xfUid-3-1710787322&slide=0*/
 
-  .battleMain{
+  .battleMain {
     background-image: url("../assets/imgs/battle-background.jpg");
     background-size: cover;
-    background-position:center;
+    background-position: center;
     height: 80vh;
     width: 100%;
     padding-top: 10rem;
   }
-  .battleChoose{
+
+  .battleChoose {
     background-image: url("../assets/img/pokemonLab.jpg");
     background-size: cover;
-    background-position:center;
+    background-position: center;
     font-family: "Pokemon Classic Regular";
-    
+
   }
-  .battleChoose > main > h2 {
+
+  .battleChoose>main>h2 {
     color: white;
     text-shadow: 1px 5px 2px black;
   }
-  .chooseCards{
-    
+
+  .chooseCards {
+
     font-family: "Pokemon Classic Regular";
     font-size: 0.6rem;
     background-image: url("../assets/img/light-blue.jpg");
-    
+
   }
 
-  .howtoplayButton{
+  .howtoplayButton {
     text-align: center;
     margin-top: 3rem;
   }
 
-  .battlechooseFightButton{
-   margin-top: 2rem;
-   text-align: center;
+  .battlechooseFightButton {
+    margin-top: 2rem;
+    text-align: center;
   }
 
-  .beginPokemon{
+  .beginPokemon {
     margin-top: 2rem;
   }
 
-  .starterPokemonText{
+  .starterPokemonText {
     font-family: "Pokemon Classic Regular";
     text-shadow: 1px 3px 2px black;
     font-size: 1rem;
     color: white;
   }
 
-  .beginPokemonImg{
+  .beginPokemonImg {
     background-image: url("../assets/img/charmander.png");
     background-color: white;
     background-size: cover;
-    background-position:center;
+    background-position: center;
     width: 100px;
     height: 100px;
   }
 
-  .beginPokemonImg2{
+  .beginPokemonImg2 {
     background-image: url("../assets/img/balbasaur.png");
     background-color: white;
     background-size: cover;
-    background-position:center;
+    background-position: center;
     width: 100px;
     height: 100px;
   }
 
-  .beginPokemonImg3{
+  .beginPokemonImg3 {
     background-image: url("../assets/img/squirtle.png");
     background-color: white;
     background-size: cover;
-    background-position:center;
+    background-position: center;
     width: 100px;
     height: 100px;
   }
 
-  input{
+  input {
     background-color: white;
   }
 
-label{
+  label {
     display: inline-block;
     width: 108px;
-    height: 108px;    
+    height: 108px;
     border: 10px solid transparent;
     margin-right: 1rem;
-}
-input:checked + label{
-    border: 4px solid black;  
-    z-index: 1;   
-}
-  
+  }
 
-  .transparancyTitleScreen{
+  input:checked+label {
+    border: 4px solid black;
+    z-index: 1;
+  }
+
+
+  .transparancyTitleScreen {
     height: 100vh;
-    background-color: rgb(0, 0, 0,0.6);
+    background-color: rgb(0, 0, 0, 0.6);
     padding-top: 10rem;
   }
 
-  .btn-primary{
+  .btn-primary {
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
     color: black;
-    font-size: 1rem;            
-    border-radius: 25px; 
+    font-size: 1rem;
+    border-radius: 25px;
     border: solid black;
-    height: 4rem;   
-    width: 15rem;  
+    height: 4rem;
+    width: 15rem;
     font-family: "Pokemon Classic Regular";
-                 
+
   }
 
-  a:link { 
-    text-decoration: none; 
-    color: black;
-
-  } 
-  a:visited { 
-    text-decoration: none; 
-    color: black;
-
-  } 
-  a:hover { 
-    text-decoration: none; 
-    color: black;
-
-  } 
-  a:active { 
-    text-decoration: none; 
+  a:link {
+    text-decoration: none;
     color: black;
 
   }
 
-  .btn-primary:hover{
+  a:visited {
+    text-decoration: none;
+    color: black;
+
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: black;
+
+  }
+
+  a:active {
+    text-decoration: none;
+    color: black;
+
+  }
+
+  .btn-primary:hover {
     background-color: gray;
     border: solid black;
   }
 
-  .buttonLoginContainer{
+  .buttonLoginContainer {
     margin-top: 10rem;
-    text-align: center;  
+    text-align: center;
   }
 
-  .buttonSignupContainer{
+  .buttonSignupContainer {
     margin-top: 1rem;
-    text-align: center;    
+    text-align: center;
   }
 
-  .ProjectScreenBtn{
+  .ProjectScreenBtn {
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
     color: black;
-    font-size: 1.5rem;            
-    border-radius: 25px; 
-    height: 4rem;   
-    width: 15rem;  
-    text-align: center; 
+    font-size: 1.5rem;
+    border-radius: 25px;
+    height: 4rem;
+    width: 15rem;
+    text-align: center;
     margin-top: 2rem;
 
   }
-  .bottomProjectScreen{
+
+  .bottomProjectScreen {
     text-align: center;
     background-color: rgba(0, 0, 0, 0.7);
-    height: 6rem; 
-    padding:0 16px;
-  margin:0 auto;
-  width: 20rem;
-  border-radius: 15px;
+    height: 6rem;
+    padding: 0 16px;
+    margin: 0 auto;
+    width: 20rem;
+    border-radius: 15px;
 
   }
 
-  .thumbnailImage{
+  .thumbnailImage {
     margin-top: 10rem;
     margin-left: 20vw;
     border-style: solid;
     border-color: black;
   }
 
- .gameName{
-  font-size: 1.5rem;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  margin-left: 1rem;
-  text-align: center;
-  color: white;
-  
- }
+  .gameName {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    margin-left: 1rem;
+    text-align: center;
+    color: white;
+
+  }
 
 
 
-  .textField{
-    display:block;
+  .textField {
+    display: block;
     height: 45px;
     width: 20rem;
-    padding:0 16px;
-    margin:0 auto;
+    padding: 0 16px;
+    margin: 0 auto;
     margin-top: 20px;
     border: none;
     border-radius: 10px;
   }
 
-.loginform{
-  background:transparent;
-  border: 2px solid rgba(255,255,255,0.3);
-  backdrop-filter: blur(10px);
-  padding-bottom: 2rem;
-   margin-left: 15vw;
-   margin-right: 15vw;
-   border-radius: 25px;
-}
+  .loginform {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    padding-bottom: 2rem;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    border-radius: 25px;
+  }
 
-.loginSubmit{
+  .loginSubmit {
     background-color: white;
-    color:black;
-    font-size: 0.8rem;            
-    border-radius: 25px; 
-    height: 4rem;   
-    width: 12rem;  
+    color: black;
+    font-size: 0.8rem;
+    border-radius: 25px;
+    height: 4rem;
+    width: 12rem;
     margin-top: 2rem;
     font-family: "Pokemon Classic Regular";
 
 
- }
- 
- .loginTitle{
-  margin-top: 5rem;
-  font-size: 2rem;
-  text-align: center;
-  padding-top: 2rem;
-  color: white;
-  text-shadow: 1px 5px 2px black;
-  font-family: "Pokemon Classic Regular";
+  }
 
- }
+  .loginTitle {
+    margin-top: 5rem;
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 2rem;
+    color: white;
+    text-shadow: 1px 5px 2px black;
+    font-family: "Pokemon Classic Regular";
 
- .form-control{
-  height: 3rem;   
-  width: 20rem;   
-  margin-top: 2rem;
- }
+  }
 
- .ProfileAvatar{
-  background-image: url("../assets/imgs/Boy-headshot.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 6rem;
-  width: 6rem;
-  border-radius: 50%;
-  border:solid black;
- }
+  .form-control {
+    height: 3rem;
+    width: 20rem;
+    margin-top: 2rem;
+  }
 
- .avatar{
-  background-image: url("../assets/imgs/Boy-headshot.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 10rem;
-  width: 10rem;
-  border-radius: 50%;
-  padding:0 16px;
-  margin:0 auto;
-  
- }
+  .ProfileAvatar {
+    background-image: url("../assets/imgs/Boy-headshot.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    border: solid black;
+  }
 
- .projectScreenImage{
-  background-image: url("../assets/imgs/APmon-game.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 18rem;
-  width: 18rem;
-  padding:0 16px;
-  margin:0 auto;
-  border-radius: 8px;
-  margin-bottom: 1rem;
- }
-.carousel-indicators{
-  margin-top: 2rem;
-  padding-top: 5rem;
-}
+  .avatar {
+    background-image: url("../assets/imgs/Boy-headshot.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    padding: 0 16px;
+    margin: 0 auto;
 
- .signupTitle{
-  color: white;
-  text-shadow: 1px 3px 2px black;
-  font-family: "Pokemon Classic Regular";
-  margin-top: 2rem;
-  text-align: center;
-  padding-bottom: 2rem;
+  }
 
- }
+  .projectScreenImage {
+    background-image: url("../assets/imgs/APmon-game.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 18rem;
+    width: 18rem;
+    padding: 0 16px;
+    margin: 0 auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
 
- .signupform{
-  background:transparent;
-  border: 2px solid rgba(255,255,255,0.3);
-  backdrop-filter: blur(10px);
-  padding-bottom: 2rem;
-   margin-left: 15vw;
-   margin-right: 15vw;
-   border-radius: 25px;
- }
+  .carousel-indicators {
+    margin-top: 2rem;
+    padding-top: 5rem;
+  }
 
+  .signupTitle {
+    color: white;
+    text-shadow: 1px 3px 2px black;
+    font-family: "Pokemon Classic Regular";
+    margin-top: 2rem;
+    text-align: center;
+    padding-bottom: 2rem;
 
- 
- .radiobuttons{
-  margin-top: 1rem;
-  display:flex;
-  
- }
+  }
 
- .genderImage{
- margin-top: 2rem;
- text-align: center ;
- 
- }
-
- .projectScreenContainer{
-  background:transparent;
-  border: 2px solid rgba(255,255,255,0.1);
-  backdrop-filter: blur(20px);
-  background-color: rgb(0, 0, 0, 0.2);
-  padding-bottom: 2rem;
-   margin-left: 5vw;
-   margin-right: 5vw;
-   border-radius: 25px;
-   padding-top: 2rem;
- }
-
-.titlescreen-image{
-padding: 2rem;
- border-radius: 25px;
- display: inline-block;
- border: 2px solid rgba(255,255,255,0.3);
- backdrop-filter: blur(25px);
-}
-
-.titlesignup,h2{
-  text-align: center;
-}
-
-.character{
-  border: solid black ;
-  margin-top: 2rem;
-  padding-bottom: 1rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
-  border-radius: 25px;
-  text-align: center;
-
-}
-
-.buttonExitGameContainer{
-  margin-top: 1rem;
-  text-align: center;      
-}
-
-.ProjectScreenBtn:hover{
-  scale: 110%;
-  background-color: lightgray;
-}
+  .signupform {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    padding-bottom: 2rem;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    border-radius: 25px;
+  }
 
 
-.freePik-attribute{
-  color: white;
-  margin-left: 1rem;
-  margin-top: 5rem;
-  font-size: 0.5rem;
-}
 
-.gridEnemy{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
+  .radiobuttons {
+    margin-top: 1rem;
+    display: flex;
 
-.EnemyHP{
-  grid-column: 1/3;
-  text-align: left;
-  margin-top: 2rem;
-  margin-left: 2rem;
-  padding-top:1rem;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  border-radius: 10px;
-  height: 6rem;
-  background-color: red;
-  border: solid black;
+  }
 
+  .genderImage {
+    margin-top: 2rem;
+    text-align: center;
 
-}
+  }
 
-.EnemyPokemon{
-  grid-column: 3/5;
-  text-align: center;
-}
+  .projectScreenContainer {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    background-color: rgb(0, 0, 0, 0.2);
+    padding-bottom: 2rem;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    border-radius: 25px;
+    padding-top: 2rem;
+  }
 
-.gridAlly{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-}
+  .titlescreen-image {
+    padding: 2rem;
+    border-radius: 25px;
+    display: inline-block;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(25px);
+  }
 
-.enemySprite{
-    
-  min-width: 10rem;
-  width: 15rem;
-  filter: drop-shadow(5px 5px 5px #222);
+  .titlesignup,
+  h2 {
+    text-align: center;
+  }
 
-  
-}
+  .character {
+    border: solid black;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    border-radius: 25px;
+    text-align: center;
 
+  }
 
-.mySprite{
-  width: 15rem;
-  min-width: 10rem;
-  filter: drop-shadow(-5px 10px 5px #222);
+  .buttonExitGameContainer {
+    margin-top: 1rem;
+    text-align: center;
+  }
 
-}
-
-
-.AllyHP{
-  grid-column: 3/5;
-  text-align: left;
-  margin-top: 4rem;
-  margin-right: 2rem;
-  padding-left: 1rem;
-  padding-top:1rem;
-  border-radius: 10px;
-  height: 6rem;
-  background-color: green;
-  grid-row:1 ;
-  padding-right: 1rem;
-  border: solid black;
-  
-  
-}
+  .ProjectScreenBtn:hover {
+    scale: 110%;
+    background-color: lightgray;
+  }
 
 
-.AllyPokemon{
-  grid-column: 1/3;
-  text-align: center;
-  grid-row:1 ;
-}
+  .freePik-attribute {
+    color: white;
+    margin-left: 1rem;
+    margin-top: 5rem;
+    font-size: 0.5rem;
+  }
 
-.battleName{
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  font-weight: bolder;
-  font-family: "Pokemon Classic Regular";
-}
+  .gridEnemy {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 
-.battleBottom{
-  position: fixed;
-  bottom: 0;
-  border: solid black;
-  border-width: 0.5rem;
-  border-radius: 10px;
-}
+  .EnemyHP {
+    grid-column: 1/3;
+    text-align: left;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-radius: 10px;
+    height: 6rem;
+    background-color: red;
+    border: solid black;
 
 
-.infoBattle{
-  border: black;
-  border-style: inset;
-  border-width: 1rem;
-  background-color:gray;
-  color: white;
-  padding: 1rem;
-  height: 10rem;
-  font-family: "Pokemon Classic Regular";
-  font-size: 0.8rem;
-  text-align: left;
-  
-}
+  }
 
-.commands{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  text-align: center;
-  background-color: gray;
-  border:  black;
-  border-style: outset;
-  font-family: "Pokemon Classic Regular";
-}
+  .EnemyPokemon {
+    grid-column: 3/5;
+    text-align: center;
+  }
 
-.attack{
-  grid-column: 1;
-  border:  black;
-  border-style: outset;
-  padding-top: 0.5rem;
-  border-radius: 10px;
-  background-color: white;
-  height: 4rem;
-  font-size: 1.2rem;
-  font-weight: bolder;
+  .gridAlly {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
 
-}
+  .enemySprite {
 
-.attack:hover{
-  border:  black;
-  border-style: outset;
-  background-color: lightgray;
-}
+    min-width: 10rem;
+    width: 15rem;
+    filter: drop-shadow(5px 5px 5px #222);
 
-.catch:hover{
-  border:  black;
-  border-style: outset;
-  background-color: lightgray;
-}
 
-.run:hover{
-  border:  black;
-  border-style: outset;
-  background-color: lightgray;
-}
+  }
 
-.catch{
-  grid-column: 2;
-  border:  black;
-  border-style: outset;
-  padding-top: 0.5rem;
-  border-radius: 10px;
-  background-color: white;
-  font-size: 1.2rem;
-  font-weight: bolder;
 
-}
+  .mySprite {
+    width: 15rem;
+    min-width: 10rem;
+    filter: drop-shadow(-5px 10px 5px #222);
 
-.run{
-grid-column: 3;
-border:  black;
-border-style: outset;
-padding-top: 0.5rem;
-border-radius: 10px;
-background-color: white;
-font-size: 1.2rem;
-  font-weight: bolder;
+  }
 
-}
 
-.progress{
-  margin-bottom: 2rem;
-  height: 1.5rem;
-  border: solid white;
+  .AllyHP {
+    grid-column: 3/5;
+    text-align: left;
+    margin-top: 4rem;
+    margin-right: 2rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    border-radius: 10px;
+    height: 6rem;
+    background-color: green;
+    grid-row: 1;
+    padding-right: 1rem;
+    border: solid black;
 
-    
-}
 
-main{
-    grid-area: main;  
-}
-main>section {
+  }
+
+
+  .AllyPokemon {
+    grid-column: 1/3;
+    text-align: center;
+    grid-row: 1;
+  }
+
+  .battleName {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bolder;
+    font-family: "Pokemon Classic Regular";
+  }
+
+  .battleBottom {
+    position: fixed;
+    bottom: 0;
+    border: solid black;
+    border-width: 0.5rem;
+    border-radius: 10px;
+  }
+
+
+  .infoBattle {
+    border: black;
+    border-style: inset;
+    border-width: 1rem;
+    background-color: gray;
+    color: white;
+    padding: 1rem;
+    height: 10rem;
+    font-family: "Pokemon Classic Regular";
+    font-size: 0.8rem;
+    text-align: left;
+
+  }
+
+  .commands {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    background-color: gray;
+    border: black;
+    border-style: outset;
+    font-family: "Pokemon Classic Regular";
+  }
+
+  .attack {
+    grid-column: 1;
+    border: black;
+    border-style: outset;
+    padding-top: 0.5rem;
+    border-radius: 10px;
+    background-color: white;
+    height: 4rem;
+    font-size: 1.2rem;
+    font-weight: bolder;
+
+  }
+
+  .attack:hover {
+    border: black;
+    border-style: outset;
+    background-color: lightgray;
+  }
+
+  .catch:hover {
+    border: black;
+    border-style: outset;
+    background-color: lightgray;
+  }
+
+  .run:hover {
+    border: black;
+    border-style: outset;
+    background-color: lightgray;
+  }
+
+  .catch {
+    grid-column: 2;
+    border: black;
+    border-style: outset;
+    padding-top: 0.5rem;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 1.2rem;
+    font-weight: bolder;
+
+  }
+
+  .run {
+    grid-column: 3;
+    border: black;
+    border-style: outset;
+    padding-top: 0.5rem;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 1.2rem;
+    font-weight: bolder;
+
+  }
+
+  .progress {
+    margin-bottom: 2rem;
+    height: 1.5rem;
+    border: solid white;
+
+
+  }
+
+  main {
+    grid-area: main;
+  }
+
+  main>section {
     padding: 3rem;
-}
+  }
 
 
-header{
+  header {
     /* background-color: violet;
     border-bottom: 1px solid black; */
     display: flex;
@@ -770,20 +784,23 @@ header{
     font-family: "Pokemon Classic Regular";
     backdrop-filter: blur(10px);
 
-}
-header>img{
+  }
+
+  header>img {
     width: 5rem;
     border-radius: 50%;
-}
-footer{
+  }
+
+  footer {
     grid-area: footer;
-}
-article{
+  }
+
+  article {
     font-family: "Pokemon Classic Regular";
-}
+  }
 
 
-.enemyPokemon{
+  .enemyPokemon {
     flex-direction: column;
     justify-content: flex-end;
     border-radius: 10px;
@@ -793,19 +810,19 @@ article{
     padding-top: 1rem;
     padding-left: 2rem;
     padding-right: 2rem;
-    background-color:lightgray;
-}
+    background-color: lightgray;
+  }
 
 
-.textBeforeHP{
-  font-family: "Pokemon Classic Regular";
-  background-color: black;
-  color: white;
-  font-size: 0.5rem;
-  height: 2rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
+  .textBeforeHP {
+    font-family: "Pokemon Classic Regular";
+    background-color: black;
+    color: white;
+    font-size: 0.5rem;
+    height: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 
 
 
@@ -813,89 +830,91 @@ article{
 }
 
 @media only screen and (min-width: 600px) {
-  .signupform{
- 
-     margin-left: 15vw;
-     margin-right: 15vw;
-   }
+  .signupform {
 
-   .projectScreenContainer{
-     margin-left: 15vw;
-     margin-right: 15vw;
-   
-   }
-    
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+
+  .projectScreenContainer {
+    margin-left: 15vw;
+    margin-right: 15vw;
+
+  }
+
 }
 
 @media only screen and (min-width: 800px) {
-  
-  .mainTitleScreen{
+
+  .mainTitleScreen {
     background-image: url("../assets/imgs/Background2.jpg");
-     background-size: cover;
-     background-position: center;
-  height: 100vh;
-  width: 100%;
-text-align: center;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
   }
 
-  
-  .titlescreen-image{
+
+  .titlescreen-image {
     padding: 2rem;
-   border-radius: 25px;
-   text-align: center;
+    border-radius: 25px;
+    text-align: center;
   }
 
-  .signupform{
+  .signupform {
     margin-left: 20vw;
-  margin-right: 20vw;
-}
+    margin-right: 20vw;
+  }
 
- 
+
 }
 
 @media only screen and (min-width: 1200px) {
- 
-.apmon-logo{
+
+  .apmon-logo {
     width: 350px;
     height: 100px;
   }
 
-  .projectScreenContainer{
+  .projectScreenContainer {
     margin-left: 30vw;
     margin-right: 30vw;
-  
-  }
-  .mainTitleScreen{
-  object-fit: cover;
-  height: 100vh;
-  width: 100%;
-  background-size:cover;
-  background-attachment: fixed;
+
   }
 
-  .transparancyTitleScreen{
+  .mainTitleScreen {
+    object-fit: cover;
     height: 100vh;
-    background-color: rgb(0, 0, 0,0.6);
+    width: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .transparancyTitleScreen {
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0.6);
     padding-top: 10rem;
   }
 
-  .signupform{
-       margin-left: 30vw;
-     margin-right: 30vw;
-   }
-
-   .loginform{
-    padding-bottom: 2rem;
-     margin-left: 30vw;
-     margin-right: 30vw;
+  .signupform {
+    margin-left: 30vw;
+    margin-right: 30vw;
   }
-   
-  .buttonLoginContainer{
+
+  .loginform {
+    padding-bottom: 2rem;
+    margin-left: 30vw;
+    margin-right: 30vw;
+  }
+
+  .buttonLoginContainer {
     margin-top: 5rem;
-    text-align: center;  
+    text-align: center;
   }
 }
-.textBeforeHP{
+
+.textBeforeHP {
   font-family: "Pokemon Classic Regular";
   background-color: black;
   color: white;
@@ -906,308 +925,322 @@ text-align: center;
 
 }
 
-.myPokemon{
-    
-    flex-direction: column;
-    
-    border-radius: 10px;
-    min-width: none;
-    width: 60%;
-    margin-top: 3rem;
-    padding-top: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    background-color:lightgray;
+.myPokemon {
+
+  flex-direction: column;
+
+  border-radius: 10px;
+  min-width: none;
+  width: 60%;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: lightgray;
 }
 
-#enemySprite{
-    
-    min-width: 10rem;
-    width: 15rem;
-    
-}
+#enemySprite {
 
-
-#mySprite{
-    width: 15rem;
-    min-width: 10rem;
-}
-
-.progress{
-    margin-bottom: 2rem;
-    height: 1.5rem;
-    border: solid white;
+  min-width: 10rem;
+  width: 15rem;
 
 }
 
 
-
-.gridEnemy{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+#mySprite {
+  width: 15rem;
+  min-width: 10rem;
 }
 
-.EnemyHP{
-    grid-column: 1/3;
-    text-align: left;
-    margin-top: 2rem;
-    margin-left: 2rem;
-    padding-top:1rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    border-radius: 10px;
-    height: 6rem;
-    background-color: red;
-    width: 75%;
-
+.progress {
+  margin-bottom: 2rem;
+  height: 1.5rem;
+  border: solid white;
 
 }
 
 
-.EnemyPokemon{
-    grid-column: 3/5;
-    text-align: center;
+
+.gridEnemy {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.gridAlly{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-}
+.EnemyHP {
+  grid-column: 1/3;
+  text-align: left;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border-radius: 10px;
+  height: 6rem;
+  background-color: red;
+  width: 75%;
 
-.AllyHP{
-    grid-column: 3/5;
-    text-align: left;
-    margin-top: 4rem;
-    margin-right: 2rem;
-    padding-left: 1rem;
-    padding-top:1rem;
-    border-radius: 10px;
-    height: 6rem;
-    background-color:blue;
-    grid-row:1 ;
-    padding-right: 1rem;
-    width: 75%;
-    
-}
 
-.AllyPokemon{
-    grid-column: 1/3;
-    text-align: center;
-    grid-row:1 ;
-}
-
-.battleName{
-    font-size: 1rem;
-    font-family: "Pokemon Classic Regular";
 }
 
 
+.EnemyPokemon {
+  grid-column: 3/5;
+  text-align: center;
+}
 
-.battleBottom{
-    position: fixed;
-    bottom: 0;
-    border: solid black;
-    border-width: 0.5rem;
-    border-radius: 10px;
-  }
-  
-  
-  .infoBattle{
-    border: black;
-    border-style: inset;
-    border-width: 1rem;
-    background-color:gray;
-    color: white;
-    padding: 1rem;
-    height: 10rem;
-    font-family: "Pokemon Classic Regular";
-    font-size: 0.8rem;
-    text-align: left;
-    
-  }
-  
-  .commands{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    text-align: center;
-    background-color: gray;
-    border:  black;
-    border-style: outset;
-    font-family: "Pokemon Classic Regular";
-  }
-  
-  .attack{
-    grid-column: 1;
-    border:  black;
-    border-style: outset;
-    padding-top: 0.5rem;
-    border-radius: 10px;
-    background-color: white;
-    height: 4rem;
-    font-size: 1.2rem;
-    font-weight: bolder;
-  
-  }
-  
-  .attack:hover{
-    border:  black;
-    border-style: outset;
-    background-color: lightgray;
-  }
-  
-  .catch:hover{
-    border:  black;
-    border-style: outset;
-    background-color: lightgray;
-  }
-  
-  .run:hover{
-    border:  black;
-    border-style: outset;
-    background-color: lightgray;
-  }
-  
-  .catch{
-    grid-column: 2;
-    border:  black;
-    border-style: outset;
-    padding-top: 0.5rem;
-    border-radius: 10px;
-    background-color: white;
-    font-size: 1.2rem;
-    font-weight: bolder;
-  
-  }
-  
-  .run{
-  grid-column: 3;
-  border:  black;
+.gridAlly {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.AllyHP {
+  grid-column: 3/5;
+  text-align: left;
+  margin-top: 4rem;
+  margin-right: 2rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  border-radius: 10px;
+  height: 6rem;
+  background-color: blue;
+  grid-row: 1;
+  padding-right: 1rem;
+  width: 75%;
+
+}
+
+.AllyPokemon {
+  grid-column: 1/3;
+  text-align: center;
+  grid-row: 1;
+}
+
+.battleName {
+  font-size: 1rem;
+  font-family: "Pokemon Classic Regular";
+}
+
+
+
+.battleBottom {
+  position: fixed;
+  bottom: 0;
+  border: solid black;
+  border-width: 0.5rem;
+  border-radius: 10px;
+}
+
+
+.infoBattle {
+  border: black;
+  border-style: inset;
+  border-width: 1rem;
+  background-color: gray;
+  color: white;
+  padding: 1rem;
+  height: 10rem;
+  font-family: "Pokemon Classic Regular";
+  font-size: 0.8rem;
+  text-align: left;
+
+}
+
+.commands {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  background-color: gray;
+  border: black;
+  border-style: outset;
+  font-family: "Pokemon Classic Regular";
+}
+
+.attack {
+  grid-column: 1;
+  border: black;
+  border-style: outset;
+  padding-top: 0.5rem;
+  border-radius: 10px;
+  background-color: white;
+  height: 4rem;
+  font-size: 1.2rem;
+  font-weight: bolder;
+
+}
+
+.attack:hover {
+  border: black;
+  border-style: outset;
+  background-color: lightgray;
+}
+
+.catch:hover {
+  border: black;
+  border-style: outset;
+  background-color: lightgray;
+}
+
+.run:hover {
+  border: black;
+  border-style: outset;
+  background-color: lightgray;
+}
+
+.catch {
+  grid-column: 2;
+  border: black;
   border-style: outset;
   padding-top: 0.5rem;
   border-radius: 10px;
   background-color: white;
   font-size: 1.2rem;
-    font-weight: bolder;
-  
-  }
-  
-  .progress{
-    margin-bottom: 2rem;
-    height: 1.5rem;
-    border: solid white;
-  
-  }
-  #battleMain2{
-    background-image: url("../assets/img/BattleBackground2.jpg");
-background-size: cover;
-    background-position:center;
-    height: 100vh;
-    width: 100%;
-    padding-top: 3rem;
-    
-  }
-  
+  font-weight: bolder;
 
-  @media only screen and (min-width: 800px){
-    .myPokemon{
-        max-width: 100%;
-        padding-top: 1rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    .enemyPokemon{
-        
-        max-width: fit-content;
-    }
+}
 
+.run {
+  grid-column: 3;
+  border: black;
+  border-style: outset;
+  padding-top: 0.5rem;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 1.2rem;
+  font-weight: bolder;
+
+}
+
+.progress {
+  margin-bottom: 2rem;
+  height: 1.5rem;
+  border: solid white;
+
+}
+
+#battleMain2 {
+  background-image: url("../assets/img/BattleBackground2.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  padding-top: 3rem;
+
+}
+
+
+@media only screen and (min-width: 800px) {
+  .myPokemon {
+    max-width: 100%;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-  @media only screen and (min-width: 1200px){
-    .myPokemon{
-        
-        max-width: fit-content;
-        padding-top: 1rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    .enemyPokemon{
-        text-align: left;
-        max-width: 100%;
-    }
-   
+
+  .enemyPokemon {
+
+    max-width: fit-content;
   }
-  @import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
+
+}
+
+@media only screen and (min-width: 1200px) {
+  .myPokemon {
+
+    max-width: fit-content;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .enemyPokemon {
+    text-align: left;
+    max-width: 100%;
+  }
+
+}
+
+@import url(https://db.onlinewebfonts.com/c/900f8add35323c44ee840c611ed9a7a5?family=Pokemon+Classic+Regular);
+
 #compare {
-    display: grid;
-    gap: 0px 0px;
-    grid-template-areas:
-        "header header header header"
-        "articel yourpokemon otherpokemon article"
-        "articel yourpokemon otherpokemon article"
-        "footer footer footer footer ";
-    background-image: url(/assets/img/pokemonLab.jpg);
+  display: grid;
+  gap: 0px 0px;
+  grid-template-areas:
+    "header header header header"
+    "articel yourpokemon otherpokemon article"
+    "articel yourpokemon otherpokemon article"
+    "footer footer footer footer ";
+  background-image: url(/assets/img/pokemonLab.jpg);
 }
 
-#compare,#MainPage,#pokeDex,#whosThatPokemon{
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    font-family: "Pokemon Classic Regular";
-}
-
-
-#whosThatPokemon{
-    grid-template-areas:
-        "header header ja"
-        "ja main ja"
-        "ja main ja"
-        "footer footer footer";
-        background-image: url(/assets/img/pokemonLab.jpg);
-        background-repeat: no-repeat;
-        background-position: left;
-        background-size: cover;
-        color: black;
+#compare,
+#MainPage,
+#pokeDex,
+#whosThatPokemon {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  font-family: "Pokemon Classic Regular";
 }
 
 
+#whosThatPokemon {
+  grid-template-areas:
+    "header header ja"
+    "ja main ja"
+    "ja main ja"
+    "footer footer footer";
+  background-image: url(/assets/img/pokemonLab.jpg);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+  color: black;
+}
 
 
-#pokeDex{
-    display: grid;
-    grid-template-areas: 
+
+
+#pokeDex {
+  display: grid;
+  grid-template-areas:
     "header header header nav nav"
     "main main main main aside";
-    padding: 10px;
-    background-image: url(/assets/img/light-blue.jpg);
+  padding: 10px;
+  background-image: url(/assets/img/light-blue.jpg);
 }
-#pokeDex>main{
+
+#pokeDex>main {
   background-size: cover;
-  filter: drop-shadow(10px 10px 4px black);  
+  filter: drop-shadow(10px 10px 4px black);
   margin-top: -5rem;
 }
 
 
 
 #yourPokemon {
-    grid-area: yourpokemon;
-   
-    border: solid 5px black;
-    margin-right: 50px;
-    padding: 5px;   
+  grid-area: yourpokemon;
+
+  border: solid 5px black;
+  margin-right: 50px;
+  padding: 5px;
 }
 
-#yourPokemon,#otherPokemon{
+#yourPokemon,
+#otherPokemon {
   background-image: url(/assets/img/light-blue.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
 }
-.pokemonCompare{
+
+.pokemonCompare {
   filter: drop-shadow(10px 5px 2px black);
 }
-#yourPokemon>h1,#otherPokemon>h1{
+
+#yourPokemon>h1,
+#otherPokemon>h1 {
   background-color: grey;
   border-radius: 10px;
   border: solid black 3px;
@@ -1215,312 +1248,326 @@ background-size: cover;
 
 #yourPokemon>section,
 #otherPokemon>section {
-    display: grid;
-    border: solid black;
-    padding: 15px;
-    margin-top: 25px;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0,0,0,.5);
-    color: #fff;
+  display: grid;
+  border: solid black;
+  padding: 15px;
+  margin-top: 25px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .5);
+  color: #fff;
 }
 
 
-hr{
-    border: solid black ;
+hr {
+  border: solid black;
 }
 
 #otherPokemon {
-    grid-area: otherpokemon;
-    background-color: darkgreen;
-    border: solid 5px black;
-    padding: 5px;
-    filter: drop-shadow(30px 50px 50px black);
+  grid-area: otherpokemon;
+  background-color: darkgreen;
+  border: solid 5px black;
+  padding: 5px;
+  filter: drop-shadow(30px 50px 50px black);
 }
 
 #otherPokemon,
 #yourPokemon {
-    display: grid;
-    margin-top: 150px;
-    justify-content: center;
-    text-align: center;
+  display: grid;
+  margin-top: 150px;
+  justify-content: center;
+  text-align: center;
 }
 
-#compare>section>img{
-    height: auto;
-    width: 400px;
+#compare>section>img {
+  height: auto;
+  width: 400px;
 }
+
 #yourPokemon>h1,
-#otherPokemon>h1{
-    color:#fff;
+#otherPokemon>h1 {
+  color: #fff;
 }
 
 #compare>footer {
-    grid-area: footer;
-    margin-left: 250px;
-    margin-top: 50px;
-    border: solid black;
-    width: max-content;
-    border-radius: 5px;
-    padding: 5px;
-    border-radius: 15px;
-    background-color: white;
+  grid-area: footer;
+  margin-left: 250px;
+  margin-top: 50px;
+  border: solid black;
+  width: max-content;
+  border-radius: 5px;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: white;
 }
-#compare>footer:hover{
- background-color: grey;
+
+#compare>footer:hover {
+  background-color: grey;
 }
 
 
 #MainPage {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-        "header"
-        "main"
-        "footer"
-    ;
-    height: 95vh;
-    background-image: url(/assets/img/backgroundmainpage.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    font-family: "Pokemon Classic Regular";
-    
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer"
+  ;
+  height: 95vh;
+  background-image: url(/assets/img/backgroundmainpage.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  font-family: "Pokemon Classic Regular";
+
 }
 
 #MainPage>main {
-    grid-area: "main";
+  grid-area: "main";
 
 }
 
 main>img {
-    margin: 50px;
-    display: grid;
-    justify-content: center;
+  margin: 50px;
+  display: grid;
+  justify-content: center;
 
 }
 
 #MainPage>main>section {
-    display: grid;
+  display: grid;
 }
 
 #MainPage>main>section>button {
-    margin: 10px;
+  margin: 10px;
 }
 
 #MainPage>footer {
-    display: flex;
-    flex-direction: row-reverse;
-    
-    
+  display: flex;
+  flex-direction: row-reverse;
+
+
 }
 
-#menu{
+#menu {
   text-align: center;
 }
 
-#menu>button>a>img{
-    height: auto;
-    width: 500px;
+#menu>button>a>img {
+  height: auto;
+  width: 500px;
 }
 
-#menu>button{
-    background-color: transparent;
-     border: none;
-}
-#menu>button :hover{
-    scale: 110%;
-}
-#MainPage>footer>button{
-    background-color: transparent;
-    border: none;
+#menu>button {
+  background-color: transparent;
+  border: none;
 }
 
-#MainPage>footer>button :hover{
-    scale: 120%;
+#menu>button :hover {
+  scale: 110%;
 }
-#MainPage>footer>button{
+
+#MainPage>footer>button {
+  background-color: transparent;
+  border: none;
+}
+
+#MainPage>footer>button :hover {
+  scale: 120%;
+}
+
+#MainPage>footer>button {
   background-color: white;
   border: solid black 3px;
   border-radius: 10px;
   width: 100px;
 }
-#footer{
+
+#footer {
   height: auto;
   width: 50px;
 }
 
 @media (max-width: 666px) {
-    #compare {
-        display: grid;
-        grid-template-areas:
-            "header"
-            "yourpokemon"
-            "otherpokemon"
-            "footer"
-        ;
-        height: 100vh;
-    }
+  #compare {
+    display: grid;
+    grid-template-areas:
+      "header"
+      "yourpokemon"
+      "otherpokemon"
+      "footer"
+    ;
+    height: 100vh;
+  }
 
-            
-    
-     
-    #yourPokemon>section,
-    #otherPokemon>section {
-        display: grid;
-        border: solid black;
-        padding: 5px;
-        margin-top: 15px;
-        justify-content: center;
-    }
 
-    #yourPokemon>h1,
-    #otherPokemon>h1 {
-        margin-bottom: 25px;
-    }
 
-    #otherPokemon,
-    #yourPokemon {
-        display: grid;
-        margin-top: 50px;
-        justify-content: center;
-        text-align: center;
-        margin-right: 50px;
-        margin-left: 50px;
 
-    }
-  
+  #yourPokemon>section,
+  #otherPokemon>section {
+    display: grid;
+    border: solid black;
+    padding: 5px;
+    margin-top: 15px;
+    justify-content: center;
+  }
 
-    #otherPokemon>img,
-    #yourPokemon>img {
-        height: auto;
-        width: 125px;
-    }
-    #MainPage>main {
-        grid-area: "main";
+  #yourPokemon>h1,
+  #otherPokemon>h1 {
+    margin-bottom: 25px;
+  }
 
-    }
+  #otherPokemon,
+  #yourPokemon {
+    display: grid;
+    margin-top: 50px;
+    justify-content: center;
+    text-align: center;
+    margin-right: 50px;
+    margin-left: 50px;
 
-    main>img {
-        margin: 50px;
-        display: grid;
-        justify-content: center;
+  }
 
-    }
 
-    #MainPage>main>section {
-        display: grid;
-        padding: 20px;
-    }
+  #otherPokemon>img,
+  #yourPokemon>img {
+    height: auto;
+    width: 125px;
+  }
 
-    #MainPage>main>section>button {
-        margin: 10px;
-    }
+  #MainPage>main {
+    grid-area: "main";
 
-    #MainPage>footer {
-        display: flex;
-        flex-direction: row-reverse;
-        
-    }
+  }
 
-    
+  main>img {
+    margin: 50px;
+    display: grid;
+    justify-content: center;
 
-    #menu>button>a>img{
-        height: auto;
-        width: 280px;
-    }
+  }
 
-    #menu>button{
-        background-color: transparent;
-        border: none;
-       
-    }
-    #menu>button :hover{
-        scale: 110%;
-    }
-    #MainPage>footer>button{
-      
-        background-color: white;
-        border: solid black 3px;
-        border-radius: 10px;
-        
-      
-    }
-    #MainPage>footer>button>img{
-        height: auto;
-        width: 200px;
-    }
-    #MainPage>footer>button :hover{
-        scale: 120%;
-    }
+  #MainPage>main>section {
+    display: grid;
+    padding: 20px;
+  }
+
+  #MainPage>main>section>button {
+    margin: 10px;
+  }
+
+  #MainPage>footer {
+    display: flex;
+    flex-direction: row-reverse;
+
+  }
+
+
+
+  #menu>button>a>img {
+    height: auto;
+    width: 280px;
+  }
+
+  #menu>button {
+    background-color: transparent;
+    border: none;
+
+  }
+
+  #menu>button :hover {
+    scale: 110%;
+  }
+
+  #MainPage>footer>button {
+
+    background-color: white;
+    border: solid black 3px;
+    border-radius: 10px;
+
+
+  }
+
+  #MainPage>footer>button>img {
+    height: auto;
+    width: 200px;
+  }
+
+  #MainPage>footer>button :hover {
+    scale: 120%;
+  }
 }
 
 
 @media only screen and (min-width: 1024px) {
 
-    
-    #menu{
-        
-    }
-    #menu>button>img{
-        height: auto;
-        width: 400px;
-    }
-    #MainPage>footer>button>img{
-        height: auto;
-        width: 140px;
-    }
 
-    #MainPage>footer {
-        display: flex;
-        flex-direction: row-reverse;
-    }
+  #menu {}
 
-}
-
-#pokeDex>nav{
-    grid-area: nav;
-    margin-top: 3rem;
-    width: 10rem;
-    margin-left: 1rem;
+  #menu>button>img {
+    height: auto;
+    width: 400px;
   }
 
-#pokeDex>main{
-    display: grid;
-    grid-area: main;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
+  #MainPage>footer>button>img {
+    height: auto;
+    width: 140px;
+  }
+
+  #MainPage>footer {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 
 }
-#pokeDex>aside{
-    display: grid;
-    grid-area: aside;
-    justify-content: right;
-    align-items: center;
-    height: 50rem;
+
+#pokeDex>nav {
+  grid-area: nav;
+  margin-top: 3rem;
+  width: 10rem;
+  margin-left: 1rem;
 }
-#pokeDex>footer{
-    grid-area: footer;
-    border: solid black;
-    max-width: fit-content;
-    border-radius: 5px;
-    padding: 5px;
-    margin-left: 10px;
-    margin-top: 40px;
-    background-color: white;  
+
+#pokeDex>main {
+  display: grid;
+  grid-area: main;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
 }
-#pokeDex>footer>button{
+
+#pokeDex>aside {
+  display: grid;
+  grid-area: aside;
+  justify-content: right;
+  align-items: center;
+  height: 50rem;
+}
+
+#pokeDex>footer {
+  grid-area: footer;
+  border: solid black;
+  max-width: fit-content;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 10px;
+  margin-top: 40px;
+  background-color: white;
+}
+
+#pokeDex>footer>button {
   background-color: none;
 }
 
-.pokedexBottom{
+.pokedexBottom {
   margin-top: -8rem;
 }
 
-.PokedexBottomButtons{
+.PokedexBottomButtons {
   border: solid black;
   background-color: white;
   padding: 0.5rem;
@@ -1528,278 +1575,309 @@ main>img {
   margin-right: 1rem;
 }
 
-#searchBar,#filterBar,.CompareButton>a{
-   height: 50px;
-   background-color: #fff;
-   margin-bottom: 10px;
-   border: black solid 3px;
-   border-radius: 15px;
+#searchBar,
+#filterBar,
+.CompareButton>a {
+  height: 50px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  border: black solid 3px;
+  border-radius: 15px;
 }
 
-.CompareButton>a{
+.CompareButton>a {
   width: 500px;
 }
-.CompareButton{
+
+.CompareButton {
   padding: 10px;
   background-color: transparent;
   border: none;
 
 }
-.CompareButton>a:hover{
+
+.CompareButton>a:hover {
   background-color: grey;
 }
 
-#filterBar:hover{
+#filterBar:hover {
   background-color: grey;
-}
-#searchBar:hover{
-  background-color: grey;
-  
 }
 
-#pokeDex>aside{
+#searchBar:hover {
+  background-color: grey;
+
+}
+
+#pokeDex>aside {
   background-image: url(/assets/img/wp3170171.webp);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover; 
+  background-size: cover;
   width: 400px;
-  
+
 }
 
-#pokeDex>aside>ul{
-    height:55%; 
-    width: 100%;
-    overflow:hidden; 
-    overflow-y:scroll;
-    margin-right: 170px;   
+#pokeDex>aside>ul {
+  height: 55%;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  margin-right: 170px;
 }
 
 #didYouKnow {
   display: none;
   position: absolute;
   top: 56%;
-  left:65%;
+  left: 65%;
   background-color: white;
   padding: 10px;
   border: 1px solid black;
   margin-bottom: 5px;
 }
-img:hover + #didYouKnow {
+
+img:hover+#didYouKnow {
   display: block;
   margin-bottom: 150px;
   background-color: white
 }
 
-#pokeDex>aside>ul>li{
-    display: flex;
-    border: solid 2px black;
-    margin: 10px;
-    padding: 2px; 
-}
-#pokeDex>aside>ul>li>img{
-    height: auto;
-    width: 50px;
-    border: black solid 2px ;
-}
-#pokeDex>main>img{
-    height: auto;
-    width: 400px;
-    height: 400px;
-    border: 4px solid black;
-    margin-bottom: -5rem;
-    top: -5rem;
-  
-    &:hover {
-      border: 3px solid black;
-      background-image: url(/assets/img/lol.png);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover; 
-    }
-}
-#pokeDex>main>section{
-    border: solid black 2px;
-    padding: 15px;
-    width: 30rem;
-    background-color: white;   
-}
-#pokeDex>aside>ul>#charmander{
-    background-color: green;
+#pokeDex>aside>ul>li {
+  display: flex;
+  border: solid 2px black;
+  margin: 10px;
+  padding: 2px;
 }
 
-#compareBackground{
-  background-color:white;
-}
-#whosThatPokemon>main {
-    display: grid;
-    grid-area: main;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
-    
+#pokeDex>aside>ul>li>img {
+  height: auto;
+  width: 50px;
+  border: black solid 2px;
 }
 
-#whosThatPokemon>main>h1 {
-    display: grid;
-    justify-content: center;
-    margin-right: 20px;
-    background-color: white;
-    padding: 0.5rem;
-    border-radius: 10px;
-    border: solid black 3px;
-}
+#pokeDex>main>img {
+  height: auto;
+  width: 400px;
+  height: 400px;
+  border: 4px solid black;
+  margin-bottom: -5rem;
+  top: -5rem;
 
-#whosThatPokemon>main>form>input {
-    display: flex;
-    height: 3rem;
-    background-color: white;
-    border: solid black 3px;
-    width: 20rem;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 10px;
-}
-
-#whosThatPokemon>main>form>button{
-    text-shadow: 2px 2px 2px black;
-    font-size: 25px; 
-    margin-right: 2rem;  
-}
-#whosThatPokemon>main>form{
-    display: flex;
-}
-
-#whosThatPokemon>main>img {
-    height: auto;
-    width: 400px;
-    border: solid black;
-    margin-top: 20px;
-    margin-bottom: 20px; 
-    background-image: url(/assets/img/testo2.jpg);
+  &:hover {
+    border: 3px solid black;
+    background-image: url(/assets/img/lol.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    margin-left: auto;
-    margin-right: auto;
+  }
+}
+
+#pokeDex>main>section {
+  border: solid black 2px;
+  padding: 15px;
+  width: 30rem;
+  background-color: white;
+}
+
+#pokeDex>aside>ul>#charmander {
+  background-color: green;
+}
+
+#compareBackground {
+  background-color: white;
+}
+
+#whosThatPokemon>main {
+  display: grid;
+  grid-area: main;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+
+}
+
+#whosThatPokemon>main>h1 {
+  display: grid;
+  justify-content: center;
+  margin-right: 20px;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: solid black 3px;
+}
+
+#whosThatPokemon>main>form>input {
+  display: flex;
+  height: 3rem;
+  background-color: white;
+  border: solid black 3px;
+  width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+
+#whosThatPokemon>main>form>button {
+  text-shadow: 2px 2px 2px black;
+  font-size: 25px;
+  margin-right: 2rem;
+}
+
+#whosThatPokemon>main>form {
+  display: flex;
+}
+
+#whosThatPokemon>main>div {
+  height: auto;
+  width: 400px;
+  border: solid black;
+  background-image: url(/assets/img/testo2.jpg);
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#background {
+  background-image: url(/assets/img/testo2.jpg);
+}
+
+#pokemon {
+  filter: brightness(0.2) saturate(0%);
+
+}
+
+
+#whosThatPokemon>main>h2 {
+  margin-top: 10px;
+  display: grid;
+  justify-content: center;
+}
+
+#whosThatPokemon>main>h2>img {
+  display: grid;
+  height: auto;
+  width: 30px;
 }
 
 #whosThatPokemon>main>h2 {
-    margin-top: 10px;
-    display: grid;
-    justify-content: center;
-}
-#whosThatPokemon>main>h2>img{
-    display: grid;
-    height: auto;
-    width: 30px;
-}
-#whosThatPokemon>main>h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
 
 }
-#whosThatPokemon>main>form>button{
-    color: lightblue;
-    margin-top: 33px;
+
+#whosThatPokemon>main>form>button {
+  color: lightblue;
+  margin-top: 33px;
 
 }
-#guesStreak{
+
+#guesStreak {
   background-color: white;
   color: black;
   border: black 3px solid;
   border-radius: 10px;
 }
-#guesStreak>img{
+
+#guesStreak>img {
   margin-right: 20px;
 }
 
 #whosThatPokemon>footer {
-    grid-area: footer;
-    border: solid black;
-    max-width: fit-content;
-    border-radius: 5px;
-    padding: 5px;
-    margin-left: 10px;
-    margin-top: 40px;
-    background-color: white; 
+  grid-area: footer;
+  border: solid black;
+  max-width: fit-content;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 10px;
+  margin-top: 40px;
+  background-color: white;
 }
 
-.howtoplayQuestions{
-width: 60%;
-margin-left: auto;
-margin-right: auto;
+.howtoplayQuestions {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
 @media only screen and (max-width: 768px) {
-    #whosThatPokemon {
-        grid-template-areas:
-            "header"
-            "main"
-            "footer";
-        font-size: 14px;
-    }
+  #whosThatPokemon {
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    font-size: 14px;
+  }
 
-    
 
-    #whosThatPokemon>main {
-        margin-top: 50px;
-       
-    }
 
-    #whosThatPokemon>main>img {
-        height: auto;
-        width: 300px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 60px;
-    }
+  #whosThatPokemon>main {
+    margin-top: 50px;
 
-    #whosThatPokemon>main>h1 {
-        margin-left: 30px;
-    }
-    #whosThatPokemon>main>h2{
-        margin-top: 10px;
-        display: flex;
-        justify-content: left;
-        align-items: left;
-    }
+  }
 
-    #whosThatPokemon>main>form {
-        margin-left: 20px;
-    }
-    #guesStreak{
-      margin-right: 80px;
-    }
+  #whosThatPokemon>main>img {
+    height: auto;
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 60px;
+  }
 
-    #whosThatPokemon>main>form>input {
-        margin-top: 20px;
-        height: 20px;
-        width: 250px;
-    }
+  #whosThatPokemon>main>h1 {
+    margin-left: 30px;
+  }
 
-    #whosThatPokemon>main>h2 {
-        margin-left: 90px;
-    }
-    #whosThatPokemon>main>form{
-        display: flex;
-    }
-    #whosThatPokemon>main>form>button{
-        font-size: 25px;
-        margin-right: 20px;
-        margin-top: 5px;
-    }
+  #whosThatPokemon>main>h2 {
+    margin-top: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+  }
 
-    .whosthatpokemonTitle{
-      padding: 1rem;
-    }
+  #whosThatPokemon>main>form {
+    margin-left: 20px;
+  }
 
-    .list-group-item{
-      width: 60%;
-    }
+  #guesStreak {
+    margin-right: 80px;
+  }
 
- 
+  #whosThatPokemon>main>form>input {
+    margin-top: 20px;
+    height: 20px;
+    width: 250px;
+  }
+
+  #whosThatPokemon>main>h2 {
+    margin-left: 90px;
+  }
+
+  #whosThatPokemon>main>form {
+    display: flex;
+  }
+
+  #whosThatPokemon>main>form>button {
+    font-size: 25px;
+    margin-right: 20px;
+    margin-top: 5px;
+  }
+
+  .whosthatpokemonTitle {
+    padding: 1rem;
+  }
+
+  .list-group-item {
+    width: 60%;
+  }
+
+
 }
-
