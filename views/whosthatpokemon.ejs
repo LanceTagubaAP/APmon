@@ -6,18 +6,26 @@
         <%- include("partials/header") %>
             <main>
                 <h1>who's that pokemon?</h1>
+                
 
                 <div id="background">
-                    <img id="pokemon" src=<%=randomSprite %>
+                    <section id="test">
+                        <img id="pokemon" src=<%=randomSprite %>
+                    </section> 
                 </div>
 
 
 
                 <form action="input">
-                    <input " type=" text">
+                    <div class="suggestion-container">
+                      <input type="text" id="inputField" placeholder="Type here...">
+                      <ul id="suggestionList"></ul>
+                    </div>
+                    <button id="arrow">▶</button>
 
                 </form>
-                <button id="arrow">▶</button>
+                
+
                 <h2 id="guesStreak"> <img src="assets/img/firestreak.png" alt="">guess streak: 4</h2>
             </main>
             <footer>

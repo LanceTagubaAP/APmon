@@ -1713,15 +1713,18 @@ img:hover+#didYouKnow {
   background-color: white;
   border: solid black 3px;
   width: 20rem;
-  margin-left: auto;
-  margin-right: auto;
   border-radius: 10px;
+}
+#whosThatPokemon>main>form{
+  justify-content: center;
 }
 
 #whosThatPokemon>main>form>button {
   text-shadow: 2px 2px 2px black;
   font-size: 25px;
-  margin-right: 2rem;
+  display: flex;
+  color: white;
+  
 }
 
 #whosThatPokemon>main>form {
@@ -1742,14 +1745,29 @@ img:hover+#didYouKnow {
   margin-left: auto;
   margin-right: auto;
 }
+#whosThatPokemon>main>div>section{
+  height: auto;
+  width: 400px;
+}
+
+#test{
+  height: auto;
+  width: 400px;
+
+}
+#test>img{
+  height: auto;
+  width: 400px;
+
+}
+
 
 #background {
   background-image: url(/assets/img/testo2.jpg);
 }
 
 #pokemon {
-  filter: brightness(0.2) saturate(0%);
-
+  filter: grayscale(100%) brightness(0);
 }
 
 
@@ -1770,12 +1788,6 @@ img:hover+#didYouKnow {
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
-
-}
-
-#whosThatPokemon>main>form>button {
-  color: lightblue;
-  margin-top: 33px;
 
 }
 
@@ -1880,4 +1892,32 @@ img:hover+#didYouKnow {
   }
 
 
+}
+#inputField {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.suggestion-container {
+  position: relative;
+  display: inline-block;
+}
+#suggestionList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: 100%;
+  z-index: 1;
+}
+#suggestionList li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+#suggestionList li:hover {
+  background-color: #ddd;
 }
