@@ -1,4 +1,4 @@
-enum Rank {
+export enum Rank {
     Beginner,
     Trainer,
     Expert,

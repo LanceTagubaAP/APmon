@@ -1,10 +1,13 @@
 import express from "express";
 import { getFirst151Pokemon } from "./apicall";
 import { Pokemon } from "./interfaces";
+import dotenv from "dotenv";
+import { connect, fetchAndInsertPokemons,seed } from "./database";
 
 const app = express();
+const port = process.env.PORT || 3000;
 
-app.set("port", 3000);
+app.set("port", port);
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
@@ -115,7 +118,10 @@ app.get("/howtoplay", (req, res) => {
 
 app.listen(app.get("port"), async () => {
     console.log("[server] http://localhost:" + app.get("port"));
-   
+    await connect();
+    await seed();
+    await fetchAndInsertPokemons();
+
     data = await getFirst151Pokemon();
 
     }
