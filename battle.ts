@@ -7,8 +7,8 @@ async function main() {
     data = await getFirst151Pokemon();
     console.log("loading complete");
 
-    let pokemon1: Pokemon = data[15];
-    let pokemon2: Pokemon = data[35];
+    let pokemon1: Pokemon = data[150];
+    let pokemon2: Pokemon = data[59];
 
     pokemon1.health = pokemon1.health * 5;
     pokemon2.health = pokemon2.health * 5;
@@ -54,14 +54,15 @@ function inflictDamage(myPokemon: Pokemon, otherPokemon: Pokemon) {
 
     let damage = critChanceMod * (Math.pow(myPokemon.attack * modA, 2)) / otherPokemon.defense * modD;
 
-    otherPokemon.health -= damage;
+   
     console.log(` 
     ${myPokemon.name} HP: ${myPokemon.health}
     ${otherPokemon.name} HP: ${otherPokemon.health}
 
     ${myPokemon.name} gave ${damage} to ${otherPokemon.name}
                     
-    `)
+    `);
+    otherPokemon.health -= damage;
 
 
 }
