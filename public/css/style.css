@@ -258,30 +258,7 @@ text-align: center;
   }
 
   .beginPokemonImg{
-    background-image: url("../assets/img/charmander.png");
-    background-color: white;
-    background-size: cover;
-    background-position:center;
-    width: 100px;
-    height: 100px;
-  }
-
-  .beginPokemonImg2{
-    background-image: url("../assets/img/balbasaur.png");
-    background-color: white;
-    background-size: cover;
-    background-position:center;
-    width: 100px;
-    height: 100px;
-  }
-
-  .beginPokemonImg3{
-    background-image: url("../assets/img/squirtle.png");
-    background-color: white;
-    background-size: cover;
-    background-position:center;
-    width: 100px;
-    height: 100px;
+    background-color: rgba(0, 0, 0, 0.4);
   }
 
   input{
@@ -1635,7 +1612,7 @@ img:hover + #didYouKnow {
     grid-area: main;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 1rem;
     
 }
 
@@ -1650,7 +1627,6 @@ img:hover + #didYouKnow {
 }
 
 #whosThatPokemon>main>form>input {
-    display: flex;
     height: 3rem;
     background-color: white;
     border: solid black 3px;
@@ -1658,6 +1634,7 @@ img:hover + #didYouKnow {
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
+    padding-left: 1rem;
 }
 
 #whosThatPokemon>main>form>button{

@@ -22,7 +22,20 @@ app.get("/titleScreen",(req,res)=>{
 
 app.get("/signup",(req,res)=>{
     /**Hier komt signup pagina */
-    res.render("signup");
+    let sprites = [];
+    for (let index = 0; index < 7; index++) {
+        let sprite = data[index].sprite;
+        index+=2;
+
+        sprites.push(sprite);
+
+
+
+        
+    }
+    res.render("signup",{
+        sprites : sprites
+    });
 });
 
 app.get("/login",(req,res)=>{

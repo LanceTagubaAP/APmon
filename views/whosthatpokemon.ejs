@@ -1,14 +1,13 @@
 <%- include("partials/top") %>
 <title>Who is that pokemon?</title>
 </head>
-
 <body id="whosThatPokemon">
   <%- include("partials/header") %>
     <main>
         <h1>who's that pokemon?</h1>
         <img src=<%= randomSprite %>
         <form action="input">
-            <input " type="text">
+            <input " type="text" placeholder="pokemon...">
             <button class="arrow">▶</button>
         </form>
         <h2 id="guesStreak"> <img src="assets/img/firestreak.png" alt="">guess streak: 4</h2>
