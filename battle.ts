@@ -10,8 +10,8 @@ async function main() {
     let pokemon1: Pokemon = data[150];
     let pokemon2: Pokemon = data[59];
 
-    pokemon1.health = pokemon1.health * 5;
-    pokemon2.health = pokemon2.health * 5;
+    pokemon1.health = pokemon1.health * 8;
+    pokemon2.health = pokemon2.health * 8;
 
     while (pokemon1.health > 0 && pokemon2.health > 0) {
         inflictDamage(pokemon1, pokemon2);
