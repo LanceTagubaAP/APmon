@@ -29,12 +29,7 @@ app.get("/signup",(req,res)=>{
     for (let index = 0; index < 7; index++) {
         let sprite = data[index].sprite;
         index+=2;
-
-        sprites.push(sprite);
-
-
-
-        
+        sprites.push(sprite);    
     }
     res.render("signup",{
         sprites : sprites
@@ -133,7 +128,6 @@ app.listen(app.get("port"), async () => {
     await connect();
     await seed();
     await fetchAndInsertPokemons();
-
     data = await getFirst151Pokemon();
 
     }
