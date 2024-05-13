@@ -1,0 +1,40 @@
+<%- include("partials/top") %>
+    <title>APMon</title>
+</head>
+<body id="pokeDex">
+<%- include("partials/header") %>
+    <main>
+        <div class="mainContentPokedex">
+
+        <div class="InfoPokemonPokedex">
+            
+        <img class="selectedPokemonPokedex" src="<%- pokemon.sprite %>" alt="">
+        <section class="pokedexDescription">
+            <p class="pokedexNameDescription"><%- pokemon.name %></p>
+            <p class="pokedexDescriptionText"><%- pokemon.description %></p>
+        </section>
+        <div class="pokedexBottom">
+         <button class="PokedexBottomButtons"><a href="compare"> Compare</a></button>
+         <button class="PokedexBottomButtons"><a href="mainpage">Terug</a></button>
+        </div>
+    </div>
+
+    <div class="PokedexList">
+        <table>
+            <tbody>
+                <% for (let pokemon of data) { %>
+                    <tr>
+                        <td><%- pokemon.id %></td>
+                     <!--  <td> <img class="pokedexSprite" src="<%- pokemon.sprite %>" alt=""></td> --> 
+                        <td><a href="/pokedex/<%= pokemon.id %>"><%- pokemon.name %></a></td>
+                        <td><%- pokemon.isCatched %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+    </main>
+<%- include("partials/bottom") %>

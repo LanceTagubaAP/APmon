@@ -88,9 +88,21 @@ app.get("/battlechoose", (req, res) => {
 });
 
 app.get("/pokedex", (req, res) => {
-    /**Hier komt pokedex pagina */
-    res.render("pokedex");
+    res.render("pokedex",{data : data});
 });
+
+app.get("/pokedex/:id", (req, res) => {
+    const pokemonId = parseInt(req.params.id);
+    const pokemon = data.find(p => p.id === pokemonId);
+    if (pokemon) {
+        res.render("pokedexDetail", { pokemon: pokemon,
+            data : data
+         });
+    } else {
+        res.status(404).send("Pokemon not found");
+    }
+});
+
 
 app.get("/whosthatpokemon", (req, res) => {
     /**Hier komt Who's that pokemon pagina */
