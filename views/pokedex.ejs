@@ -1,48 +1,35 @@
+
 <%- include("partials/top") %>
     <title>APMon</title>
 </head>
 <body id="pokeDex">
 <%- include("partials/header") %>
- <!--
-    <nav>
-        <input id="searchBar" type="text" placeholder="Search..">
-    </nav>
-    
-    <aside>
-        <ul>
-            <li id="charmander">01 <img src="assets/img/charmander.png" alt="Charmander">Charmander</li>
-            <li>02<img src="assets/img/balbasaus.png" alt="Bulbasaur">Bulbasaur</li>
-            <li>03<img src="assets/img/squirtle.png" alt="Squirtle">Squirtle</li>
-            <li>04<img src="assets/img/Placeholder-Pikachu.png" alt="Pickachu">Pickachu</li>
-            <li>05<img src="assets/img/Evee.png" alt="Evee">Evee</li>
-            <li>06<img src="assets/img/kyogre.png" alt="Kyogre">Kyogre</li> 
-            <li>07<img src="assets/img/Zapdos.png" alt="Zapdoss">Zapdoss</li> 
-            
-            <li>08<img src="assets/img/balbasaus.png" alt="Bulbasaur">Bulbasaur</li>
-            <li>09<img src="assets/img/squirtle.png" alt="Squirtle">Squirtle</li>
-            <li>10<img src="assets/img/Placeholder-Pikachu.png" alt="Pickachu">Pickachu</li>
-            <li>11<img src="assets/img/Evee.png" alt="Evee">Evee</li>
-            <li>12<img src="assets/img/kyogre.png" alt="Kyogre">Kyogre</li> 
-            <li>13<img src="assets/img/Zapdos.png" alt="Zapdoss">Zapdoss</li> 
-        </ul>
-    </aside>
--->
-
-    <main>
+    <main class="pokedexMain">
         <div class="mainContentPokedex">
+
+         <div class="PokedexName">
+            <p>KANTO POKEDEX</p>
+         </div>   
+
+         <div class="pokedexSearchAndFilter">
+            <form action="/action_page.php">
+              <input type="text" placeholder="Zoeken.." name="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
 
         <div class="InfoPokemonPokedex">
             
             <section class="pokedexNameSection">
-                <p class="pokedexNameDescription">Bulbasaur</p>
+                <p class="pokedexNameDescription"><%- fixedPokemon.id %>.<%- fixedPokemon.name %></p>            
             </section>    
-            <img class="selectedPokemonPokedex" src="assets/img/balbasaus.png" alt="">
+            <img class="selectedPokemonPokedex"  src="<%- fixedPokemon.sprite %>" alt="">
         <section class="pokedexDescription">
-            <p class="pokedexDescriptionText">A strange seed was planted on its back at birth.The plant sprouts and grows with this POKéMON. </p>
+            <p class="pokedexDescriptionText"><%- fixedPokemon.description %></p>
         </section>
         <div class="pokedexBottom">
-         <button class="PokedexBottomButtons"><a href="compare"> Compare</a></button>
-         <button class="PokedexBottomButtons"><a href="mainpage">Terug</a></button>
+         <button class="PokedexBottomButtons"><a href="/compare"> Compare</a></button>
+         <button class="PokedexBottomButtons"><a href="/mainpage">Terug</a></button>
         </div>
     </div>
 

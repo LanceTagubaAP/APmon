@@ -13,27 +13,26 @@
         <h2>Rank: beginner</h2>
     </header>
 
-    <section id="yourPokemon">
-        <h1>Mijn pokemon</h1>
-        <img class="pokemonCompare" src="assets/img/Placeholder-Pikachu.png" alt="">
-        <section>
-            <h2>LP: 100 ⬆<span class="driehoek"></span></h2>
-            <h2>Ap: 100 ⬆</h2>
-            <h2>VP: 100 ⬆</h2>
-        </section>
-    </section>
 
-    <section id="otherPokemon">
-        <h1>Ande Pokemon</h1>
+        <div class="pokemonCompare">
+            <section class="yourPokemon">
+                <p class="comparePokemonName">Mijn pokemon</p>
+                <img class="pokemonCompareIMG" src="assets/img/Placeholder-Pikachu.png" alt="">
+                <section class="sectionPokemonCompare">
+                    <p>Levenspunten: 50</p>
+                    <p>Aanval: 80</p>
+                    <p>Verdediging: 60</p>
+                </section>
+            </section>
         
-        <img class="pokemonCompare"  src="assets/img/balbasaur.png" alt="">
-        <section>
-            <h2>LP: 90 ⬇</h2>
-            <h2>Ap: 90 ⬇</h2>
-            <h2>VP: 90 ⬇</h2>
-        </section>
-    </section>
-        <footer>
-          <button><a href="pokedex">Terug</a></button>
-        </footer>
+            <section class="otherPokemon">
+                <p class="comparePokemonName"><%- pokemon.name %></p>
+                <img class="pokemonCompareIMG" src="<%- pokemon.sprite %>" alt="">
+                <section class="sectionPokemonCompare">
+                    <p>Levenspunten: <%- pokemon.health %></p>
+                    <p>Aanval: <%- pokemon.attack %></p>
+                    <p>Verdediging: <%- pokemon.defense %></p>
+                </section>
+            </section>
+        </div>
 <%- include("partials/bottom") %>

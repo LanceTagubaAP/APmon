@@ -46,10 +46,6 @@ app.get("/battle",(req,res)=>{
     res.render("battle");
 });
 
-app.get("/compare",(req,res)=>{
-    /**Hier komt compare pagina */
-    res.render("compare");
-});
 
 app.get("/mainpage",(req,res)=>{
     /**Hier komt menu pagina */
@@ -83,7 +79,10 @@ app.get("/battlechoose", (req, res) => {
 });
 
 app.get("/pokedex", (req, res) => {
-    res.render("pokedex",{data : data});
+    const fixedPokemonId = 1; 
+    const fixedPokemon = data.find(p => p.id === fixedPokemonId);
+
+    res.render("pokedex",{data : data, fixedPokemon: fixedPokemon});
 });
 
 app.get("/pokedex/:id", (req, res) => {
@@ -97,6 +96,20 @@ app.get("/pokedex/:id", (req, res) => {
         res.status(404).send("Pokemon not found");
     }
 });
+
+
+app.get("/compare/:id", (req, res) => {
+    const pokemonId = parseInt(req.params.id);
+    const pokemon = data.find(p => p.id === pokemonId);
+    if (pokemon) {
+        res.render("compare", { pokemon: pokemon,
+            data : data
+         });
+    } else {
+        res.status(404).send("Pokemon not found");
+    }
+});
+
 
 
 app.get("/whosthatpokemon", (req, res) => {
