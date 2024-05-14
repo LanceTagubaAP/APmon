@@ -81,6 +81,59 @@
     text-shadow: 1px 3px 2px black;
   }
 
+  .mainContentPokedex{
+    display: grid;
+    grid-template-columns:  1fr ;
+    grid-template-rows: 5rem 30rem 15rem;
+    border-style: solid 5px;
+    padding: 4rem ;
+    width: 80rem;
+
+  }
+
+  .PokedexName{
+    grid-column: 1;
+    grid-row: 1;
+    text-align: center;
+   }
+  
+    .InfoPokemonPokedex{
+      grid-column: 1;
+      grid-row: 2;
+      
+    }
+  
+    .PokedexList{
+      background-image: url(/assets/img/wp3170171.webp);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover; 
+      grid-column: 1;
+      grid-row: 3;
+      font-size: 0.7rem;
+      text-align: center;
+      width: 350px;
+      height: 650px;
+      padding-left: 1rem;
+      padding-top: 8.5rem;
+      padding-right: 1rem;
+      margin-left: 25rem;
+    }
+
+    .pokedexNameSection{
+      border: solid black;
+      max-width: 40rem ;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+      background-color: white;
+      border-radius: 25px;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      text-align: center;
+      margin-left: 15rem;
+    }
+
+  
   .headerPlayer{
     display: grid;
     grid-template-columns: 1fr 1fr ;
@@ -167,89 +220,7 @@ text-align: center;
 
   }
 
-  .mainContentPokedex{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 
-  .InfoPokemonPokedex{
-    grid-column: 1/3;
-    grid-row: 1;
-  }
-
-  .PokedexList{
-    background-image: url(/assets/img/wp3170171.webp);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover; 
-    grid-column: 3;
-    grid-row: 1;
-    align-items: right;
-    font-size: 0.7rem;
-    text-align: center;
-    width: 350px;
-    height: 500px;
-    padding-left: 1rem;
-    padding-top: 3.5rem;
-    padding-right: 1rem;
-  
-
-
-
-  }
-
-  .selectedPokemonPokedex{
-    margin-left: 10rem;
-    height: 20rem;
-    width: 20rem;
-    border: solid black 5px;
-    background-color: white;
-  }
-
-  .pokedexDescriptionText{
-    font-size: 0.7rem;
-    border: solid black;
-    padding: 2rem;
-    max-width: 40rem ;
-    margin-right: 2rem;
-    background-color: white;
-  }
-  
-table {
-  display: block;
-  height: 380px;
-  overflow-y: scroll;
-
-}
-
-th a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-table thead tr {
-  background-color: #009879;
-  color: #ffffff;
-  font-weight: bold;
-  
-}
-
-table th,
-table td {
-  padding: 12px 15px;
-}
-
-table tbody tr {
-  border-bottom: 1px solid #dddddd;
-}
-
-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-}
-
-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
-}
 
 
     .mainLogin{
@@ -918,6 +889,139 @@ text-align: center;
 }
 
 @media only screen and (min-width: 1200px) {
+
+  .pokedexMain{
+    background-image: url(/assets/img/pokemonLab.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    margin-top: -9rem;
+}
+
+  .mainContentPokedex{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 5rem 40rem;
+    background-size: cover; 
+    border: 2px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(20px);
+    border-style: solid 5px;
+    padding: 4rem ;
+    width: 80rem;
+
+  }
+
+ .PokedexName{
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+ }
+
+  .InfoPokemonPokedex{
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .PokedexList{
+    background-image: url(/assets/img/wp3170171.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 0.7rem;
+    text-align: center;
+    width: 350px;
+    height: 650px;
+    padding-left: 1rem;
+    padding-top: 8.5rem;
+    padding-right: 1rem;
+    margin-left: 10rem;
+  }
+
+  .selectedPokemonPokedex{
+    margin-left: 8rem;
+    height: 20rem;
+    width: 20rem;
+    border: solid black 5px;
+    background-color: white;
+  }
+
+  .pokedexDescription{
+    border: solid black;
+    padding: 2rem;
+    max-width: 40rem ;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    background-color: white;
+  }
+
+  .pokedexNameSection{
+    border: solid black;
+    max-width: 40rem ;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    background-color: white;
+    border-radius: 25px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-left: 4rem;
+  }
+
+  .pokedexNameDescription{
+    font-size: 1.5rem;
+    text-align: center;
+
+  }
+
+  .pokedexDescriptionText{
+    font-size: 0.7rem;
+  }
+
+  .pokedexSearchAndFilter
+  {
+    grid-row: 1;
+    grid-column: 2;
+    text-align: end;
+    }
+
+    
+  
+table {
+  display: block;
+  height: 380px;
+  overflow-y: scroll;
+
+}
+
+th a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  font-weight: bold;
+  
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
  
 .apmon-logo{
     width: 350px;
@@ -1237,19 +1341,8 @@ background-size: cover;
 
 
 
-#pokeDex{
-    display: grid;
-    grid-template-areas: 
-    "header header header nav nav"
-    "main main main main aside";
-    padding: 10px;
-    background-image: url(/assets/img/light-blue.jpg);
-}
-#pokeDex>main{
-  background-size: cover;
-  filter: drop-shadow(10px 10px 4px black);  
-  margin-top: -5rem;
-}
+
+
 
 
 
@@ -1544,12 +1637,6 @@ main>img {
 
 }
 
-#pokeDex>nav{
-    grid-area: nav;
-    margin-top: 3rem;
-    width: 10rem;
-    margin-left: 1rem;
-  }
 
 #pokeDex>main{
     display: grid;
@@ -1559,26 +1646,9 @@ main>img {
    height: 100vh;
 
 }
-#pokeDex>aside{
-    display: grid;
-    grid-area: aside;
-    justify-content: right;
-    align-items: center;
-    height: 50rem;
-}
-#pokeDex>footer{
-    grid-area: footer;
-    border: solid black;
-    max-width: fit-content;
-    border-radius: 5px;
-    padding: 5px;
-    margin-left: 10px;
-    margin-top: 40px;
-    background-color: white;  
-}
-#pokeDex>footer>button{
-  background-color: none;
-}
+
+
+
 
 .pokedexBottom{
   margin-top: 1rem;

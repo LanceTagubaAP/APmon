@@ -3,14 +3,27 @@
 </head>
 <body id="pokeDex">
 <%- include("partials/header") %>
-    <main>
+    <main class="pokedexMain">
         <div class="mainContentPokedex">
+
+         <div class="PokedexName">
+            <p>KANTO POKEDEX</p>
+         </div>   
+
+         <div class="pokedexSearchAndFilter">
+            <form action="/action_page.php">
+              <input type="text" placeholder="Search.." name="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
 
         <div class="InfoPokemonPokedex">
             
+            <section class="pokedexNameSection">
+                <p class="pokedexNameDescription"><%- pokemon.id %>. <%- pokemon.name %></p>            
+            </section>    
         <img class="selectedPokemonPokedex" src="<%- pokemon.sprite %>" alt="">
         <section class="pokedexDescription">
-            <p class="pokedexNameDescription"><%- pokemon.name %></p>
             <p class="pokedexDescriptionText"><%- pokemon.description %></p>
         </section>
         <div class="pokedexBottom">

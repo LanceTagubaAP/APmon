@@ -125,9 +125,10 @@ app.get("/howtoplay", (req, res) => {
 
 app.listen(app.get("port"), async () => {
     console.log("[server] http://localhost:" + app.get("port"));
-    await connect();
+   /* await connect();
     await seed();
-    await fetchAndInsertPokemons();
+    await fetchAndInsertPokemons();*/
+
     data = await getFirst151Pokemon();
 
     }
