@@ -4,6 +4,30 @@
 
     <body id="MainPage">
         <%- include("partials/header") %>
+            <nav>
+                <div class="topnav">
+                    <a href="#home" class="active"><img src="/assets/imgs/apmon-logo.png" alt=""></a>
+                    <!-- Navigation links (hidden by default) -->
+                    <div id="myLinks">
+                        <a href="#battle">battle</a>
+                        <a href="#Menu">Menu</a>
+                        <a href="#">Info</a>
+                    </div>
+                    <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+                <script>function myFunction() {
+                        var x = document.getElementById("myLinks");
+                        if (x.style.display === "block") {
+                            x.style.display = "none";
+                        } else {
+                            x.style.display = "block";
+                        }
+                    }</script>
+
+            </nav>
             <main>
                 <section id="menu">
                     <button id="gues"><a href="battlechoose"><img src="assets/img/pokemon-vechten.png"

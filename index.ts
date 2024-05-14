@@ -101,7 +101,6 @@ app.get("/whosthatpokemon", (req, res) => {
         if (randomSprite) {
             randomSprite.style.filter = "brightness(100%)";
         }
-
     }
 
 });

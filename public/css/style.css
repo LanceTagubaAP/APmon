@@ -1311,9 +1311,9 @@ hr {
   grid-template-columns: auto;
   grid-template-rows: auto 1fr;
   grid-template-areas:
-    "header"
-    "main"
-    "footer"
+    "header nav"
+    "main main"
+    "footer footer"
   ;
   height: 95vh;
   background-image: url(/assets/img/backgroundmainpage.jpg);
@@ -1327,14 +1327,25 @@ hr {
 
 #MainPage>main {
   grid-area: "main";
-
 }
 
 main>img {
   margin: 50px;
   display: grid;
   justify-content: center;
+}
 
+#MainPage>nav {
+  grid-area: nav;
+  display: flex;
+  margin: 20px;
+  border: solid black;
+  max-width: fit-content;
+  margin-left: 650px;
+}
+
+#MainPage>nav>img {
+  margin: 5px;
 }
 
 #MainPage>main>section {
@@ -1880,4 +1891,51 @@ img:hover+#didYouKnow {
   }
 
 
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: relative;
+  width: 150px;
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav #myLinks {
+  display: none;
+}
+
+/* Style navigation menu links */
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+/* Style the hamburger menu */
+.topnav a.icon {
+
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* Add a grey background color on mouse-over */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the active link (or home/logo) */
+.active {
+
+  color: white;
+}
+
+#logoNav {
+  width: 5px;
+  height: auto;
 }
