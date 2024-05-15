@@ -15,7 +15,10 @@ export interface Pokemon{
     defense : number
     description : string
     isCatched : boolean
-    sprite : string
+    front_default : string
+    back_default : string
+    icon : string
+
 }
 export interface User{
     id : number

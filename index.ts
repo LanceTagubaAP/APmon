@@ -27,7 +27,7 @@ app.get("/signup",(req,res)=>{
     /**Hier komt signup pagina */
     let sprites = [];
     for (let index = 0; index < 7; index++) {
-        let sprite = data[index].sprite;
+        let sprite = data[index].front_default;
         index+=2;
         sprites.push(sprite);    
     }
@@ -68,7 +68,7 @@ app.get("/battlechoose", (req, res) => {
     
     res.render("battlechoose",{
         randomName : randomPokemon.name,
-        randomSprite : randomPokemon.sprite,
+        randomSprite : randomPokemon.front_default,
         randomHP : randomPokemon.health,
         randomAD : randomPokemon.attack,
         randomDF : randomPokemon.defense
@@ -120,7 +120,7 @@ app.get("/whosthatpokemon", (req, res) => {
     
     
     res.render("whosthatpokemon",{
-        randomSprite : randomPokemon.sprite
+        randomSprite : randomPokemon.front_default
 
     });
 });
