@@ -68,7 +68,7 @@ async function fetchPokemonData(id: number): Promise<Pokemon> {
             isCatched: false,
             front_default: pokemon.sprites.front_default,
             back_default : pokemon.sprites.back_default,
-            icon : pokemon.sprites.versions['generation-vii']?.icons[0].front_default
+            icon : ""
         };
     } catch (error) {
         console.error(`Failed to retrieve data for Pokemon with ID ${id}`, error);
