@@ -22,7 +22,7 @@
             <section class="pokedexNameSection">
                 <p class="pokedexNameDescription"><%- fixedPokemon.id %>.<%- fixedPokemon.name %></p>            
             </section>    
-            <img class="selectedPokemonPokedex"  src="<%- fixedPokemon.sprite %>" alt="">
+            <img class="selectedPokemonPokedex"  src="<%- fixedPokemon.front_default %>" alt="">
         <section class="pokedexDescription">
             <p class="pokedexDescriptionText"><%- fixedPokemon.description %></p>
         </section>
@@ -38,9 +38,17 @@
                 <% for (let pokemon of data) { %>
                     <tr>
                         <td><%- pokemon.id %></td>
-                     <!--  <td> <img class="pokedexSprite" src="<%- pokemon.sprite %>" alt=""></td> --> 
+                        <td> <img src="<%- pokemon.icon %>" alt=""></td>
                         <td><a href="/pokedex/<%= pokemon.id %>"><%- pokemon.name %></a></td>
-                        <td><%- pokemon.isCatched %></td>
+                        <td><% if (pokemon.isCatched) { %>
+                            <div class="text-center">
+                                <div class="rounded-circle bg-success" style="width: 20px; height: 20px;"></div>
+                            </div>
+                        <% } else { %>
+                            <div class="text-center">
+                                <div class="rounded-circle bg-danger" style="width: 20px; height: 20px;"></div>
+                            </div>
+                        <% } %> </td>
                     </tr>
                 <% } %>
             </tbody>

@@ -24,7 +24,7 @@ export async function getFirst151Pokemon(): Promise<Pokemon[]> {
                 isCatched: false,
                 front_default: pokemon.sprites.front_default,
                 back_default :pokemon.sprites.back_default,
-                icon : pokemon.sprites.versions['generation-vii']?.icons[0].front_default
+                icon : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/${pokemon.id}.png`
 
             };
 

@@ -77,12 +77,12 @@ app.get("/battlechoose", (req, res) => {
         randomAD : randomPokemon.attack,
         randomDF : randomPokemon.defense,
         randomName2 : randomPokemon2.name,
-        randomSprite2 : randomPokemon2.sprite,
+        randomSprite2 : randomPokemon2.front_default,
         randomHP2 : randomPokemon2.health,
         randomAD2 : randomPokemon2.attack,
         randomDF2 : randomPokemon2.defense,
         randomName3 : randomPokemon3.name,
-        randomSprite3 : randomPokemon3.sprite,
+        randomSprite3 : randomPokemon3.front_default,
         randomHP3 : randomPokemon3.health,
         randomAD3 : randomPokemon3.attack,
         randomDF3 : randomPokemon3.defense,
@@ -153,9 +153,9 @@ app.get("/howtoplay", (req, res) => {
 
 app.listen(app.get("port"), async () => {
     console.log("[server] http://localhost:" + app.get("port"));
-    await connect();
+   /* await connect();
     await seed();
-    await fetchAndInsertPokemons();
+    await fetchAndInsertPokemons();*/
 
     data = await getFirst151Pokemon();
 
