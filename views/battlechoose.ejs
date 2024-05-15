@@ -5,27 +5,15 @@
   <body class="battleChoose">
     <%- include("partials/header") %>
       <main>
-        <h2>Aanbevolen pokemons</h2>
-        <section class="d-flex flex-wrap justify-content-center gap-5">
-          <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
-              class="card-img-top border-bottom border-2 border-black " alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Charmander</h5>
 
-              <ul>
-                <li>Levenspunten:150</li>
-                <li>Aanvalspunten:100</li>
-                <li>Verdedigingspunten:50</li>
-              </ul>
-              <a href="./battle" type="button" class="btn btn-primary">Vechten!</a>
-            </div>
-          </div>
+        <div class="battleChooseContent">
+          <div class="cardsBattleChoose">
+            <h2>Aanbevolen pokemons</h2>
+        <section class="d-flex flex-wrap justify-content-center gap-5 grid-column:1/3">
           <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
             <img src=<%= randomSprite %>
-            class="card-img-top border-bottom border-2 border-black" alt="...">
+              class="card-img-top border-bottom border-2 border-black " alt="...">
             <div class="card-body">
-
               <h5 class="card-title">
                 <%= randomName %>
               </h5>
@@ -38,31 +26,81 @@
                 <li>Verdedigingspunten:<%= randomDF %>
                 </li>
               </ul>
+              </ul>
+              <a href="./battle" type="button" class="btn btn-primary">Vechten!</a>
+            </div>
+          </div>
+          <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
+            <img src=<%= randomSprite2 %>
+            class="card-img-top border-bottom border-2 border-black" alt="...">
+            <div class="card-body">
+
+              <h5 class="card-title">
+                <%= randomName2 %>
+              </h5>
+
+              <ul>
+                <li>Levenspunten:<%= randomHP2 %>
+                </li>
+                <li>Aanvalspunten:<%= randomAD2 %>
+                </li>
+                <li>Verdedigingspunten:<%= randomDF2 %>
+                </li>
+              </ul>
               <a href="./battle" type="button" class="btn btn-primary">Vechten!</a>
 
             </div>
           </div>
           <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+            <img src=<%= randomSprite3 %>
               class="card-img-top border-bottom border-2 border-black" alt="...">
 
             <div class="card-body">
-
-
-              <h5 class="card-title">Squirtle</h5>
+              <h5 class="card-title">
+                <%= randomName3 %>
+              </h5>
 
               <ul>
-                <li>Levenspunten:150</li>
-                <li>Aanvalspunten:100</li>
-                <li>Verdedigingspunten:50</li>
+                <li>Levenspunten:<%= randomHP3 %>
+                </li>
+                <li>Aanvalspunten:<%= randomAD3 %>
+                </li>
+                <li>Verdedigingspunten:<%= randomDF3 %>
+                </li>
               </ul>
               <a href="./battle" type="button" class="btn btn-primary">Vechten!</a>
 
             </div>
           </div>
         </section>
-        <section class="pokemonList">
-          <div class="list-group ">
+      </div>
+        <div class="PokedexListBattleChoose">
+          <table class="battleChooseTable">
+              <tbody>
+                <tr>
+                  <th>PokemonName</th>
+                  <th>LP</th>
+                  <th>ANV</th>
+                  <th>VDG</th>
+                </tr>
+                  <% for (let pokemon of data) { %>
+                  
+                      <tr>
+                       <!--  <td> <img class="pokedexSprite" src="<%- pokemon.sprite %>" alt=""></td> --> 
+                          <td><a href="/pokedex/<%= pokemon.id %>"><%- pokemon.name %></a></td>
+                          <td><%- pokemon.health %></td>
+                          <td><%- pokemon.attack %></td>
+                          <td><%- pokemon.defense %></td>
+                      </tr>
+                  <% } %>
+              </tbody>
+          </table>
+      </div>
+    </div>
+
+
+      <!--  <section class="pokemonListBattleChoose">
+        <div class="list-group ">
             <button type="button " data-bs-toggle="button" class="list-group-item list-group-item-action"
               aria-current="true">
               <img
@@ -100,14 +138,11 @@
                 aria-controls="offcanvasRight">Vechten!</button>
 
             </div>
-          </div>
+          </div> 
         </section>
         <a href="./mainpage" type="button" class="backBtn btn btn-primary">Menu</a>
-
-
-
         </div>
-
+--> 
       </main>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

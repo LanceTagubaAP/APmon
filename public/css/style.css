@@ -160,7 +160,7 @@
   
     .InfoPokemonPokedex{
       grid-column: 1;
-      grid-row: 2;
+      grid-row: 3;
       
     }
   
@@ -170,13 +170,12 @@
       background-position: center;
       background-size: cover; 
       grid-column: 1;
-      grid-row: 3;
+      grid-row: 2;
       font-size: 0.7rem;
       text-align: center;
       width: 350px;
-      height: 650px;
+      height: 400px;
       padding-left: 1rem;
-      padding-top: 8.5rem;
       padding-right: 1rem;
       margin-left: 25rem;
     }
@@ -194,6 +193,42 @@
       margin-left: 15rem;
     }
 
+    table {
+      display: block;
+      height: 3px;
+      overflow-y: scroll;
+    
+    }
+    
+    th a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    
+    table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      font-weight: bold;
+      
+    }
+    
+    table th,
+    table td {
+      padding: 12px 15px;
+    }
+    
+    table tbody tr {
+      border-bottom: 1px solid #dddddd;
+    }
+    
+    table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+    
+    table tbody tr:last-of-type {
+      border-bottom: 2px solid #009879;
+    }
+
   
   .headerPlayer{
     display: grid;
@@ -208,6 +243,8 @@
     padding-right: 2rem;
      width: 65rem;
      gap: 2rem  ;
+     z-index: 1;
+     position: relative;
   }
   
   .playerProfile{
@@ -339,10 +376,123 @@ text-align: center;
     background-size: cover;
     background-position:center;
     font-family: "Pokemon Classic Regular";
+  }
+
+  .cardsBattleChoose h2{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: black;  
+    border-style: solid;
+    background-color: white;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+  }
+
+
+  .PokedexListBattleChoose{
+    background-image: url(/assets/img/wp3170171.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    font-size: 0.7rem;
+    text-align: center;
+    width: 450px;
+    height: 755px;
+    padding-left: 1rem;
+    padding-right: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 8rem;
+  }
+
+  .battleChooseTable {
+    display: block;
+    height: 490px;
+    overflow-y: scroll;
+    grid-row: 2;
+    margin-left: auto;
+    margin-right: auto;
+  
+  }
+
+  .PokedexListBattleChoose{
+    background-image: url(/assets/img/wp3170171.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    font-size: 0.7rem;
+    text-align: center;
+    width: 450px;
+    height: 755px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 8rem;
+  }
+
+  .battleChooseTable {
+    display: block;
+    height: 490px;
+    overflow-y: scroll;
+    grid-row: 2;
+    margin-left: auto;
+    margin-right: auto;
+  
+  }
+  
+  .battleChooseTable th a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .battleChooseTable thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    font-weight: bold;
     
   }
+  
+  .battleChooseTable th,
+  .battleChooseTable td {
+    padding: 12px 15px;
+  }
+
+  .battleChooseTable th{
+    font-weight: bold;
+    font-size: 0.8rem;
+    background-color: grey;
+  }
+  
+  .battleChooseTable tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .battleChooseTable tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .battleChooseTable tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+
+  .battleChooseContent{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    border: 2px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(10px);
+  }
+
+
+
   .battleChoose > main > h2 {
-    color: white;
+    color: black;
     text-shadow: 1px 5px 2px black;
   }
   .chooseCards{
@@ -1009,7 +1159,7 @@ text-align: center;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover; 
-    margin-top: -9rem;
+    margin-top: -8.5rem;
 }
 
   .mainContentPokedex{
@@ -1405,8 +1555,42 @@ background-size: cover;
 
   }
   @media only screen and (min-width: 1200px){
-    .myPokemon{
-        
+
+    .battleChooseContent{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr ;
+    }
+
+    .cardsBattleChoose{
+      grid-column: 1/3;
+      margin-top: 3rem;
+    }
+
+    .PokedexListBattleChoose{
+      font-size: 0.7rem;
+      text-align: center;
+      width: 450px;
+      height: 755px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+      grid-column: 3;
+    }
+  
+    .battleChooseTable {
+      display: block;
+      height: 490px;
+      overflow-y: scroll;
+      margin-left: auto;
+      margin-right: auto;
+    
+    }
+  
+
+
+    .myPokemon{    
         max-width: fit-content;
         padding-top: 1rem;
         padding-left: 1rem;

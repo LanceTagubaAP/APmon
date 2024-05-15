@@ -64,14 +64,29 @@ app.get("/battlechoose", (req, res) => {
      * 
      */
     let randomNumber: number = Math.floor(Math.random() * 151) + 1;
+    let randomNumber2: number = Math.floor(Math.random() * 151) + 1;
+    let randomNumber3: number = Math.floor(Math.random() * 151) + 1;
     let randomPokemon : Pokemon = data[randomNumber];
+    let randomPokemon2 : Pokemon = data[randomNumber2];
+    let randomPokemon3 : Pokemon = data[randomNumber3];
     
     res.render("battlechoose",{
         randomName : randomPokemon.name,
         randomSprite : randomPokemon.front_default,
         randomHP : randomPokemon.health,
         randomAD : randomPokemon.attack,
-        randomDF : randomPokemon.defense
+        randomDF : randomPokemon.defense,
+        randomName2 : randomPokemon2.name,
+        randomSprite2 : randomPokemon2.sprite,
+        randomHP2 : randomPokemon2.health,
+        randomAD2 : randomPokemon2.attack,
+        randomDF2 : randomPokemon2.defense,
+        randomName3 : randomPokemon3.name,
+        randomSprite3 : randomPokemon3.sprite,
+        randomHP3 : randomPokemon3.health,
+        randomAD3 : randomPokemon3.attack,
+        randomDF3 : randomPokemon3.defense,
+        data : data
     });
 
    
