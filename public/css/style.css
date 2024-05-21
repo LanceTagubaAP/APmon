@@ -1735,6 +1735,8 @@ img:hover+#didYouKnow {
   margin-right: auto;
 }
 
+
+
 #whosThatPokemon>main>div>section {
   height: auto;
   width: 400px;
@@ -1930,4 +1932,53 @@ img:hover+#didYouKnow {
 #logoNav {
   width: 5px;
   height: auto;
+}
+
+#sprite {
+  display: none;
+  margin-top: 20px;
+}
+
+#error {
+  color: red;
+  display: none;
+}
+
+.suggestion-container {
+  position: relative;
+  width: 300px;
+
+}
+
+#suggestionList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+}
+
+#suggestionList li {
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: solid black 2px;
+}
+
+#suggestionList li img {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+  border: solid black 2px;
+}
+
+#suggestionList li:hover {
+  background-color: #f0f0f0;
 }
