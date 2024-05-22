@@ -12,7 +12,6 @@
          <div class="pokedexSearchAndFilter">
             <form action="/action_page.php">
               <input type="text" placeholder="Zoeken.." name="search">
-              <button type="submit"><i class="fa fa-search"></i></button>
             </form>
           </div>
 
@@ -23,10 +22,15 @@
             </section>    
         <img class="selectedPokemonPokedex" src="<%- pokemon.front_default %>" alt="">
         <section class="pokedexDescription">
+            <p class="pokedexDescriptionText">TYPE: <%- pokemon.types %></p>
+            <p class="pokedexDescriptionText">LEVENSPUNTEN: <%- pokemon.maxHealth %></p>
+            <p class="pokedexDescriptionText">AANVALSPUNTEN: <%- pokemon.attack %></p>
+            <p class="pokedexDescriptionText">VERDEDIGINGSPUNTEN: <%- pokemon.defense %></p>
             <p class="pokedexDescriptionText"><%- pokemon.description %></p>
         </section>
         <div class="pokedexBottom">
-         <button class="PokedexBottomButtons"><a href="/compare/<%= pokemon.id %>"> Compare</a></button>
+            <button class="PokedexBottomButtons"><a href="/mainpage"> Partner</a></button>
+         <button class="PokedexBottomButtons"><a href="/compare/<%= pokemon.id %>"> Vergelijken</a></button>
          <button class="PokedexBottomButtons"><a href="/mainpage">Terug</a></button>
         </div>
     </div>
@@ -37,8 +41,7 @@
                 <% for (let pokemon of data) { %>
                     <tr>
                         <td><%- pokemon.id %></td>
-                        <td> <img src="<%- pokemon.icon %>" alt=""></td>
-                        <td><a href="/pokedex/<%= pokemon.id %>"><%- pokemon.name %></a></td>
+                        <td><a href="/pokedex/<%= pokemon.id %>"><img src="<%- pokemon.icon %>" alt=""> <%- pokemon.name %></a></td>
                         <td><% if (pokemon.isCatched) { %>
                             <div class="text-center">
                                 <div class="rounded-circle bg-success" style="width: 20px; height: 20px;"></div>
@@ -53,6 +56,7 @@
             </tbody>
         </table>
     </div>
+
 
 
 </div>

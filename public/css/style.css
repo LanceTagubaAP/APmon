@@ -219,6 +219,7 @@
     
     table tbody tr {
       border-bottom: 1px solid #dddddd;
+     text-align: left;
     }
     
     table tbody tr:nth-of-type(even) {
@@ -621,7 +622,7 @@ input:checked + label{
   }
   .bottomProjectScreen{
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
     height: 6rem; 
     padding:0 16px;
   margin:0 auto;
@@ -641,8 +642,7 @@ input:checked + label{
   font-size: 1.5rem;
   margin-top: 1.5rem;
   text-align: center;
-  color: white;
-  background-color: black;
+  color: black;
   
  }
 
@@ -1182,8 +1182,8 @@ text-align: center;
  }
 
   .InfoPokemonPokedex{
-    grid-column: 1;
-    grid-row: 2;
+    grid-column: 2;
+    grid-row: 1/2;
   }
 
   .PokedexList{
@@ -1191,22 +1191,22 @@ text-align: center;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover; 
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 2;
     font-size: 0.7rem;
     text-align: center;
-    width: 350px;
+    width: 360px;
     height: 650px;
     padding-left: 1rem;
     padding-top: 8.5rem;
     padding-right: 1rem;
-    margin-left: 10rem;
+    margin-left: 4rem;
   }
 
   .selectedPokemonPokedex{
-    margin-left: 8rem;
-    height: 20rem;
-    width: 20rem;
+    margin-left: 10rem;
+    height: 15rem;
+    width: 15rem;
     border: solid black 5px;
     background-color: white;
   }
@@ -1244,13 +1244,19 @@ text-align: center;
 
   .pokedexSearchAndFilter
   {
-    grid-row: 1;
-    grid-column: 2;
-    text-align: end;
+    grid-row: 2;
+    grid-column: 1;
+    text-align: start;
+    z-index: 1;
+    margin-top: 6rem;
+    margin-left: 4.8rem;
+    height: 2rem;
     }
 
-    
-  
+    .pokedexSearchAndFilter input{
+      width: 20.8rem;
+    }
+ 
 table {
   display: block;
   height: 380px;
