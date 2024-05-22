@@ -1939,15 +1939,9 @@ img:hover+#didYouKnow {
   margin-top: 20px;
 }
 
-#error {
-  color: red;
-  display: none;
-}
-
 .suggestion-container {
   position: relative;
-  width: 300px;
-
+  width: 200px;
 }
 
 #suggestionList {
@@ -1965,7 +1959,6 @@ img:hover+#didYouKnow {
 }
 
 #suggestionList li {
-  padding: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;

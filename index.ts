@@ -79,6 +79,7 @@ app.get("/pokedex", (req, res) => {
 app.get("/whosthatpokemon", (req, res) => {
     /**Hier komt Who's that pokemon pagina */
 
+
     let randomNumber: number = Math.floor(Math.random() * 151) + 1;
     let randomPokemon: Pokemon = data[randomNumber];
 
@@ -96,16 +97,86 @@ app.get("/whosthatpokemon", (req, res) => {
         }
     });
 
-    function showPokemonSprite() {
-        const randomSprite: HTMLImageElement | null = document.getElementById("pokemon") as HTMLImageElement;
+    function showPokemonSprite(pokemonName: string): void {
+        const randomSprite = document.getElementById("pokemon") as HTMLImageElement | null;
+
+        // Check if a valid image element is found
         if (randomSprite) {
-            randomSprite.style.filter = "brightness(100%)";
+            // Check if the entered Pokemon name matches a condition
+            if (pokemonName.toLowerCase() === "pikachu") {
+                // If the name is "pikachu", set brightness to 100%
+                randomSprite.style.filter = "brightness(100%)";
+            } else {
+                // For other names, set brightness to a lower value, e.g., 50%
+                randomSprite.style.filter = "brightness(50%)";
+            }
         }
     }
 
+    const inputField = document.getElementById("pokemonInput") as HTMLInputElement | null;
+
+    // Check if the input field is valid
+    if (inputField) {
+        inputField.addEventListener("input", function () {
+            const inputValue: string = inputField.value;
+            showPokemonSprite(inputValue);
+        });
+    }
 
 
+    document.addEventListener('DOMContentLoaded', async () => {
+        const inputField = document.getElementById('inputField') as HTMLInputElement;
+        const suggestionList = document.getElementById('suggestionList') as HTMLUListElement;
 
+        let pokemonList: Pokemon[] = [];
+
+        // Fetch Pokémon data
+        try {
+            pokemonList = await getFirst151Pokemon();
+        } catch (error) {
+            console.error('Error fetching Pokémon data:', error);
+        }
+
+        inputField.addEventListener('input', () => {
+            const query = inputField.value.toLowerCase();
+            suggestionList.innerHTML = '';
+
+            if (query) {
+                const filteredSuggestions = pokemonList.filter(pokemon => pokemon.name.toLowerCase().startsWith(query));
+
+                filteredSuggestions.forEach(pokemon => {
+                    const li = document.createElement('li');
+                    const img = document.createElement('img');
+                    img.src = pokemon.sprite;
+                    img.alt = pokemon.name;
+                    img.width = 100;
+                    img.height = 100;
+                    const span = document.createElement('span');
+                    span.textContent = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+
+                    li.appendChild(img);
+                    li.appendChild(span);
+                    suggestionList.appendChild(li);
+
+                    li.addEventListener('click', () => {
+                        inputField.value = pokemon.name;
+                        suggestionList.innerHTML = '';
+                        suggestionList.style.display = 'none';
+                    });
+                });
+
+                suggestionList.style.display = filteredSuggestions.length > 0 ? 'block' : 'none';
+            } else {
+                suggestionList.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!inputField.contains(e.target as Node) && !suggestionList.contains(e.target as Node)) {
+                suggestionList.style.display = 'none';
+            }
+        });
+    });
 
 
 });
