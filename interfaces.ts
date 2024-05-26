@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb"
+
 export enum Rank {
     Beginner,
     Trainer,
@@ -21,7 +23,7 @@ export interface Pokemon{
 
 }
 export interface User{
-    id : number
+    _id?: ObjectId;
     userName : string
     password : string
     userPetId : number

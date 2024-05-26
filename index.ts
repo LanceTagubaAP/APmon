@@ -2,13 +2,15 @@ import express from "express";
 import { getFirst151Pokemon } from "./apicall";
 import { Pokemon } from "./interfaces";
 import dotenv from "dotenv";
-import { connect, fetchAndInsertPokemons,getPokemonCollection,seed } from "./database";
+import { connect, fetchAndInsertPokemons,getPokemon,getPokemonCollection,seed } from "./database";
+import session from "./session";
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.set("port", port);
 app.use(express.static("public"));
+app.use(session);
 app.set("view engine", "ejs");
 
 let data : Pokemon[] = [];
@@ -41,9 +43,24 @@ app.get("/login",(req,res)=>{
     res.render("login");
 });
 
-app.get("/battle",(req,res)=>{
+app.get("/battle/:id", async(req,res)=>{
     /**Hier komt battle pagina */
-    res.render("battle");
+    const pokemonId = parseInt(req.params.id) ;
+    try {
+        const enemyPokemon = await getPokemon(pokemonId);
+        
+        if (enemyPokemon) {
+            res.render("battle",{enemyPokemon});
+        } else {
+            res.status(404).send("Pokemon not found");
+        }
+    } catch (error) {
+        res.status(500).send("Internal Server Error");
+    }
+    
+
+
+    
 });
 
 
