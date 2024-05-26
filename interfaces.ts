@@ -24,6 +24,7 @@ export interface User{
     id : number
     userName : string
     password : string
+    userPetId : number
     userPokemons : Pokemon[]
     rank : Rank
     icon : string

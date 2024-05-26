@@ -2,7 +2,7 @@ import express from "express";
 import { getFirst151Pokemon } from "./apicall";
 import { Pokemon } from "./interfaces";
 import dotenv from "dotenv";
-import { connect, fetchAndInsertPokemons,seed } from "./database";
+import { connect, fetchAndInsertPokemons,getPokemonCollection,seed } from "./database";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -157,7 +157,7 @@ app.listen(app.get("port"), async () => {
     await seed();
     await fetchAndInsertPokemons();
 
-    data = await getFirst151Pokemon();
+    data = await getPokemonCollection();
 
     }
 );

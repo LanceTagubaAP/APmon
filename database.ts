@@ -1,13 +1,18 @@
 import { MongoClient, Db, Collection, ObjectId  } from "mongodb";
 import { Pokemon, User , Rank } from "./interfaces";
 import dotenv from "dotenv";
+import bcrypt from "bcrypt";
 
 
 dotenv.config();
 const uri = process.env.MONGO_URI;
 export const client = new MongoClient(uri || "mongodb://localhost:27017/mydb");
+
+
 export const collection : Collection<Pokemon> = client.db("APmon").collection<Pokemon>("pokemons");
 export const usersCollection : Collection<User> = client.db("APmon").collection<User>("users");
+
+const saltRounds : number = 10;
 
 
 export async function exit() {
@@ -31,14 +36,15 @@ export async function connect() {
 }
 export async function fetchAndInsertPokemons(): Promise<void> {
     
-    const pokemonsCollection: Collection<Pokemon> = client.db("APmon").collection<Pokemon>("pokemons");
-    const pokemonsCount = await pokemonsCollection.countDocuments();
+    
+    const pokemonsCount = await collection.countDocuments();
     if (pokemonsCount === 0) {
         
         const pokemons: Pokemon[] = await getFirst151Pokemon() //await response.json();
-        await pokemonsCollection.insertMany(pokemons);
+        await collection.insertMany(pokemons);
         console.log('Pokemons inserted into MongoDB');
-    }
+    }else console.log('Pokemons already in MongoDB');
+
 
 }
 
@@ -89,14 +95,26 @@ async function getFirst151Pokemon(): Promise<Pokemon[]> {
         }
     }
     
-    console.log("Loading complete");
+    
+    console.log("Loading complete from API");
     return pokemonData;
 }
+export async function getPokemonCollection() {
+    return await collection.find().toArray();
+}
+
 export async function seed() {
+    let username : string | undefined = process.env.ADMIN_USER;
+    let password : string | undefined = process.env.ADMIN_PASSWORD;
+    if (username === undefined || password === undefined) {
+        throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD must be set in environment");
+    }
+
     const users : User[] = [{
         id : 1,
-        userName : "Lance",
-        password : "123",
+        userName : username,
+        password : await bcrypt.hash(password, saltRounds),
+        userPetId : 1,
         userPokemons : await getFirst151Pokemon(),
         rank : Rank.Beginner, 
         icon : "test",
@@ -104,6 +122,11 @@ export async function seed() {
     }]
     if (await usersCollection.countDocuments() === 0) {
         await usersCollection.insertMany(users);
-    }
-    console.log("seed complete")
+        console.log("seed complete")
+    }else console.log("Users already in db");
+
+    
+}
+export async function getPokemon(id:number) {
+    return await collection.findOne<Pokemon>({id : id});
 }
