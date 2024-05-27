@@ -25,6 +25,7 @@ export interface Pokemon{
 export interface User{
     _id?: ObjectId;
     userName : string
+    email: string
     password : string
     userPetId : number
     userPokemons : Pokemon[]
