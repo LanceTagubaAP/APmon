@@ -1,23 +1,34 @@
 import express from "express";
 import { getFirst151Pokemon } from "./apicall";
-import { Pokemon } from "./interfaces";
+import { Pokemon, User } from "./interfaces";
 import dotenv from "dotenv";
-import { connect, fetchAndInsertPokemons,getPokemon,getPokemonCollection,seed } from "./database";
+import { connect, fetchAndInsertPokemons,getPokemon,getPokemonCollection,seed, login, getUserById } from "./database";
 import session from "./session";
+import { secureMiddleware } from "./secureMiddleware";
+import { loginRouter } from "./routes/loginRouter";
+import { homeRouter } from "./routes/homeRouter";
+import exp from "constants";
+import cookieparser from "cookie-parser";
+
 
 const app = express();
 const port = process.env.PORT || 3000;
-
+app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended:true}))
 app.set("port", port);
 app.use(express.static("public"));
 app.use(session);
+app.use(loginRouter());
+app.use(homeRouter());
 app.set("view engine", "ejs");
+
+app.use(cookieparser());
 
 let data : Pokemon[] = [];
 
 app.get("/", (req, res) => {
     /**Hier komt eerste pagina */
-    res.render("index");
+    res.render("/")
 });
 
 app.get("/titleScreen",(req,res)=>{
@@ -43,6 +54,25 @@ app.get("/login",(req,res)=>{
     res.render("login");
 });
 
+app.post("/login", async(req, res) => {
+    const username : string = req.body.usernameInput;
+    const password : string = req.body.passwordInput;
+    try {
+        let user : User = await login(username, password);
+        delete user.password; 
+        req.session.user = user;
+        res.redirect("/mainpage")
+    } catch (e : any) {
+        res.redirect("/login");
+    }
+});
+
+app.get("/logout", async(req, res) => {
+    req.session.destroy(() => {
+        res.redirect("/login");
+    });
+});
+
 app.get("/battle/:id", async(req,res)=>{
     /**Hier komt battle pagina */
     const pokemonId = parseInt(req.params.id) ;
@@ -64,10 +94,29 @@ app.get("/battle/:id", async(req,res)=>{
 });
 
 
-app.get("/mainpage",(req,res)=>{
+
+app.get("/mainpage", secureMiddleware, async (req,res)=>{
     /**Hier komt menu pagina */
-    res.render("mainpage");
+
+    if (req.session.user) {
+        let userId = req.session.user._id;
+        if (userId) {  // Check if userId is defined
+            let foundUser = await getUserById(userId);
+            if (foundUser) {  // Check if foundUser is not null
+                let userpetId = foundUser.userPetId;
+                let userPokemon = foundUser.userPokemons[userpetId - 1];
+                res.render("mainpage", { user: foundUser, pokemon: userPokemon });
+            } else {
+                res.status(404).send("User not found");
+            }
+        } else {
+            res.status(400).send("User ID is not defined");
+        }
+    } else {
+        res.status(401).send("User not logged in");
+    }
 });
+
 app.get("/battlechoose", (req, res) => {
     /**Hier komt pokemon vechten pagina */
     /** TODO: Random pokemons voor aanbevolen pokemons tonen 
@@ -88,21 +137,9 @@ app.get("/battlechoose", (req, res) => {
     let randomPokemon3 : Pokemon = data[randomNumber3];
     
     res.render("battlechoose",{
-        randomName : randomPokemon.name,
-        randomSprite : randomPokemon.front_default,
-        randomHP : randomPokemon.health,
-        randomAD : randomPokemon.attack,
-        randomDF : randomPokemon.defense,
-        randomName2 : randomPokemon2.name,
-        randomSprite2 : randomPokemon2.front_default,
-        randomHP2 : randomPokemon2.health,
-        randomAD2 : randomPokemon2.attack,
-        randomDF2 : randomPokemon2.defense,
-        randomName3 : randomPokemon3.name,
-        randomSprite3 : randomPokemon3.front_default,
-        randomHP3 : randomPokemon3.health,
-        randomAD3 : randomPokemon3.attack,
-        randomDF3 : randomPokemon3.defense,
+        randomPokemon : randomPokemon,
+        randomPokemon2 : randomPokemon2,
+        randomPokemon3 : randomPokemon3,
         data : data
     });
 
@@ -157,9 +194,11 @@ app.get("/whosthatpokemon", (req, res) => {
     });
 });
 
-app.get("/howtoplay", (req, res) => {
+app.get("/howtoplay", async (req, res) => {
     /**Hier komt how to play pagina */
-    res.render("howtoplay");
+    if (req.session.user?.userName) {
+        res.render("howtoplay", {user: req.session.user.userName});
+    }
 });
 
 

@@ -116,7 +116,7 @@ export async function seed() {
         userPetId : 1,
         userPokemons : await getFirst151PokemonFromAPI(),
         rank : Rank.Beginner, 
-        email:"",
+        email:"firstUser@hotmail.com",
         icon : "test",
         streak : 0,
     }]
@@ -136,7 +136,7 @@ export async function getPokemonFromUser(userId:number,pokemonId : number) {
 export async function updateRank(user:User) {
     
 }
-export async function updateCatchedFromUser(pokemonId : number, userId : number) {
+export async function updateCatchedFromUser(pokemonId : number, userId : ObjectId) {
     
     try {
         const result = await usersCollection.updateOne(
@@ -153,3 +153,25 @@ export async function updateCatchedFromUser(pokemonId : number, userId : number)
         console.error('Error updating Pokémon catch status:', error);
     }
 }
+
+export async function login(userName: string, password: string) {
+    if (userName === "" || password === "") {
+        throw new Error("Gebruiker of wachtwoord is vereist!");
+    }
+    let user : User | null = await usersCollection.findOne<User>({userName: userName});
+    if (user) {
+        if (await bcrypt.compare(password, user.password!)) {
+            return user;
+        } else {
+            throw new Error("Wachtwoord is fout!");
+        }
+    } else {
+        throw new Error("Gebruiker niet gevonden!");
+    }
+}
+
+export const getUserById= async (userId: ObjectId): Promise<User | null> => {
+
+    const user = await usersCollection.findOne({ _id: userId });
+    return user;
+};

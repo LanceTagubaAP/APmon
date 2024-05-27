@@ -1,9 +1,9 @@
-<%- include("partials/top") %>
+<%- include("partials/top") %> 
     <title>MainPage</title>
     </head>
 
     <body id="MainPage">
-        <%- include("partials/header") %>
+       <%- include("partials/header") %>
             <main>
                 <section id="menu">
                     <button id="gues"><a href="battlechoose"><img src="assets/img/pokemon-vechten.png"
@@ -14,7 +14,9 @@
                                 alt=""></a></button>
                     <button id="vecht"><a href="howtoplay"><img src="assets/img/Hoe-Moet-Je-Spelen.png"
                                 alt=""></a></button>
-                    <button id=""><a href="titleScreen"><img src="assets/img/Uit-Loggen.png" alt=""></a></button>
+                    <form action="/logout" method="post">
+                    <button type="submit"><img src="assets/img/Uit-Loggen.png" alt=""></button>
+                    </form>
                 </section>
 
             </main>
