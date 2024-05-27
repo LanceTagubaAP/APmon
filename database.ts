@@ -116,6 +116,7 @@ export async function seed() {
         userPetId : 1,
         userPokemons : await getFirst151PokemonFromAPI(),
         rank : Rank.Beginner, 
+        email:"",
         icon : "test",
         streak : 0,
     }]
