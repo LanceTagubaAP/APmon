@@ -27,7 +27,7 @@
                 </li>
               </ul>
               </ul>
-              <a href="./battle" type="button" class="btn btn-primary">Vechten!</a>
+              <a href="./battle/<%= randomPokemon.id %>" type="button" class="btn btn-primary">Vechten!</a>
             </div>
           </div>
           <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
@@ -47,7 +47,7 @@
                 <li>Verdedigingspunten:<%= randomPokemon2.defense %>
                 </li>
               </ul>
-              <a href="./battle" type="button" class="btn btn-primary">Vechten!</a>
+              <a href="./battle/<%= randomPokemon2.id %>" type="button" class="btn btn-primary">Vechten!</a>
 
             </div>
           </div>
@@ -68,7 +68,7 @@
                 <li>Verdedigingspunten:<%= randomPokemon3.defense %>
                 </li>
               </ul>
-              <a href="./battle" type="button" class="btn btn-primary">Vechten!</a>
+              <a href="./battle/<%= randomPokemon3.id %>" type="button" class="btn btn-primary">Vechten!</a>
 
             </div>
           </div>
@@ -86,7 +86,7 @@
                   <% for (let pokemon of data) { %>
                       <tr>
                        <!--  <td> <img class="pokedexSprite" src="<%- pokemon.sprite %>" alt=""></td> --> 
-                          <td><a href="/pokedex/<%= pokemon.id %>"><img src="<%- pokemon.icon %>" alt=""> <%- pokemon.name %></a></td>
+                          <td><a href="/battle/<%= pokemon.id %>"><img src="<%- pokemon.icon %>" alt=""> <%- pokemon.name %></a></td>
                           <td><%- pokemon.health %></td>
                           <td><%- pokemon.attack %></td>
                           <td><%- pokemon.defense %></td>

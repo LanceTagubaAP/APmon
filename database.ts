@@ -175,3 +175,7 @@ export const getUserById= async (userId: ObjectId): Promise<User | null> => {
     const user = await usersCollection.findOne({ _id: userId });
     return user;
 };
+
+export function getRankName(user: User): string {
+    return Rank[user.rank];
+}
