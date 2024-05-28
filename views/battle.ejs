@@ -55,13 +55,16 @@
         document.addEventListener("DOMContentLoaded", () => {
           const attackButton = document.querySelector(".attack");
           const catchButton = document.querySelector(".catch");
+          const urlPath = window.location.pathname;
+          const battleId = urlPath.split("/").pop();
+
 
           attackButton.addEventListener("click", async () => {
-            console.log("clicked");
+            console.log("clicked attack");
             try {
               // Make a POST request to the backend route to handle attacks
-              const urlPath = window.location.pathname;
-              const battleId = urlPath.split("/").pop();
+               urlPath = window.location.pathname;
+               battleId = urlPath.split("/").pop();
 
 
               const response = await fetch(`/battle/${battleId}`, {
@@ -70,8 +73,8 @@
                   "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                  attack: { /* Information about the user's Pokémon */ },
-                  defender: { /* Information about the enemy Pokémon */ }
+                  attack: { /* Information about the user's Pokémon */ }
+
                 })
               });
 
@@ -91,14 +94,32 @@
             }
           });
           catchButton.addEventListener("click", async () => {
-            console.log("Catch clicked")
+            console.log("Catch clicked");
+            try {
+               urlPath = window.location.pathname;
+               battleId = urlPath.split("/").pop();
+
+            } catch (error) {
+              console.error("Error catching:", error);
+            }
+            const response = await fetch(`/battle/${battleId}`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                catch: { /* Information about the user's Pokémon */ }
+
+              })
+            });
 
 
-            
-          })
+
+
+          });
         });
-          
-          
+
+
 
 
 

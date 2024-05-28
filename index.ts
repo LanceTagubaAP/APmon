@@ -10,6 +10,7 @@ import { homeRouter } from "./routes/homeRouter";
 import exp from "constants";
 import cookieparser from "cookie-parser";
 import path from "path";
+import { catchPokemon, getRandomUniqueNumbers } from "./battle";
 
 
 const app = express();
@@ -118,18 +119,35 @@ app.post("/battle/:id", async (req, res) => {
         // This function should return updated HP values for both Pokémon
         // const updatedHP = handleAttack(req.body.attacker, req.body.defender);
         if (req.session.user?._id) {
-            console.log("route battle")
-            let myUser = await getUserById(req.session.user?._id);
-            if (myUser) {
-                let enemyPokemon = await getPokemon(parseInt(req.params.id));
-                let myPokemon = await getPokemonFromUser(myUser?._id, myUser?.userPetId);
-                if (enemyPokemon) {
-                    const [updatedMyPokemon,updatedEnemyPokemon] = handleAttack(myPokemon,enemyPokemon);
-                    res.json({updatedMyPokemon,updatedEnemyPokemon});
-                }
-                
+            if (req.body.attack) {
+                console.log("route attack")
+                let myUser = await getUserById(req.session.user?._id);
+                if (myUser) {
+                    let enemyPokemon = await getPokemon(parseInt(req.params.id));
+                    let myPokemon = await getPokemonFromUser(myUser?._id, myUser?.userPetId);
+                    if (enemyPokemon) {
+                        const [updatedMyPokemon, updatedEnemyPokemon] = handleAttack(myPokemon, enemyPokemon);
+                        res.json({ updatedMyPokemon, updatedEnemyPokemon });
+                    }
 
+
+                }
             }
+            if (req.body.catch) {
+                console.log("route catch")
+                let myUser = await getUserById(req.session.user._id);
+                if (myUser) {
+                    let enemyPokemon = await getPokemon(parseInt(req.params.id));
+                    if (enemyPokemon) {
+                        const catched = catchPokemon(enemyPokemon?.health,enemyPokemon?.maxHealth);
+                        
+
+
+                    }
+                    
+                }
+            }
+
 
 
         }
@@ -179,12 +197,15 @@ app.get("/battlechoose", secureMiddleware, async (req, res) => {
      * 
      * 
      */
-    let randomNumber: number = Math.floor(Math.random() * 151) + 1;
-    let randomNumber2: number = Math.floor(Math.random() * 151) + 1;
-    let randomNumber3: number = Math.floor(Math.random() * 151) + 1;
-    let randomPokemon: Pokemon = data[randomNumber];
-    let randomPokemon2: Pokemon = data[randomNumber2];
-    let randomPokemon3: Pokemon = data[randomNumber3];
+    const [randomNumber, randomNumber2, randomNumber3] = getRandomUniqueNumbers(151, 3);
+
+    const randomPokemon: Pokemon | undefined = data[randomNumber];
+    const randomPokemon2: Pokemon | undefined = data[randomNumber2];
+    const randomPokemon3: Pokemon | undefined = data[randomNumber3];
+
+    if (!randomPokemon || !randomPokemon2 || !randomPokemon3) {
+        throw new Error("Failed to retrieve one or more Pokémon.");
+    }
 
 
     if (req.session.user) {

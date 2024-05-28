@@ -64,3 +64,13 @@ export function catchPokemon(currentHP: number, maxHP: number = 100): boolean {
     // Determine if the Pokémon is caught
     return randomNumber < finalCatchRate;
 }
+export function getRandomUniqueNumbers(max: number, count: number): number[] {
+    const uniqueNumbers = new Set<number>();
+
+    while (uniqueNumbers.size < count) {
+        const randomNumber = Math.floor(Math.random() * max) + 1;
+        uniqueNumbers.add(randomNumber);
+    }
+
+    return Array.from(uniqueNumbers);
+}
