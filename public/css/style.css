@@ -1729,6 +1729,11 @@ main>img {
   display: flex;
   flex-direction: row-reverse;
 
+}
+
+#logout {
+  height: auto;
+  width: 500px;
 
 }
 
