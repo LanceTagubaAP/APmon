@@ -278,6 +278,15 @@
     border:solid black;
   }
 
+  .avatarOptions label input[type="radio"]:checked + .avatarImg {
+    border: 4px solid black; 
+}
+
+
+.beginPokemon label input[type="radio"]:checked + .beginPokemonImg {
+  border: 4px solid black; 
+}
+
   .rankHeader{
     visibility: hidden;
   }
@@ -524,16 +533,20 @@ text-align: center;
     margin-top: 2rem;
   }
 
-  .starterPokemonText{
+  .starterPokemonText,.starterAvatarText, .registerText{
     font-family: "Pokemon Classic Regular";
-    text-shadow: 1px 3px 2px black;
-    font-size: 1rem;
+    text-shadow: 3px 3px 3px black;
+    font-size: 1.2rem;
     color: white;
   }
 
+  .registerText{
+    margin-top: 2rem;
+  }
+
+  
   .beginPokemonImg{
     background-color: rgba(0, 0, 0, 0.4);
-    border: solid black;
   }
 
   input{
