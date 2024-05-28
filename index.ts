@@ -77,8 +77,8 @@ app.get("/logout", async (req, res) => {
     });
 });
 
-app.get("/signup", async(req, res) => {
-   res.render('signup', {error:null});
+app.get("/signup", async (req, res) => {
+    res.render('signup', { error: null });
 });
 
 app.post('/signup', async (req, res) => {
@@ -86,15 +86,15 @@ app.post('/signup', async (req, res) => {
     try {
         // Roep de registerUser-functie aan met de ontvangen gegevens
         const user = await registerUser(usernameInput, emailInput, passwordInput, icon, parseInt(userPetId));
-        if(user._id){
-            updateCatchedFromUser(userPetId,user._id)
+        if (user._id) {
+            updateCatchedFromUser(userPetId, user._id)
             // Na succesvol registreren, doorsturen naar de hoofdpagina
             res.redirect('/login');
         }
-        else{
+        else {
             console.log('Probleem met aanmaken van user')
         }
-      
+
     } catch (error: any) { // Gebruik 'any' om elke vorm van error toe te laten
         // Als er een fout optreedt, stuur een foutmelding terug naar de client
         const errorMessage = error.message || "Internal server error";
@@ -102,7 +102,7 @@ app.post('/signup', async (req, res) => {
     }
 });
 
-app.get("/battle/:id", async(req,res)=>{
+app.get("/battle/:id", async (req, res) => {
     /**Hier komt battle pagina */
     const pokemonId = parseInt(req.params.id);
     if (req.session.user) {
@@ -137,7 +137,7 @@ app.get("/battle/:id", async(req,res)=>{
     }
 
 
-  
+
 });
 app.post("/battle/:id", async (req, res) => {
     try {
@@ -301,18 +301,98 @@ app.get("/compare/:id", (req, res) => {
 
 
 
-app.get("/whosthatpokemon", (req, res) => {
+app.get("/whosthatpokemon", async (req, res) => {
     /**Hier komt Who's that pokemon pagina */
 
     let randomNumber: number = Math.floor(Math.random() * 151) + 1;
     let randomPokemon: Pokemon = data[randomNumber];
-
-
     res.render("whosthatpokemon", {
-        randomSprite: randomPokemon.front_default
-
+        randomSprite: randomPokemon.front_default,
     });
+
+    if (req.session.user) {
+        let userId = req.session.user._id;
+        if (userId) {  // Check if userId is defined
+            let foundUser = await getUserById(userId);
+            if (foundUser) {  // Check if foundUser is not null
+                let userpetId = foundUser.userPetId;
+                let userPokemon = foundUser.userPokemons[userpetId - 1];
+                let rankName = getRankName(foundUser);
+            } else {
+                res.status(404).send("User not found");
+            }
+        } else {
+            res.status(400).send("User ID is not defined");
+        }
+    } else {
+        res.status(401).send("User not logged in");
+    }
+
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const inputField = document.getElementById('inputField') as HTMLInputElement;
+        const suggestionList = document.getElementById('suggestionList') as HTMLUListElement;
+
+        const pokemonList: Pokemon[] = await getFirst151Pokemon();
+
+        inputField.addEventListener('input', () => {
+            const query = inputField.value.toLowerCase();
+            suggestionList.innerHTML = '';
+
+            if (query) {
+                const filteredSuggestions = pokemonList.filter(pokemon => pokemon.name.toLowerCase().startsWith(query));
+
+                filteredSuggestions.forEach(pokemon => {
+                    const li = document.createElement('li');
+                    const img = document.createElement('img');
+                    img.src = pokemon.front_default;
+                    const span = document.createElement('span');
+                    span.textContent = pokemon.name;
+
+                    li.appendChild(img);
+                    li.appendChild(span);
+                    suggestionList.appendChild(li);
+
+                    li.addEventListener('click', () => {
+                        inputField.value = pokemon.name;
+                        suggestionList.innerHTML = '';
+                        suggestionList.style.display = 'none';
+                    });
+                });
+
+                if (filteredSuggestions.length > 0) {
+                    suggestionList.style.display = 'block';
+                } else {
+                    suggestionList.style.display = 'none';
+                }
+            } else {
+                suggestionList.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!inputField.contains(e.target as Node) && !suggestionList.contains(e.target as Node)) {
+                suggestionList.style.display = 'none';
+            }
+        });
+    });
+
+
+
+
+
+
 });
+
+
+
+
+
+
+
+
+
+
 
 app.get("/howtoplay", async (req, res) => {
     /**Hier komt how to play pagina */
