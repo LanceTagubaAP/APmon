@@ -19,14 +19,14 @@
 
          <div class='gridAlly'>
             <div class="AllyHP">
-                <h3 class="battleName">Dragonite</h3>
+                <h3 class="battleName"><%= pokemon.name %></h3>
                 <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                   <p class="textBeforeHP">HP </p>
                   <div class="progress-bar bg-success" style="width: 100%"></div>
                 </div>
             </div>
              <div class="AllyPokemon">
-             <img id="mySprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/149.png" alt=""></div>
+             <img id="mySprite" src=<%= pokemon.back_default %> alt=""></div>
          </div>
  
          <div class="infoBattle"> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus consequuntur minus, excepturi
@@ -37,7 +37,7 @@
         <div class="commands">
           <button type="button" class="attack btn">Aanvallen</button>
           <button type="button" class="catch btn">Vangen</button>
-          <a href="./mainpage.html" type="button" class="run btn">Wegrennen</a>
+          <a href="/mainpage" type="button" class="run btn">Wegrennen</a>
         </div>
 
 

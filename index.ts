@@ -88,6 +88,7 @@ app.get("/battle/:id", async (req, res) => {
                 if (enemyPokemon) {
                     res.render("battle", {
                         user: foundUser,
+                        rankName: rankName,
                         pokemon: userPokemon,
                         enemyPokemon: enemyPokemon,
                         data: data
@@ -108,7 +109,20 @@ app.get("/battle/:id", async (req, res) => {
 
 
 });
+app.post("/battle/:id", async (req, res) => {
+    try {
+        // Logic to handle attacks (e.g., calculate damage, update HP)
+        // You may want to pass information about the attacking and defending Pokémon in the request body
+        // This function should return updated HP values for both Pokémon
+        // const updatedHP = handleAttack(req.body.attacker, req.body.defender);
 
+        // Send the updated HP values as a response
+        // res.json(updatedHP);
+    } catch (error) {
+        console.error("Error handling attack:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
 
 
 app.get("/mainpage", secureMiddleware, async (req, res) => {
