@@ -251,9 +251,7 @@ app.get("/whosthatpokemon", async (req, res) => {
 
     let randomNumber: number = Math.floor(Math.random() * 151) + 1;
     let randomPokemon: Pokemon = data[randomNumber];
-    res.render("whosthatpokemon", {
-        randomSprite: randomPokemon.front_default,
-    });
+
 
     if (req.session.user) {
         let userId = req.session.user._id;
@@ -263,6 +261,12 @@ app.get("/whosthatpokemon", async (req, res) => {
                 let userpetId = foundUser.userPetId;
                 let userPokemon = foundUser.userPokemons[userpetId - 1];
                 let rankName = getRankName(foundUser);
+                res.render("whosthatpokemon", {
+                    randomSprite: randomPokemon.front_default,
+                    user: foundUser
+
+                });
+
             } else {
                 res.status(404).send("User not found");
             }
