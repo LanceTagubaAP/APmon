@@ -15,6 +15,8 @@ export function inflictDamage(myPokemon: Pokemon, otherPokemon: Pokemon) {
     }
 
     let damage = critChanceMod * (Math.pow(myPokemon.attack * modA, 2)) / otherPokemon.defense * modD;
+    const damageNerf = 0.125;
+    damage *= damageNerf;
 
    
     console.log(` 
@@ -25,6 +27,11 @@ export function inflictDamage(myPokemon: Pokemon, otherPokemon: Pokemon) {
                     
     `);
     otherPokemon.health -= damage;
+
+    return {
+        myPokemon : myPokemon,
+        otherPokemon : otherPokemon,
+    }
 
 
 }

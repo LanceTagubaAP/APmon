@@ -54,6 +54,7 @@
       <script>
         document.addEventListener("DOMContentLoaded", () => {
           const attackButton = document.querySelector(".attack");
+          const catchButton = document.querySelector(".catch");
 
           attackButton.addEventListener("click", async () => {
             console.log("clicked");
@@ -69,7 +70,7 @@
                   "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                  attacker: { /* Information about the user's Pokémon */ },
+                  attack: { /* Information about the user's Pokémon */ },
                   defender: { /* Information about the enemy Pokémon */ }
                 })
               });
@@ -89,7 +90,17 @@
               console.error("Error attacking:", error);
             }
           });
+          catchButton.addEventListener("click", async () => {
+            console.log("Catch clicked")
+
+
+            
+          })
         });
+          
+          
+
+
 
       </script>
       <%- include("partials/bottom") %>

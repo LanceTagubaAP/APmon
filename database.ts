@@ -207,9 +207,10 @@ export const updateUserRank = async (userId: ObjectId, newRank: Rank): Promise<b
 };
 
 export function handleAttack(myPokemon : Pokemon , enemyPokemon : Pokemon){
-    inflictDamage(myPokemon,enemyPokemon);
-    inflictDamage(enemyPokemon,myPokemon);
-    return [myPokemon,enemyPokemon];
+    const turn1 = inflictDamage(myPokemon,enemyPokemon);
+    const turn2 = inflictDamage(turn1.otherPokemon,turn1.myPokemon);
+    //TODO BattleLog message meegeven
+    return [turn2.myPokemon,turn2.otherPokemon];
 }
 
 export async function updateHPFromUser(pokemonId : number, userId : ObjectId,newHP:number) {
@@ -227,5 +228,40 @@ export async function updateHPFromUser(pokemonId : number, userId : ObjectId,new
         }
     } catch (error) {
         console.error('Error updating Pokémon HP status:', error);
+    }
+}
+
+export async function updateAttackFromUser(pokemonId : number, userId : ObjectId,newAttack:number) {
+    
+    try {
+        const result = await usersCollection.updateOne(
+            { id: userId, 'userPokemons.id': pokemonId },
+            { $set: { 'userPokemons.$.attack': newAttack } }
+        );
+
+        if (result.matchedCount === 0) {
+            console.log('No user or Pokémon found with the provided IDs.');
+        } else {
+            console.log('Pokémon catch status updated successfully.');
+        }
+    } catch (error) {
+        console.error('Error updating Pokémon Attack status:', error);
+    }
+}
+export async function updateDefenseFromUser(pokemonId : number, userId : ObjectId,newDefense:number) {
+    
+    try {
+        const result = await usersCollection.updateOne(
+            { id: userId, 'userPokemons.id': pokemonId },
+            { $set: { 'userPokemons.$.defense': newDefense } }
+        );
+
+        if (result.matchedCount === 0) {
+            console.log('No user or Pokémon found with the provided IDs.');
+        } else {
+            console.log('Pokémon catch status updated successfully.');
+        }
+    } catch (error) {
+        console.error('Error updating Pokémon Defense status:', error);
     }
 }
