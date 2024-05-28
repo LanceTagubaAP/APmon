@@ -2,7 +2,7 @@ import express from "express";
 import { getFirst151Pokemon } from "./apicall";
 import { Pokemon, User } from "./interfaces";
 import dotenv from "dotenv";
-import { connect, fetchAndInsertPokemons, getPokemon, getPokemonCollection, seed, login, getUserById,getRankName } from "./database";
+import { connect, fetchAndInsertPokemons,getPokemon,getPokemonCollection,seed, login, getUserById, registerUser,updateCatchedFromUser, getRankName } from "./database";
 import session from "./session";
 import { secureMiddleware } from "./secureMiddleware";
 import { loginRouter } from "./routes/loginRouter";
@@ -69,11 +69,36 @@ app.post("/login", async (req, res) => {
 
 app.get("/logout", async (req, res) => {
     req.session.destroy(() => {
-        res.redirect("/login");
+        res.redirect("/titleScreen");
     });
 });
 
-app.get("/battle/:id", async (req, res) => {
+app.get("/signup", async(req, res) => {
+   res.render('signup', {error:null});
+});
+
+app.post('/signup', async (req, res) => {
+    const { usernameInput, emailInput, passwordInput, icon, userPetId } = req.body;
+    try {
+        // Roep de registerUser-functie aan met de ontvangen gegevens
+        const user = await registerUser(usernameInput, emailInput, passwordInput, icon, parseInt(userPetId));
+        if(user._id){
+            updateCatchedFromUser(userPetId,user._id)
+            // Na succesvol registreren, doorsturen naar de hoofdpagina
+            res.redirect('/login');
+        }
+        else{
+            console.log('Probleem met aanmaken van user')
+        }
+      
+    } catch (error: any) { // Gebruik 'any' om elke vorm van error toe te laten
+        // Als er een fout optreedt, stuur een foutmelding terug naar de client
+        const errorMessage = error.message || "Internal server error";
+        res.status(400).send(errorMessage);
+    }
+});
+
+app.get("/battle/:id", async(req,res)=>{
     /**Hier komt battle pagina */
     const pokemonId = parseInt(req.params.id);
     if (req.session.user) {
@@ -107,6 +132,7 @@ app.get("/battle/:id", async (req, res) => {
     }
 
 
+  
 });
 
 
