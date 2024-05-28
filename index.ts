@@ -3,7 +3,7 @@ import { getFirst151Pokemon } from "./apicall";
 import { Pokemon, User } from "./interfaces";
 import dotenv from "dotenv";
 
-import { connect, fetchAndInsertPokemons,getPokemon,getPokemonCollection,seed, login, getUserById, registerUser,updateCatchedFromUser, getRankName , handleAttack,getPokemonFromUser } from "./database";
+import { connect, fetchAndInsertPokemons, getPokemon, getPokemonCollection, seed, login, getUserById, registerUser, updateCatchedFromUser, getRankName, handleAttack, getPokemonFromUser } from "./database";
 import session from "./session";
 import { secureMiddleware } from "./secureMiddleware";
 import { loginRouter } from "./routes/loginRouter";
@@ -166,12 +166,12 @@ app.post("/battle/:id", async (req, res) => {
                 if (myUser) {
                     let enemyPokemon = await getPokemon(parseInt(req.params.id));
                     if (enemyPokemon) {
-                        const catched = catchPokemon(enemyPokemon?.health,enemyPokemon?.maxHealth);
-                        
+                        const catched = catchPokemon(enemyPokemon?.health, enemyPokemon?.maxHealth);
+
 
 
                     }
-                    
+
                 }
             }
 
@@ -304,9 +304,8 @@ app.get("/compare/:id", (req, res) => {
 app.get("/whosthatpokemon", async (req, res) => {
     /**Hier komt Who's that pokemon pagina */
 
-    let randomNumber: number = Math.floor(Math.random() * 151) + 1;
-    let randomPokemon: Pokemon = data[randomNumber];
-
+    const [randomNumber] = getRandomUniqueNumbers(151, 1);
+    const randomPokemon: Pokemon | undefined = data[randomNumber];
 
     if (req.session.user) {
         let userId = req.session.user._id;
@@ -318,7 +317,9 @@ app.get("/whosthatpokemon", async (req, res) => {
                 let rankName = getRankName(foundUser);
                 res.render("whosthatpokemon", {
                     randomSprite: randomPokemon.front_default,
-                    user: foundUser
+                    user: foundUser,
+                    pokemon: userPokemon,
+                    rankName: rankName,
 
                 });
 
@@ -331,61 +332,6 @@ app.get("/whosthatpokemon", async (req, res) => {
     } else {
         res.status(401).send("User not logged in");
     }
-
-
-    document.addEventListener('DOMContentLoaded', async () => {
-        const inputField = document.getElementById('inputField') as HTMLInputElement;
-        const suggestionList = document.getElementById('suggestionList') as HTMLUListElement;
-
-        const pokemonList: Pokemon[] = await getFirst151Pokemon();
-
-        inputField.addEventListener('input', () => {
-            const query = inputField.value.toLowerCase();
-            suggestionList.innerHTML = '';
-
-            if (query) {
-                const filteredSuggestions = pokemonList.filter(pokemon => pokemon.name.toLowerCase().startsWith(query));
-
-                filteredSuggestions.forEach(pokemon => {
-                    const li = document.createElement('li');
-                    const img = document.createElement('img');
-                    img.src = pokemon.front_default;
-                    const span = document.createElement('span');
-                    span.textContent = pokemon.name;
-
-                    li.appendChild(img);
-                    li.appendChild(span);
-                    suggestionList.appendChild(li);
-
-                    li.addEventListener('click', () => {
-                        inputField.value = pokemon.name;
-                        suggestionList.innerHTML = '';
-                        suggestionList.style.display = 'none';
-                    });
-                });
-
-                if (filteredSuggestions.length > 0) {
-                    suggestionList.style.display = 'block';
-                } else {
-                    suggestionList.style.display = 'none';
-                }
-            } else {
-                suggestionList.style.display = 'none';
-            }
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!inputField.contains(e.target as Node) && !suggestionList.contains(e.target as Node)) {
-                suggestionList.style.display = 'none';
-            }
-        });
-    });
-
-
-
-
-
-
 });
 
 
