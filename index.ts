@@ -2,7 +2,7 @@ import express from "express";
 import { getFirst151Pokemon } from "./apicall";
 import { Pokemon, User } from "./interfaces";
 import dotenv from "dotenv";
-import { connect, fetchAndInsertPokemons, getPokemon, getPokemonCollection, seed, login, getUserById,getRankName } from "./database";
+import { connect, fetchAndInsertPokemons, getPokemon, getPokemonCollection, seed, login, getUserById, getRankName } from "./database";
 import session from "./session";
 import { secureMiddleware } from "./secureMiddleware";
 import { loginRouter } from "./routes/loginRouter";
@@ -122,7 +122,7 @@ app.get("/mainpage", secureMiddleware, async (req, res) => {
                 let userpetId = foundUser.userPetId;
                 let userPokemon = foundUser.userPokemons[userpetId - 1];
                 let rankName = getRankName(foundUser);
-                res.render("mainpage", { user: foundUser, pokemon: userPokemon,rankName:rankName });
+                res.render("mainpage", { user: foundUser, pokemon: userPokemon, rankName: rankName });
             } else {
                 res.status(404).send("User not found");
             }
@@ -220,18 +220,98 @@ app.get("/compare/:id", (req, res) => {
 
 
 
-app.get("/whosthatpokemon", (req, res) => {
+app.get("/whosthatpokemon", async (req, res) => {
     /**Hier komt Who's that pokemon pagina */
 
     let randomNumber: number = Math.floor(Math.random() * 151) + 1;
     let randomPokemon: Pokemon = data[randomNumber];
-
-
     res.render("whosthatpokemon", {
-        randomSprite: randomPokemon.front_default
-
+        randomSprite: randomPokemon.front_default,
     });
+
+    if (req.session.user) {
+        let userId = req.session.user._id;
+        if (userId) {  // Check if userId is defined
+            let foundUser = await getUserById(userId);
+            if (foundUser) {  // Check if foundUser is not null
+                let userpetId = foundUser.userPetId;
+                let userPokemon = foundUser.userPokemons[userpetId - 1];
+                let rankName = getRankName(foundUser);
+            } else {
+                res.status(404).send("User not found");
+            }
+        } else {
+            res.status(400).send("User ID is not defined");
+        }
+    } else {
+        res.status(401).send("User not logged in");
+    }
+
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const inputField = document.getElementById('inputField') as HTMLInputElement;
+        const suggestionList = document.getElementById('suggestionList') as HTMLUListElement;
+
+        const pokemonList: Pokemon[] = await getFirst151Pokemon();
+
+        inputField.addEventListener('input', () => {
+            const query = inputField.value.toLowerCase();
+            suggestionList.innerHTML = '';
+
+            if (query) {
+                const filteredSuggestions = pokemonList.filter(pokemon => pokemon.name.toLowerCase().startsWith(query));
+
+                filteredSuggestions.forEach(pokemon => {
+                    const li = document.createElement('li');
+                    const img = document.createElement('img');
+                    img.src = pokemon.front_default;
+                    const span = document.createElement('span');
+                    span.textContent = pokemon.name;
+
+                    li.appendChild(img);
+                    li.appendChild(span);
+                    suggestionList.appendChild(li);
+
+                    li.addEventListener('click', () => {
+                        inputField.value = pokemon.name;
+                        suggestionList.innerHTML = '';
+                        suggestionList.style.display = 'none';
+                    });
+                });
+
+                if (filteredSuggestions.length > 0) {
+                    suggestionList.style.display = 'block';
+                } else {
+                    suggestionList.style.display = 'none';
+                }
+            } else {
+                suggestionList.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!inputField.contains(e.target as Node) && !suggestionList.contains(e.target as Node)) {
+                suggestionList.style.display = 'none';
+            }
+        });
+    });
+
+
+
+
+
+
 });
+
+
+
+
+
+
+
+
+
+
 
 app.get("/howtoplay", async (req, res) => {
     /**Hier komt how to play pagina */
