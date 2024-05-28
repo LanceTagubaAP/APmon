@@ -29,10 +29,31 @@ export function inflictDamage(myPokemon: Pokemon, otherPokemon: Pokemon) {
 
 }
 
-export function checkWin(pokemon:Pokemon){
-    if (pokemon.health <= 0) {
+export function checkWin(enemyPokemon : Pokemon){
+    if (enemyPokemon.health <= 0) {
         return true;
     } else {
         return false;
     }
+}
+export function restoreHealth(pokemon : Pokemon){
+    pokemon.health = pokemon.maxHealth;
+    return pokemon;
+}
+export function catchPokemon(currentHP: number, maxHP: number = 100): boolean {
+    // Base catch rate is 20%
+    const baseCatchRate = 0.2;
+    
+    // Calculate the modified catch rate based on the current HP
+    const hpFactor = (maxHP - currentHP) / maxHP;
+    const modifiedCatchRate = baseCatchRate + (hpFactor * baseCatchRate);
+
+    // Ensure the catch rate doesn't exceed 100%
+    const finalCatchRate = Math.min(modifiedCatchRate, 1);
+
+    // Generate a random number between 0 and 1
+    const randomNumber = Math.random();
+
+    // Determine if the Pokémon is caught
+    return randomNumber < finalCatchRate;
 }

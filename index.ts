@@ -2,13 +2,14 @@ import express from "express";
 import { getFirst151Pokemon } from "./apicall";
 import { Pokemon, User } from "./interfaces";
 import dotenv from "dotenv";
-import { connect, fetchAndInsertPokemons, getPokemon, getPokemonCollection, seed, login, getUserById,getRankName } from "./database";
+import { connect, fetchAndInsertPokemons, getPokemon, getPokemonCollection, seed, login, getUserById, getRankName, getPokemonFromUser, handleAttack } from "./database";
 import session from "./session";
 import { secureMiddleware } from "./secureMiddleware";
 import { loginRouter } from "./routes/loginRouter";
 import { homeRouter } from "./routes/homeRouter";
 import exp from "constants";
 import cookieparser from "cookie-parser";
+import path from "path";
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json({ limit: "1mb" }));
 app.use(express.urlencoded({ extended: true }))
 app.set("port", port);
 app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(session);
 app.use(loginRouter());
 app.use(homeRouter());
@@ -115,6 +117,23 @@ app.post("/battle/:id", async (req, res) => {
         // You may want to pass information about the attacking and defending Pokémon in the request body
         // This function should return updated HP values for both Pokémon
         // const updatedHP = handleAttack(req.body.attacker, req.body.defender);
+        if (req.session.user?._id) {
+            console.log("route battle")
+            let myUser = await getUserById(req.session.user?._id);
+            if (myUser) {
+                let enemyPokemon = await getPokemon(parseInt(req.params.id));
+                let myPokemon = await getPokemonFromUser(myUser?._id, myUser?.userPetId);
+                if (enemyPokemon) {
+                    const [updatedMyPokemon,updatedEnemyPokemon] = handleAttack(myPokemon,enemyPokemon);
+                    res.json({updatedMyPokemon,updatedEnemyPokemon});
+                }
+                
+
+            }
+
+
+        }
+
 
         // Send the updated HP values as a response
         // res.json(updatedHP);
@@ -136,7 +155,7 @@ app.get("/mainpage", secureMiddleware, async (req, res) => {
                 let userpetId = foundUser.userPetId;
                 let userPokemon = foundUser.userPokemons[userpetId - 1];
                 let rankName = getRankName(foundUser);
-                res.render("mainpage", { user: foundUser, pokemon: userPokemon,rankName:rankName });
+                res.render("mainpage", { user: foundUser, pokemon: userPokemon, rankName: rankName });
             } else {
                 res.status(404).send("User not found");
             }

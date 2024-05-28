@@ -2,6 +2,7 @@ import { MongoClient, Db, Collection, ObjectId  } from "mongodb";
 import { Pokemon, User , Rank } from "./interfaces";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
+import { inflictDamage } from "./battle";
 
 
 dotenv.config();
@@ -130,8 +131,21 @@ export async function seed() {
 export async function getPokemon(id:number) {
     return await collection.findOne<Pokemon>({id : id});
 }
-export async function getPokemonFromUser(userId:number,pokemonId : number) {
-    return await usersCollection.findOne( { id: userId, 'userPokemons.id': pokemonId })
+export async function getPokemonFromUser(userId: ObjectId | undefined, pokemonId: number) {
+    if (!userId) {
+        throw new Error('User ID is required');
+    }
+
+    const user = await usersCollection.findOne(
+        { _id: userId, 'userPokemons.id': pokemonId },
+        { projection: { 'userPokemons.$': 1 } }
+    );
+
+    if (!user || !user.userPokemons || user.userPokemons.length === 0) {
+        throw new Error('Pokémon not found');
+    }
+
+    return user.userPokemons[0];
 }
 export async function updateCatchedFromUser(pokemonId : number, userId : ObjectId) {
     
@@ -193,7 +207,9 @@ export const updateUserRank = async (userId: ObjectId, newRank: Rank): Promise<b
 };
 
 export function handleAttack(myPokemon : Pokemon , enemyPokemon : Pokemon){
-
+    inflictDamage(myPokemon,enemyPokemon);
+    inflictDamage(enemyPokemon,myPokemon);
+    return [myPokemon,enemyPokemon];
 }
 
 export async function updateHPFromUser(pokemonId : number, userId : ObjectId,newHP:number) {
