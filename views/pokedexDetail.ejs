@@ -1,4 +1,3 @@
-
 <%- include("partials/top") %>
     <title>APMon</title>
 </head>
@@ -16,26 +15,25 @@
             </form>
           </div>
 
-          <div class="InfoPokemonPokedex">
+        <div class="InfoPokemonPokedex">
             
             <section class="pokedexNameSection">
-                <p class="pokedexNameDescription"><%- fixedPokemon.id %>. <%- fixedPokemon.name %></p>            
+                <p class="pokedexNameDescription"><%- pokemon.id %>. <%- pokemon.name %></p>            
             </section>    
-        <img class="selectedPokemonPokedex" src="<%- fixedPokemon.front_default %>" alt="">
+        <img class="selectedPokemonPokedex" src="<%- pokemon.front_default %>" alt="">
         <section class="pokedexDescription">
-            <p class="pokedexDescriptionText">TYPE: <%- fixedPokemon.types %></p>
-            <p class="pokedexDescriptionText">LEVENSPUNTEN: <%- fixedPokemon.maxHealth %></p>
-            <p class="pokedexDescriptionText">AANVALSPUNTEN: <%- fixedPokemon.attack %></p>
-            <p class="pokedexDescriptionText">VERDEDIGINGSPUNTEN: <%- fixedPokemon.defense %></p>
-            <p class="pokedexDescriptionText"><%- fixedPokemon.description %></p>
+            <p class="pokedexDescriptionText">TYPE: <%- pokemon.types %></p>
+            <p class="pokedexDescriptionText">LEVENSPUNTEN: <%- pokemon.maxHealth %></p>
+            <p class="pokedexDescriptionText">AANVALSPUNTEN: <%- pokemon.attack %></p>
+            <p class="pokedexDescriptionText">VERDEDIGINGSPUNTEN: <%- pokemon.defense %></p>
+            <p class="pokedexDescriptionText"><%- pokemon.description %></p>
         </section>
         <div class="pokedexBottom">
             <button class="PokedexBottomButtons"><a href="/mainpage"> Partner</a></button>
-         <button class="PokedexBottomButtons"><a href="/compare"> Vergelijken</a></button>
+         <button class="PokedexBottomButtons"><a href="/compare/<%= pokemon.id %>"> Vergelijken</a></button>
          <button class="PokedexBottomButtons"><a href="/mainpage">Terug</a></button>
         </div>
     </div>
-
 
     <div class="PokedexList">
         <table>
@@ -58,6 +56,7 @@
             </tbody>
         </table>
     </div>
+
 
 
 </div>

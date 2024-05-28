@@ -1,107 +1,149 @@
 <%- include("partials/top") %>
   <title>Pokemon kiezen</title>
-</head>
+  </head>
 
-<body class="battleChoose">
-  <%- include("partials/header") %>
-  <main>
-    <h2>Aanbevolen pokemons</h2>
-    <section class="d-flex flex-wrap justify-content-center gap-5">
-      <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
-          class="card-img-top border-bottom border-2 border-black " alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Charmander</h5>
+  <body class="battleChoose">
+    <%- include("partials/header") %>
+      <main>
 
-          <ul>
-            <li>Levenspunten:150</li>
-            <li>Aanvalspunten:100</li>
-            <li>Verdedigingspunten:50</li>
-          </ul>
-          <a href="./battle" type="button" class="btn btn-primary">Vechten!</a>
+        <div class="battleChooseContent">
+          <div class="cardsBattleChoose">
+            <h2>Aanbevolen pokemons</h2>
+        <section class="d-flex flex-wrap justify-content-center gap-5 grid-column:1/3">
+          <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
+            <img src=<%= randomPokemon.front_default %>
+              class="card-img-top border-bottom border-2 border-black " alt="...">
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= randomPokemon.name %>
+              </h5>
+
+              <ul>
+                <li>Levenspunten:<%= randomPokemon.maxHealth %>
+                </li>
+                <li>Aanvalspunten:<%= randomPokemon.attack %>
+                </li>
+                <li>Verdedigingspunten:<%= randomPokemon.defense %>
+                </li>
+              </ul>
+              </ul>
+              <a href="./battle/<%= randomPokemon.id %>" type="button" class="btn btn-primary">Vechten!</a>
+            </div>
+          </div>
+          <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
+            <img src=<%= randomPokemon2.front_default %>
+            class="card-img-top border-bottom border-2 border-black" alt="...">
+            <div class="card-body">
+
+              <h5 class="card-title">
+                <%= randomPokemon2.name %>
+              </h5>
+
+              <ul>
+                <li>Levenspunten:<%= randomPokemon2.maxHealth %>
+                </li>
+                <li>Aanvalspunten:<%= randomPokemon2.attack %>
+                </li>
+                <li>Verdedigingspunten:<%= randomPokemon2.defense %>
+                </li>
+              </ul>
+              <a href="./battle/<%= randomPokemon2.id %>" type="button" class="btn btn-primary">Vechten!</a>
+
+            </div>
+          </div>
+          <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
+            <img src=<%= randomPokemon3.front_default %>
+              class="card-img-top border-bottom border-2 border-black" alt="...">
+
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= randomPokemon3.name %>
+              </h5>
+
+              <ul>
+                <li>Levenspunten:<%= randomPokemon3.maxHealth %>
+                </li>
+                <li>Aanvalspunten:<%= randomPokemon3.attack %>
+                </li>
+                <li>Verdedigingspunten:<%= randomPokemon3.defense %>
+                </li>
+              </ul>
+              <a href="./battle/<%= randomPokemon3.id %>" type="button" class="btn btn-primary">Vechten!</a>
+
+            </div>
+          </div>
+        </section>
+      </div>
+        <div class="PokedexListBattleChoose">
+          <table class="battleChooseTable">
+              <tbody>
+                <tr>
+                  <th>PokemonName</th>
+                  <th>LP</th>
+                  <th>ANV</th>
+                  <th>VDG</th>
+                </tr>
+                  <% for (let pokemon of data) { %>
+                      <tr>
+                       <!--  <td> <img class="pokedexSprite" src="<%- pokemon.sprite %>" alt=""></td> --> 
+                          <td><a href="/battle/<%= pokemon.id %>"><img src="<%- pokemon.icon %>" alt=""> <%- pokemon.name %></a></td>
+                          <td><%- pokemon.health %></td>
+                          <td><%- pokemon.attack %></td>
+                          <td><%- pokemon.defense %></td>
+                      </tr>
+                  <% } %>
+              </tbody>
+          </table>
+      </div>
+    </div>
+
+
+      <!--  <section class="pokemonListBattleChoose">
+        <div class="list-group ">
+            <button type="button " data-bs-toggle="button" class="list-group-item list-group-item-action"
+              aria-current="true">
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/149.png"
+                alt="">
+              Dragonite
+            </button>
+            <button type="button" data-bs-toggle="button" class="list-group-item list-group-item-action"> <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/4.png"
+                alt="">Charmander</button>
+            <button type="button" data-bs-toggle="button" class="list-group-item list-group-item-action"><img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/1.png"
+                alt="">Bulbasaur</button>
+            <button type="button" data-bs-toggle="button" class="list-group-item list-group-item-action"><img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/7.png"
+                alt="">Squirtle</button>
+
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+              aria-labelledby="offcanvasRightLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Gevecht</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <h2>Tegen deze pokemon vechten?</h2>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+                  class="card-img-top border-bottom border-2 border-black " alt="...">
+                <h3>Charmander</h3>
+                <a href="./battle" type="button" class="btn btn-primary">Vechten!</a>
+              </div>
+            </div>
+            <div class="battlechooseFightButton">
+              <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight">Vechten!</button>
+
+            </div>
+          </div> 
+        </section>
+        <a href="./mainpage" type="button" class="backBtn btn btn-primary">Menu</a>
         </div>
-      </div>
-      <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
-        <img src=<%= randomSprite %>
-          class="card-img-top border-bottom border-2 border-black" alt="...">
-        <div class="card-body">
-
-          <h5 class="card-title"><%= randomName %></h5>
-
-          <ul>
-            <li>Levenspunten:<%= randomHP %></li>
-            <li>Aanvalspunten:<%= randomAD %></li>
-            <li>Verdedigingspunten:<%= randomDF %></li>
-          </ul>
-          <a href="./battle" type="button" class="btn btn-primary">Vechten!</a>
-
-        </div>
-      </div>
-      <div class="chooseCards card border border-2 border-black" style="width: 18rem;">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
-          class="card-img-top border-bottom border-2 border-black" alt="...">
-
-        <div class="card-body">
-
-
-          <h5 class="card-title">Squirtle</h5>
-
-          <ul>
-            <li>Levenspunten:150</li>
-            <li>Aanvalspunten:100</li>
-            <li>Verdedigingspunten:50</li>
-          </ul>
-          <a href="./battle" type="button" class="btn btn-primary">Vechten!</a>
-
-        </div>
-      </div>
-    </section>
-    <section class="pokemonList">
-      <div class="list-group ">
-          <button type="button " data-bs-toggle="button" class="list-group-item list-group-item-action" aria-current="true">
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/149.png"
-              alt="">
-            Dragonite
-          </button>
-          <button type="button" data-bs-toggle="button" class="list-group-item list-group-item-action"> <img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/4.png"
-            alt="">Charmander</button>
-          <button type="button" data-bs-toggle="button" class="list-group-item list-group-item-action"><img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/1.png"
-            alt="">Bulbasaur</button>
-          <button type="button" data-bs-toggle="button" class="list-group-item list-group-item-action"><img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/7.png"
-            alt="">Squirtle</button>
-      
-
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasRightLabel">Gevecht</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <h2>Tegen deze pokemon vechten?</h2>
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" class="card-img-top border-bottom border-2 border-black "
-            alt="...">
-    <h3>Charmander</h3>
-      <a href="./battle" type="button"  class="btn btn-primary">Vechten!</a>
-  </div>
-</div>
-<div class="battlechooseFightButton">
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Vechten!</button>
-
-</div>
-      </div>
-    </section>
-    <a href="./mainpage" type="button"  class="backBtn btn btn-primary">Menu</a>
-
-    
-
-  </div>
-
-  </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-    <%- include("partials/bottom") %>
+--> 
+      </main>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+      <%- include("partials/bottom") %>

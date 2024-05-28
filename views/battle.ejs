@@ -1,35 +1,44 @@
 <%- include("partials/top") %>
-<title>Battle</title>
-</head>
+  <title>Battle</title>
+  </head>
 
-<body>
-  <%- include("partials/header") %>
-  <main id="battleMain2">
-    <div class="gridEnemy">
-        <div class="EnemyHP">
-            <h3 class="battleName">Charmander</h3>
-            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+  <body>
+    <%- include("partials/header") %>
+      <main id="battleMain2">
+        <div class="gridEnemy">
+          <div class="EnemyHP">
+            <h3 class="battleName">
+              <%= enemyPokemon.name %>
+            </h3>
+            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
+              aria-valuemax="100">
               <p class="textBeforeHP">HP </p>
               <div class="progress-bar bg-success" style="width: 100%"></div>
             </div>
+          </div>
+          <div class="EnemyPokemon">
+            <img id="enemySprite" src=<%=enemyPokemon.front_default %> alt="">
+          </div>
         </div>
-         <div class="EnemyPokemon">
-         <img id="enemySprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt=""></div>
-       </div>
 
-         <div class='gridAlly'>
-            <div class="AllyHP">
-                <h3 class="battleName">Dragonite</h3>
-                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                  <p class="textBeforeHP">HP </p>
-                  <div class="progress-bar bg-success" style="width: 100%"></div>
-                </div>
+        <div class='gridAlly'>
+          <div class="AllyHP">
+            <h3 class="battleName">
+              <%= pokemon.name %>
+            </h3>
+            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
+              aria-valuemax="100">
+              <p class="textBeforeHP">HP </p>
+              <div class="progress-bar bg-success" style="width: 100%"></div>
             </div>
-             <div class="AllyPokemon">
-             <img id="mySprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/149.png" alt=""></div>
-         </div>
- 
-         <div class="infoBattle"> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus consequuntur minus, excepturi
+          </div>
+          <div class="AllyPokemon">
+            <img id="mySprite" src=<%=pokemon.back_default %> alt="">
+          </div>
+        </div>
+
+        <div class="infoBattle">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus consequuntur minus, excepturi
             dolore vitae architecto totam repellendus eos distinctio culpa ullam. In vel voluptatum natus a amet ipsam,
             voluptatem doloremque!</p>
         </div>
@@ -37,9 +46,82 @@
         <div class="commands">
           <button type="button" class="attack btn">Aanvallen</button>
           <button type="button" class="catch btn">Vangen</button>
-          <a href="./mainpage.html" type="button" class="run btn">Wegrennen</a>
+          <a href="/mainpage" type="button" class="run btn">Wegrennen</a>
         </div>
 
 
-  </main>
-<%- include("partials/bottom") %>
+      </main>
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const attackButton = document.querySelector(".attack");
+          const catchButton = document.querySelector(".catch");
+          const urlPath = window.location.pathname;
+          const battleId = urlPath.split("/").pop();
+
+
+          attackButton.addEventListener("click", async () => {
+            console.log("clicked attack");
+            try {
+              // Make a POST request to the backend route to handle attacks
+               urlPath = window.location.pathname;
+               battleId = urlPath.split("/").pop();
+
+
+              const response = await fetch(`/battle/${battleId}`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                  attack: { /* Information about the user's Pokémon */ }
+
+                })
+              });
+
+              // Check if the request was successful
+              if (response.ok) {
+                // Parse the response JSON
+                const updated = await response.json();
+
+                // Update HP values on the page
+                document.getElementById("userHP").textContent = `User Pokémon HP: ${updated.updatedMyPokemon.health}`;
+                document.getElementById("enemyHP").textContent = `Enemy Pokémon HP: ${updated.updatedEnemyPokemon.health}`;
+              } else {
+                console.error("Attack failed:", response.statusText);
+              }
+            } catch (error) {
+              console.error("Error attacking:", error);
+            }
+          });
+          catchButton.addEventListener("click", async () => {
+            console.log("Catch clicked");
+            try {
+               urlPath = window.location.pathname;
+               battleId = urlPath.split("/").pop();
+
+            } catch (error) {
+              console.error("Error catching:", error);
+            }
+            const response = await fetch(`/battle/${battleId}`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                catch: { /* Information about the user's Pokémon */ }
+
+              })
+            });
+
+
+
+
+          });
+        });
+
+
+
+
+
+      </script>
+      <%- include("partials/bottom") %>
