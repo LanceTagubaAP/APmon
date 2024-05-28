@@ -3,7 +3,7 @@
     </head>
 
     <body id="MainPage">
-       <%- include("partials/header") %>
+        <%- include("partials/header", { user: user, pokemon: pokemon }) %> <!-- Pass 'user' and 'pokemon' -->
             <main>
                 <section id="menu">
                     <button id="gues"><a href="battlechoose"><img src="assets/img/pokemon-vechten.png"

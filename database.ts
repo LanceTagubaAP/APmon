@@ -15,6 +15,11 @@ export const usersCollection : Collection<User> = client.db("APmon").collection<
 
 const saltRounds : number = 10;
 
+const imageUrls = [
+    'https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/X-headshot.jpg',
+    'https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/Girl-headshot.jpg',
+    'https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/Boy-headshot.jpg'
+];
 
 export async function exit() {
     try {
@@ -104,6 +109,10 @@ export async function getPokemonCollection() {
     return await collection.find().toArray();
 }
 
+
+
+
+
 export async function seed() {
     let username : string | undefined = process.env.ADMIN_USER;
     let password : string | undefined = process.env.ADMIN_PASSWORD;
@@ -147,11 +156,10 @@ export async function getPokemonFromUser(userId: ObjectId | undefined, pokemonId
 
     return user.userPokemons[0];
 }
-export async function updateCatchedFromUser(pokemonId : number, userId : ObjectId) {
-    
+export async function updateCatchedFromUser(pokemonId: string, userId: ObjectId) {
     try {
         const result = await usersCollection.updateOne(
-            { id: userId, 'userPokemons.id': pokemonId },
+            { _id: userId, 'userPokemons.id': parseInt(pokemonId) }, // Parse pokemonId as an integer
             { $set: { 'userPokemons.$.isCatched': true } }
         );
 
@@ -160,6 +168,10 @@ export async function updateCatchedFromUser(pokemonId : number, userId : ObjectI
         } else {
             console.log('Pokémon catch status updated successfully.');
         }
+        console.log("User ID:", userId);
+        console.log("Pokemon ID:", pokemonId);
+        console.log("Filter condition:", { _id: userId, 'userPokemons.id': pokemonId });
+        console.log("Update result:", result);
     } catch (error) {
         console.error('Error updating Pokémon catch status:', error);
     }
@@ -186,7 +198,6 @@ export const getUserById= async (userId: ObjectId): Promise<User | null> => {
     const user = await usersCollection.findOne({ _id: userId });
     return user;
 };
-
 export function getRankName(user: User): string {
     return Rank[user.rank];
 }
@@ -265,3 +276,42 @@ export async function updateDefenseFromUser(pokemonId : number, userId : ObjectI
         console.error('Error updating Pokémon Defense status:', error);
     }
 }
+export async function registerUser(userName: string, email: string, password: string, icon: string, userPetId: number): Promise<User> {
+    try {
+        if (!userName || !email || !password || !icon || !userPetId) {
+            throw new Error('Alle velden moeten ingevuld zijn');
+        }
+
+        // Controleer of de gebruiker al bestaat op basis van het e-mailadres of de gebruikersnaam
+        const existingUser = await usersCollection.findOne({ $or: [{ email }, { userName }] });
+        if (existingUser) {
+            throw new Error('Gebruiker met dit e-mailadres of gebruikersnaam bestaat al');
+        }
+
+        // Hash het wachtwoord voordat het wordt opgeslagen
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        
+        // Maak een nieuw gebruikersobject aan met de ontvangen gegevens
+
+        const newUser: User = { 
+            userName,
+            email, 
+            password: hashedPassword, 
+            icon,
+            userPetId,
+            userPokemons: await getPokemonCollection(), // Dit moet worden ingesteld afhankelijk van je vereisten
+            rank: Rank.Beginner,
+            streak: 0,
+        };
+
+
+        console.log('Gebruiker is aangemaakt.');
+
+        // Voeg de nieuwe gebruiker toe aan de database
+        await usersCollection.insertOne(newUser);
+        return newUser;
+    } catch (error) {
+        console.error("Fout bij het registreren van de gebruiker: ", error);
+        throw error;
+    }
+} 

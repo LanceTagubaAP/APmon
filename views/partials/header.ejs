@@ -1,6 +1,6 @@
 <header class="headerPlayer">
     <div class="playerProfile">
-        <img class="playerProfileAvatar" src="./assets/img/Boy-headshot.jpg" alt="man/vrouw">
+        <img class="playerProfileAvatar" src="<%= user.icon %>" alt="man/vrouw">
         <div class="playerInfo">
         <p class="playerName"><%= user.userName %></p>
         <p class="playerRank"><%= rankName %></p>
@@ -8,6 +8,6 @@
     </div> 
     <div class="pokemonInfo">
         <img src="<%= pokemon.front_default %>" alt="huidige pokemon">
-         <p class="currentPokemonName"><%= pokemon.name %></p>
+        <p class="currentPokemonName"><%= pokemon.name %></p>
     </div>
 </header>
