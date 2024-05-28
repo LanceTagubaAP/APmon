@@ -2,6 +2,7 @@ import { MongoClient, Db, Collection, ObjectId  } from "mongodb";
 import { Pokemon, User , Rank } from "./interfaces";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
+import { inflictDamage } from "./battle";
 
 
 dotenv.config();
@@ -139,11 +140,21 @@ export async function seed() {
 export async function getPokemon(id:number) {
     return await collection.findOne<Pokemon>({id : id});
 }
-export async function getPokemonFromUser(userId:number,pokemonId : number) {
-    return await usersCollection.findOne( { id: userId, 'userPokemons.id': pokemonId })
-}
-export async function updateRank(user:User) {
-    
+export async function getPokemonFromUser(userId: ObjectId | undefined, pokemonId: number) {
+    if (!userId) {
+        throw new Error('User ID is required');
+    }
+
+    const user = await usersCollection.findOne(
+        { _id: userId, 'userPokemons.id': pokemonId },
+        { projection: { 'userPokemons.$': 1 } }
+    );
+
+    if (!user || !user.userPokemons || user.userPokemons.length === 0) {
+        throw new Error('Pokémon not found');
+    }
+
+    return user.userPokemons[0];
 }
 export async function updateCatchedFromUser(pokemonId: string, userId: ObjectId) {
     try {
@@ -189,6 +200,81 @@ export const getUserById= async (userId: ObjectId): Promise<User | null> => {
 };
 export function getRankName(user: User): string {
     return Rank[user.rank];
+}
+export const updateUserRank = async (userId: ObjectId, newRank: Rank): Promise<boolean> => {
+    try {
+        // Check if the new rank is not higher than the highest rank
+        if (newRank !== Rank.Legende) {
+            await usersCollection.updateOne({ _id: userId }, { $set: { rank: newRank } });
+            return true; // Return true if update is successful
+        } else {
+            console.log("User is already at the highest rank (Legende). Rank cannot be updated.");
+            return false; // Return false indicating rank was not updated
+        }
+    } catch (error) {
+        console.error("Error updating user rank:", error);
+        return false; // Return false if update fails
+    }
+};
+
+export function handleAttack(myPokemon : Pokemon , enemyPokemon : Pokemon){
+    const turn1 = inflictDamage(myPokemon,enemyPokemon);
+    const turn2 = inflictDamage(turn1.otherPokemon,turn1.myPokemon);
+    //TODO BattleLog message meegeven
+    return [turn2.myPokemon,turn2.otherPokemon];
+}
+
+export async function updateHPFromUser(pokemonId : number, userId : ObjectId,newHP:number) {
+    
+    try {
+        const result = await usersCollection.updateOne(
+            { id: userId, 'userPokemons.id': pokemonId },
+            { $set: { 'userPokemons.$.HP': newHP } }
+        );
+
+        if (result.matchedCount === 0) {
+            console.log('No user or Pokémon found with the provided IDs.');
+        } else {
+            console.log('Pokémon catch status updated successfully.');
+        }
+    } catch (error) {
+        console.error('Error updating Pokémon HP status:', error);
+    }
+}
+
+export async function updateAttackFromUser(pokemonId : number, userId : ObjectId,newAttack:number) {
+    
+    try {
+        const result = await usersCollection.updateOne(
+            { id: userId, 'userPokemons.id': pokemonId },
+            { $set: { 'userPokemons.$.attack': newAttack } }
+        );
+
+        if (result.matchedCount === 0) {
+            console.log('No user or Pokémon found with the provided IDs.');
+        } else {
+            console.log('Pokémon catch status updated successfully.');
+        }
+    } catch (error) {
+        console.error('Error updating Pokémon Attack status:', error);
+    }
+}
+export async function updateDefenseFromUser(pokemonId : number, userId : ObjectId,newDefense:number) {
+    
+    try {
+        const result = await usersCollection.updateOne(
+            { id: userId, 'userPokemons.id': pokemonId },
+            { $set: { 'userPokemons.$.defense': newDefense } }
+        );
+
+        if (result.matchedCount === 0) {
+            console.log('No user or Pokémon found with the provided IDs.');
+        } else {
+            console.log('Pokémon catch status updated successfully.');
+        }
+    } catch (error) {
+        console.error('Error updating Pokémon Defense status:', error);
+    }
 }
 export async function registerUser(userName: string, email: string, password: string, icon: string, userPetId: number): Promise<User> {
     try {
