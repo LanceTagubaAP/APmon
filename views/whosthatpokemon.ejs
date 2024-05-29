@@ -5,13 +5,86 @@
     <body id="whosThatPokemon">
         <%- include("partials/header") %>
             <main>
-                <h1>who's that pokemon?</h1>
-                <img src=<%=randomSprite %>
+                <h1>wie is deze pokemon?</h1>
+
+                <div id="background">
+                    <section id="test">
+                        <img id="pokemon" src=<%=randomSprite %>
+                    </section>
+                </div>
+
                 <form action="input">
-                    <input type="text" placeholder="pokemon...">
-                    <button class="arrow">▶</button>
+                    <div class="suggestion-container">
+                        <input type="text" id="inputField" placeholder="Type here...">
+                        <ul id="suggestionList"></ul>
+                    </div>
+                    <button id="arrow">▶</button>
                 </form>
-                <h2 id="guesStreak"> <img src="assets/img/firestreak.png" alt="">guess streak: 4</h2>
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const inputField = document.getElementById('inputField');
+                        const suggestionList = document.getElementById('suggestionList');
+
+
+                        const pokemonList = [
+                            {
+                                id: 1,
+                                name: 'Bulbasaur',
+                                sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
+                            },
+                            {
+                                id: 2,
+                                name: 'Ivysaur',
+                                sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'
+                            },
+
+                        ];
+
+                        inputField.addEventListener('input', () => {
+                            const query = inputField.value.toLowerCase();
+                            suggestionList.innerHTML = '';
+
+                            if (query) {
+                                const filteredSuggestions = pokemonList.filter(pokemon => pokemon.name.toLowerCase().startsWith(query));
+
+                                filteredSuggestions.forEach(pokemon => {
+                                    const li = document.createElement('li');
+                                    const img = document.createElement('img');
+                                    img.src = pokemon.sprite;
+                                    const span = document.createElement('span');
+                                    span.textContent = pokemon.name;
+
+                                    li.appendChild(img);
+                                    li.appendChild(span);
+                                    suggestionList.appendChild(li);
+
+                                    li.addEventListener('click', () => {
+                                        inputField.value = pokemon.name;
+                                        suggestionList.innerHTML = '';
+                                        suggestionList.style.display = 'none';
+                                    });
+                                });
+
+                                if (filteredSuggestions.length > 0) {
+                                    suggestionList.style.display = 'block';
+                                } else {
+                                    suggestionList.style.display = 'none';
+                                }
+                            } else {
+                                suggestionList.style.display = 'none';
+                            }
+                        });
+
+                        document.addEventListener('click', (e) => {
+                            if (!inputField.contains(e.target) && !suggestionList.contains(e.target)) {
+                                suggestionList.style.display = 'none';
+                            }
+                        });
+                    });
+                </script>
+
+
+                <h2 id="guesStreak"> streak </h2>
             </main>
             <footer>
                 <button><a href="mainpage">Terug</a></button>

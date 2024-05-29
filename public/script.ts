@@ -1,35 +1,10 @@
-<%- include("partials/top") %>
-  <title>Projects</title>
-</head>
+const dropdown = document.getElementById('dropdown') as HTMLSelectElement;
+const image = document.getElementById('image') as HTMLImageElement;
+const playButtonLink = document.getElementById('playButtonLink') as HTMLAnchorElement;
+const playButton = document.getElementById('playButton') as HTMLButtonElement;
 
-<body class="no-grid-layout" class="Pages">
-    <main class="mainProjectScreen">
-        <div class="projectScreenContainer">
-            <div class="dropdownListIndex">
-                <img class="projectScreenImage" src="../assets/imgs/APmon-game.jpg" alt="Selected Image" id="image">
-                <div class="bottomProjectScreen">
-                    <select class="gameName" id="dropdown">
-                        <option value="1">APmon</option>
-                        <option value="2">Fifa</option>
-                        <option value="3">Fortnite</option>
-                        <option value="4">Lego</option>
-                        <option value="5">Lord of the rings</option>
-                        <option value="6">Magic the gathering</option>
-                    </select>
-                </div>
-            </div>
-            <a id="playButtonLink" href="./titleScreen">
-                <button id="playButton" type="button" class="ProjectScreenBtn" disabled>Spelen</button>
-            </a>
-        </div>
-    </main>
-    <script>
-var dropdown = document.getElementById('dropdown');
-var image = document.getElementById('image');
-var playButtonLink = document.getElementById('playButtonLink');
-var playButton = document.getElementById('playButton');
-dropdown.addEventListener('change', function () {
-    var selectedValue = dropdown.value;
+dropdown.addEventListener('change', function() {
+    const selectedValue = dropdown.value;
     switch (selectedValue) {
         case '1':
             image.src = "../assets/imgs/APmon-game.jpg";
@@ -68,8 +43,3 @@ dropdown.addEventListener('change', function () {
             break;
     }
 });
-
-
-    </script>
-</body>
-</html>

@@ -6,58 +6,33 @@
 <%- include("partials/header") %>
     <main class="pokedexMain">
         <div class="mainContentPokedex">
-
-         <div class="PokedexName">
-         </div>   
-
-         <div class="pokedexSearchAndFilter">
-            <form action="/action_page.php">
-              <input type="text" placeholder="Zoeken.." name="search">
-            </form>
-          </div>
-
-          <div class="InfoPokemonPokedex">
-            
-            <section class="pokedexNameSection">
-                <p class="pokedexNameDescription"><%- fixedPokemon.id %>. <%- fixedPokemon.name %></p>            
-            </section>    
-        <img class="selectedPokemonPokedex" src="<%- fixedPokemon.front_default %>" alt="">
-        <section class="pokedexDescription">
-            <p class="pokedexDescriptionText">TYPE: <%- fixedPokemon.types %></p>
-            <p class="pokedexDescriptionText">LEVENSPUNTEN: <%- fixedPokemon.maxHealth %></p>
-            <p class="pokedexDescriptionText">AANVALSPUNTEN: <%- fixedPokemon.attack %></p>
-            <p class="pokedexDescriptionText">VERDEDIGINGSPUNTEN: <%- fixedPokemon.defense %></p>
-            <p class="pokedexDescriptionText"><%- fixedPokemon.description %></p>
-        </section>
-        <div class="pokedexBottom">
-            <button class="PokedexBottomButtons"><a href="/mainpage"> Partner</a></button>
-         <button class="PokedexBottomButtons"><a href="/compare"> Vergelijken</a></button>
-         <button class="PokedexBottomButtons"><a href="/mainpage">Terug</a></button>
-        </div>
-    </div>
-
-
-    <div class="PokedexList">
-        <table>
-            <tbody>
-                <% for (let pokemon of data) { %>
-                    <tr>
-                        <td><%- pokemon.id %></td>
-                        <td><a href="/pokedex/<%= pokemon.id %>"><img src="<%- pokemon.icon %>" alt=""> <%- pokemon.name %></a></td>
-                        <td><% if (pokemon.isCatched) { %>
-                            <div class="text-center">
-                                <div class="rounded-circle bg-success" style="width: 20px; height: 20px;"></div>
-                            </div>
-                        <% } else { %>
-                            <div class="text-center">
-                                <div class="rounded-circle bg-danger" style="width: 20px; height: 20px;"></div>
-                            </div>
-                        <% } %> </td>
-                    </tr>
-                <% } %>
-            </tbody>
-        </table>
-    </div>
+            <div class="pokedexContainer">
+                <div class="pokedexSearchAndFilter">
+                    <form action="/pokedex" method="GET">
+                        <input type="text" placeholder="zoek pokemon" name="search" id="searchInput">
+                        <button type="submit">Zoeken</button>
+                    </form>
+                </div>
+                <div class="pokedexList">
+                    <% for (let pokemon of user.userPokemons) { %>
+                        <div class="pokemonCard">
+                            <a href="/pokedex/<%= pokemon.id %>">
+                                <img class="pokemonImage" src="<%- pokemon.icon %>"  alt="">
+                                <p class="pokemonName"><%- pokemon.name %></p>
+                                <% if (pokemon.isCatched) { %>
+                                    <div class="statusIndicator">
+                                        <div class="rounded-circle bg-success statusIcon"></div>
+                                    </div>
+                                <% } else { %>
+                                    <div class="statusIndicator">
+                                        <div class="rounded-circle bg-danger statusIcon"></div>
+                                    </div>
+                                <% } %> 
+                            </a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
 
 
 </div>

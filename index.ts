@@ -195,7 +195,7 @@ app.post("/battle/:id", async (req, res) => {
 
 
                     }
-                    
+
                 }
             }
 
@@ -289,50 +289,9 @@ app.get("/battlechoose", secureMiddleware, async (req, res) => {
 
 });
 
-app.get("/pokedex", (req, res) => {
+app.get("/pokedex", secureMiddleware, async(req, res) => {
     const fixedPokemonId = 1;
     const fixedPokemon = data.find(p => p.id === fixedPokemonId);
-
-    res.render("pokedex", { data: data, fixedPokemon: fixedPokemon });
-});
-
-app.get("/pokedex/:id", (req, res) => {
-    const pokemonId = parseInt(req.params.id);
-    const pokemon = data.find(p => p.id === pokemonId);
-    if (pokemon) {
-        res.render("pokedexDetail", {
-            pokemon: pokemon,
-            data: data
-        });
-    } else {
-        res.status(404).send("Pokemon not found");
-    }
-});
-
-
-app.get("/compare/:id", (req, res) => {
-    const pokemonId = parseInt(req.params.id);
-    const pokemon = data.find(p => p.id === pokemonId);
-    if (pokemon) {
-        res.render("compare", {
-            pokemon: pokemon,
-            data: data
-        });
-    } else {
-        res.status(404).send("Pokemon not found");
-    }
-});
-
-
-
-app.get("/whosthatpokemon", async (req, res) => {
-    /**Hier komt Who's that pokemon pagina */
-
-    let randomNumber: number = Math.floor(Math.random() * 151) + 1;
-    let randomPokemon: Pokemon = data[randomNumber];
-    res.render("whosthatpokemon", {
-        randomSprite: randomPokemon.front_default,
-    });
 
     if (req.session.user) {
         let userId = req.session.user._id;
@@ -342,6 +301,13 @@ app.get("/whosthatpokemon", async (req, res) => {
                 let userpetId = foundUser.userPetId;
                 let userPokemon = foundUser.userPokemons[userpetId - 1];
                 let rankName = getRankName(foundUser);
+                res.render("pokedex", {
+                    user: foundUser,
+                    pokemon: userPokemon,
+                    rankName: rankName,
+                    data: data,
+                    fixedPokemon: fixedPokemon
+                });
             } else {
                 res.status(404).send("User not found");
             }
@@ -353,59 +319,123 @@ app.get("/whosthatpokemon", async (req, res) => {
     }
 
 
-    document.addEventListener('DOMContentLoaded', async () => {
-        const inputField = document.getElementById('inputField') as HTMLInputElement;
-        const suggestionList = document.getElementById('suggestionList') as HTMLUListElement;
+});
 
-        const pokemonList: Pokemon[] = await getFirst151Pokemon();
+app.get("/pokedex/:id", secureMiddleware, async (req, res) => {
+    const pokemonId = parseInt(req.params.id, 10);
+    
+    // Check if pokemonId is a valid number
+    if (isNaN(pokemonId)) {
+        return res.status(400).send("Invalid Pokémon ID");
+    }
 
-        inputField.addEventListener('input', () => {
-            const query = inputField.value.toLowerCase();
-            suggestionList.innerHTML = '';
+    try {
+        const pokemon = await getPokemon(pokemonId);
+        
+        if (!pokemon) {
+            return res.status(404).send("Pokémon not found");
+        }
 
-            if (query) {
-                const filteredSuggestions = pokemonList.filter(pokemon => pokemon.name.toLowerCase().startsWith(query));
+        if (req.session.user) {
+            let userId = req.session.user._id;
+            if (userId) {
+                let foundUser = await getUserById(userId);
+                if (foundUser) {
+                    let userpetId = foundUser.userPetId;
+                    let userPokemon = foundUser.userPokemons[userpetId - 1];
+                    let rankName = getRankName(foundUser);
 
-                filteredSuggestions.forEach(pokemon => {
-                    const li = document.createElement('li');
-                    const img = document.createElement('img');
-                    img.src = pokemon.front_default;
-                    const span = document.createElement('span');
-                    span.textContent = pokemon.name;
-
-                    li.appendChild(img);
-                    li.appendChild(span);
-                    suggestionList.appendChild(li);
-
-                    li.addEventListener('click', () => {
-                        inputField.value = pokemon.name;
-                        suggestionList.innerHTML = '';
-                        suggestionList.style.display = 'none';
+                    // Call the getEvolutionDetails function to get evolution details
+                    
+                    res.render("pokedexDetail", {
+                        user: foundUser,
+                        pokemon: userPokemon,
+                        rankName: rankName,
+                        data: data,
+                        pokemonDetail: pokemon,
+                        
                     });
-                });
-
-                if (filteredSuggestions.length > 0) {
-                    suggestionList.style.display = 'block';
                 } else {
-                    suggestionList.style.display = 'none';
+                    res.status(404).send("User not found");
                 }
             } else {
-                suggestionList.style.display = 'none';
+                res.status(400).send("User ID is not defined");
             }
-        });
+        } else {
+            res.status(401).send("Unauthorized");
+        }
+    } catch (error) {
+        console.error(`Failed to retrieve Pokémon with ID ${pokemonId}`, error);
+        res.status(500).send("Internal Server Error");
+    }
+});
 
-        document.addEventListener('click', (e) => {
-            if (!inputField.contains(e.target as Node) && !suggestionList.contains(e.target as Node)) {
-                suggestionList.style.display = 'none';
+
+
+app.get("/compare/:id",secureMiddleware, async(req, res) => {
+    const pokemonId = parseInt(req.params.id);
+    const pokemon = data.find(p => p.id === pokemonId);
+    if (req.session.user) {
+        let userId = req.session.user._id;
+        if (userId) {  // Check if userId is defined
+            let foundUser = await getUserById(userId);
+            if (foundUser) {  // Check if foundUser is not null
+                let userpetId = foundUser.userPetId;
+                let userPokemon = foundUser.userPokemons[userpetId - 1];
+                let rankName = getRankName(foundUser);
+                res.render("compare", {
+                    user: foundUser,
+                    pokemon: userPokemon,
+                    rankName: rankName,
+                    data: data,
+                    pokemonCompare:pokemon
+                });
+            } else {
+                res.status(404).send("User not found");
             }
-        });
-    });
+        } else {
+            res.status(400).send("User ID is not defined");
+        }
+    } else {
+        res.status(401).send("Pokemon not found");
+    }
+
+
+});
 
 
 
+app.get("/whosthatpokemon", async (req, res) => {
+    /**Hier komt Who's that pokemon pagina */
 
+    const [randomNumber] = getRandomUniqueNumbers(151, 1);
+    const randomPokemon: Pokemon | undefined = data[randomNumber];
 
+    if (req.session.user) {
+        let userId = req.session.user._id;
+        if (userId) {  // Check if userId is defined
+            let foundUser = await getUserById(userId);
+            if (foundUser) {  // Check if foundUser is not null
+                let userpetId = foundUser.userPetId;
+                let userPokemon = foundUser.userPokemons[userpetId - 1];
+                let rankName = getRankName(foundUser);
+                res.render("whosthatpokemon", {
+                    randomSprite: randomPokemon.front_default,
+                    user: foundUser,
+                    pokemon: userPokemon,
+                    rankName: rankName,
 
+                });
+
+            } else {
+                res.status(404).send("User not found");
+            }
+        } else {
+            res.status(400).send("User ID is not defined");
+        }
+    } else {
+        res.status(401).send("User not logged in");
+    }
 });
 
 
@@ -450,6 +480,7 @@ app.listen(app.get("port"), async () => {
     await connect();
     await seed();
     await fetchAndInsertPokemons();
+    
 
     data = await getPokemonCollection();
 

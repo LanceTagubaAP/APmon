@@ -1,9 +1,10 @@
-<%- include("partials/top") %> 
+<%- include("partials/top") %>
     <title>MainPage</title>
     </head>
 
     <body id="MainPage">
         <%- include("partials/header", { user: user, pokemon: pokemon }) %> <!-- Pass 'user' and 'pokemon' -->
+
             <main>
                 <section id="menu">
                     <button id="gues"><a href="battlechoose"><img src="assets/img/pokemon-vechten.png"
@@ -15,7 +16,7 @@
                     <button id="vecht"><a href="howtoplay"><img src="assets/img/Hoe-Moet-Je-Spelen.png"
                                 alt=""></a></button>
                     <form action="/logout" method="post">
-                    <button type="submit"><img src="assets/img/Uit-Loggen.png" alt=""></button>
+                        <button type="submit"><img id="logout" src="assets/img/Uit-Loggen.png" alt=""></button>
                     </form>
                 </section>
 

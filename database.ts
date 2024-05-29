@@ -1,4 +1,4 @@
-import { MongoClient, Db, Collection, ObjectId  } from "mongodb";
+import { MongoClient, Db, Collection, ObjectId} from "mongodb";
 import { Pokemon, User , Rank } from "./interfaces";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
@@ -112,7 +112,6 @@ export async function getPokemonCollection() {
 
 
 
-
 export async function seed() {
     let username : string | undefined = process.env.ADMIN_USER;
     let password : string | undefined = process.env.ADMIN_PASSWORD;
@@ -138,7 +137,14 @@ export async function seed() {
     
 }
 export async function getPokemon(id:number) {
-    return await collection.findOne<Pokemon>({id : id});
+    const pokemon = await collection.findOne<Pokemon>({ id: id });
+
+
+    if (!pokemon) {
+        throw new Error(`Pokemon with ID ${id} not found`);
+    }
+    return pokemon;
+    
 }
 export async function updateHPfromPokemon(id: number, newHealth: number): Promise<void> {
     try {
@@ -370,3 +376,60 @@ export async function registerUser(userName: string, email: string, password: st
         throw error;
     }
 } 
+
+export async function fetchEvolutionChain(id: number) {
+    try {
+        const speciesResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`);
+        const speciesData = await speciesResponse.json();
+
+        const evolutionChainUrl = speciesData.evolution_chain.url;
+        const evolutionResponse = await fetch(evolutionChainUrl);
+        const evolutionData = await evolutionResponse.json();
+
+        return evolutionData;
+    } catch (error) {
+        console.error(`Failed to fetch evolution chain for Pokemon with ID ${id}`, error);
+        throw error;
+    }
+}
+
+
+export async function getEvolutionDetails(evolutionChain: any, pokemonName: string) {
+    console.log("Evolution chain:", evolutionChain); // Log evolution chain data
+
+    try {
+        const evolutionDetails: any[] = [];
+        let currentStage = evolutionChain.chain;
+
+        while (currentStage) {
+            const speciesName = currentStage.species.name;
+            const evolvesTo = currentStage.evolves_to;
+
+            console.log("Fetching data for:", speciesName); // Log species being fetched
+
+            // Fetch additional details for the current evolution stage using fetchPokemonData
+            const pokemonData = await fetchPokemonData(speciesName);
+            console.log("Data fetched successfully for:", speciesName); // Log successful data fetch
+
+            evolutionDetails.push({
+                name: speciesName,
+                isCurrent: speciesName.toLowerCase() === pokemonName.toLowerCase(),
+                front_default: pokemonData.front_default // Use front_default from pokemonData
+            });
+
+            if (evolvesTo.length > 0) {
+                currentStage = evolvesTo[0];
+            } else {
+                currentStage = null;
+            }
+        }
+
+        console.log("Evolution details:", evolutionDetails); // Log evolution details
+        return evolutionDetails;
+    } catch (error) {
+        console.error("Error fetching evolution details:", error); // Log any errors that occur
+        throw error;
+    }
+}
+
+
