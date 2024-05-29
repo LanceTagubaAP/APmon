@@ -5,6 +5,7 @@ import bcrypt from "bcrypt";
 import { inflictDamage } from "./battle";
 
 
+
 dotenv.config();
 export const MONGODB_URI = process.env.MONGO_URI ?? "mongodb://localhost:27017";
 export const client = new MongoClient(MONGODB_URI);
@@ -163,6 +164,26 @@ export async function getPokemonFromUser(userId: ObjectId | undefined, pokemonId
     }
 
     return user.userPokemons[0];
+    
+}
+
+export async function getPokemonFromUserr(userId: ObjectId, pokemonName: string) {
+    try {
+        const user = await usersCollection.findOne(
+            { _id: userId, 'userPokemons.name': pokemonName },
+            { projection: { 'userPokemons.$': 1 } }
+        );
+
+        if (!user || !user.userPokemons || user.userPokemons.length === 0) {
+            console.error(`Pokémon with name ${pokemonName} not found for user ${userId}`);
+            throw new Error('Pokémon not found');
+        }
+
+        return user.userPokemons[0];
+    } catch (error) {
+        console.error(`Error fetching Pokémon ${pokemonName} for user ${userId}:`, error);
+        throw error;
+    }
 }
 export async function updateCatchedFromUser(pokemonId: string, userId: ObjectId) {
     try {
@@ -205,6 +226,20 @@ export const getUserById= async (userId: ObjectId): Promise<User | null> => {
 
     const user = await usersCollection.findOne({ _id: userId });
     return user;
+};
+export const getUserByIdd = async (userId: ObjectId): Promise<User | null> => {
+    try {
+        const user = await usersCollection.findOne({ _id: userId });
+        if (user) {
+            return user;
+        } else {
+            console.error(`User with ID ${userId} not found`);
+            return null;
+        }
+    } catch (error) {
+        console.error(`Error fetching user by ID ${userId}:`, error);
+        return null;
+    }
 };
 export function getRankName(user: User): string {
     return Rank[user.rank];
@@ -378,5 +413,49 @@ export async function getEvolutionDetails(evolutionChain: any, pokemonName: stri
         throw error;
     }
 }
+
+
+export async function updateUserStreak(userId: ObjectId): Promise<boolean> {
+    try {
+        const result = await usersCollection.updateOne(
+            { _id: userId },
+            { $inc: { streak: 1 } }
+        );
+
+        if (result.modifiedCount > 0) {
+            console.log(`User streak updated successfully for user ${userId}`);
+            return true;
+        } else {
+            console.error(`Failed to update streak for user ${userId}`);
+            return false;
+        }
+    } catch (error) {
+        console.error(`Error updating streak for user ${userId}:`, error);
+        return false;
+   }
+}
+export async function updatePokemonHealthStreak(userId: ObjectId, pokemonName: string): Promise<boolean> {
+    try {
+        const result = await usersCollection.updateOne(
+            { _id: userId, 'userPokemons.name': pokemonName },
+            { $inc: { 'userPokemons.$.health': 1 } }
+        );
+
+        if (result.modifiedCount > 0) {
+            console.log(`Health updated for Pokémon ${pokemonName} for user ${userId}`);
+            return true;
+        } else {
+            console.error(`Failed to update health for Pokémon ${pokemonName} for user ${userId}`);
+            return false;
+        }
+    } catch (error) {
+        console.error(`Error updating health for Pokémon ${pokemonName} for user ${userId}:`, error);
+        return false;
+    }
+}
+
+
+
+
 
 

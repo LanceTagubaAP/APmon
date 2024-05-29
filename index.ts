@@ -12,6 +12,10 @@ import exp from "constants";
 import cookieparser from "cookie-parser";
 import path from "path";
 import { catchPokemon, getRandomUniqueNumbers } from "./battle";
+import { updatePokemonHealthStreak,getPokemonFromUserr } from "./database";
+import { ObjectId } from "mongodb"; 
+
+
 
 
 const app = express();
@@ -383,15 +387,17 @@ app.get("/compare/:id",secureMiddleware, async(req, res) => {
 
 app.get("/whosthatpokemon", async (req, res) => {
     /**Hier komt Who's that pokemon pagina */
+    
 
-    const [randomNumber] = getRandomUniqueNumbers(151, 1);
+
+  const [randomNumber] = getRandomUniqueNumbers(151, 1);
     const randomPokemon: Pokemon | undefined = data[randomNumber];
 
     if (req.session.user) {
         let userId = req.session.user._id;
-        if (userId) {  // Check if userId is defined
+        if (userId) { 
             let foundUser = await getUserById(userId);
-            if (foundUser) {  // Check if foundUser is not null
+            if (foundUser) {  
                 let userpetId = foundUser.userPetId;
                 let userPokemon = foundUser.userPokemons[userpetId - 1];
                 let rankName = getRankName(foundUser);
@@ -400,7 +406,7 @@ app.get("/whosthatpokemon", async (req, res) => {
                     user: foundUser,
                     pokemon: userPokemon,
                     rankName: rankName,
-
+                    pokemonName: randomPokemon.name
                 });
 
             } else {
@@ -413,6 +419,62 @@ app.get("/whosthatpokemon", async (req, res) => {
         res.status(401).send("User not logged in");
     }
 });
+
+app.get("/nextPokemon", async (req, res) => {
+    const [randomNumber] = getRandomUniqueNumbers(151, 1);
+    const randomPokemon: Pokemon | undefined = data[randomNumber];
+
+    if (randomPokemon) {
+        res.json({
+            randomSprite: randomPokemon.front_default,
+            pokemonName: randomPokemon.name,
+        });
+    } else {
+        res.status(404).send("No Pokémon found");
+    }
+});
+app.post("/updatePokemonHealth", async (req, res) => {
+    const { pokemonName } = req.body;
+    if (!pokemonName) {
+        return res.status(400).json({ error: "Pokémon name is required" });
+    }
+
+    if (!req.session.user) {
+        return res.status(401).json({ error: "User not logged in" });
+    }
+
+    const userId = req.session.user._id;
+
+    if (!userId) {
+        return res.status(400).json({ error: "User ID is required" });
+    }
+
+    try {
+        const userPokemon = await getPokemonFromUserr(new ObjectId(userId), pokemonName);
+        if (!userPokemon) {
+            return res.status(404).json({ error: "Pokémon not found" });
+        }
+
+        const initialHP = userPokemon.health;
+        console.log(`Initial HP of ${pokemonName}: ${initialHP}`);
+
+        const success = await updatePokemonHealthStreak(new ObjectId(userId), pokemonName);
+        if (success) {
+            const updatedUserPokemon = await getPokemonFromUserr(new ObjectId(userId), pokemonName);
+            const updatedHP = updatedUserPokemon.health;
+            console.log(`Updated HP of ${pokemonName}: ${updatedHP}`);
+
+            res.json({ message: "Pokémon health updated successfully", initialHP, updatedHP });
+        } else {
+            res.status(500).json({ error: "Failed to update Pokémon health" });
+        }
+    } catch (error) {
+        console.error("Error updating Pokémon health:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
+
 
 
 

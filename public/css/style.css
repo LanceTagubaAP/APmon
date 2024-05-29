@@ -1743,6 +1743,11 @@ main>img {
 #MainPage>footer>button {
   background-color: transparent;
   border: none;
+  width: 500px;
+}
+#MainPage>footer>button>a{
+  width: 500px;
+
 }
 
 #MainPage>footer>button :hover {
@@ -1762,7 +1767,7 @@ main>img {
 }
 
 @media (max-width: 666px) {
-  #compare {
+  #compre {
     display: grid;
     grid-template-areas:
       "header"
@@ -2060,21 +2065,53 @@ img:hover+#didYouKnow {
 #whosThatPokemon>main>h1 {
   display: grid;
   justify-content: center;
-  margin-right: 20px;
+  
   background-color: white;
   padding: 0.5rem;
   border-radius: 10px;
   border: solid black 3px;
+  font-size: smaller;
 }
 
-#whosThatPokemon>main>form>input {
-  display: flex;
-  height: 3rem;
-  background-color: white;
-  border: solid black 3px;
-  width: 20rem;
-  border-radius: 10px;
+
+
+
+#whosThatPokemon>main>h1,
+#whosThatPokemon>main>form{
+  display: felx;
+  justify-content: center;
+  align-items: center;
 }
+#whosThatPokemon>main>h2{
+  border: solid black 2px;
+  border-radius: 10px;
+  height: 35px;
+  width: 250px;
+  font-size: smaller;
+  background-color: white;
+  margin-left:69px;
+
+}
+#whosThatPokemon>main>form>div>input{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border: solid black 2px;
+  border-radius: 10px;
+  width: 300px;
+  padding: 5px;
+ 
+}
+
+#whosThatPokemon>main>form>div{
+margin-right: 60px;
+}
+
+#arrow{
+  margin-left: 50px;
+  margin-bottom: 12px;
+}
+
 
 #whosThatPokemon>main>form {
   justify-content: center;
@@ -2115,12 +2152,12 @@ img:hover+#didYouKnow {
 
 #test {
   height: auto;
-  width: 400px;
+  width: 200px;
 }
 
 #test>img {
   height: auto;
-  width: 400px;
+  width: 200px;
 }
 
 
@@ -2130,6 +2167,9 @@ img:hover+#didYouKnow {
 
 #pokemon {
   filter: grayscale(100%) brightness(0);
+  width: auto;
+  height: 25px;
+  margin-left: 100px;
 }
 
 
@@ -2157,11 +2197,11 @@ img:hover+#didYouKnow {
   color: black;
   border: black 3px solid;
   border-radius: 10px;
+  width: 100px;
+  font-size: smaller;
 }
 
-#guesStreak>img {
-  margin-right: 20px;
-}
+
 
 #whosThatPokemon>footer {
   grid-area: footer;
@@ -2325,24 +2365,60 @@ img:hover+#didYouKnow {
   display: none;
   position: absolute;
   width: 100%;
-  background-color: white;
   z-index: 1000;
+  margin-top: 5px;
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
 }
 
 #suggestionList li {
   cursor: pointer;
   display: flex;
   align-items: center;
-  border: solid black 2px;
+  border: black solid 2px;
+  margin: 5px;
+  
+  border-radius: 10px;
 }
 
 #suggestionList li img {
-  width: 100px;
+  width: 50px;
   height: auto;
   margin-right: 10px;
-  border: solid black 2px;
+  
+}
+#suggestionList li{
+  font-size: small;
 }
 
 #suggestionList li:hover {
   background-color: #f0f0f0;
+}
+::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 5px;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: gainsboro;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+  backdrop-filter: blur(20px);
+  border-radius: 5px;
+}
+
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.5s;
 }

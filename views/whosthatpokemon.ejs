@@ -4,87 +4,99 @@
 
     <body id="whosThatPokemon">
         <%- include("partials/header") %>
-            <main>
-                <h1>wie is deze pokemon?</h1>
-
-                <div id="background">
-                    <section id="test">
-                        <img id="pokemon" src=<%=randomSprite %>
-                    </section>
+        <main>
+            <h1>Wie is deze Pokémon?</h1>
+            <h2 id="streak">Streak: 0</h2>
+    
+            <div id="background" data-pokemon-name="<%=pokemonName%>">
+                <section id="test">
+                    <img id="pokemon" src="<%=randomSprite%>">
+                </section>
+            </div>
+    
+            <form id="pokemonForm" action="" method="post">
+                <div class="suggestion-container">
+                    <input type="text" id="inputField" placeholder="Type here...">
+                    <ul id="suggestionList"></ul>
                 </div>
-
-                <form action="input">
-                    <div class="suggestion-container">
-                        <input type="text" id="inputField" placeholder="Type here...">
-                        <ul id="suggestionList"></ul>
-                    </div>
-                    <button id="arrow">▶</button>
-                </form>
-                <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                        const inputField = document.getElementById('inputField');
-                        const suggestionList = document.getElementById('suggestionList');
-
-
-                        const pokemonList = [
-                            {
-                                id: 1,
-                                name: 'Bulbasaur',
-                                sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
-                            },
-                            {
-                                id: 2,
-                                name: 'Ivysaur',
-                                sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'
-                            },
-
-                        ];
-
-                        inputField.addEventListener('input', () => {
-                            const query = inputField.value.toLowerCase();
-                            suggestionList.innerHTML = '';
-
-                            if (query) {
-                                const filteredSuggestions = pokemonList.filter(pokemon => pokemon.name.toLowerCase().startsWith(query));
-
-                                filteredSuggestions.forEach(pokemon => {
-                                    const li = document.createElement('li');
-                                    const img = document.createElement('img');
-                                    img.src = pokemon.sprite;
-                                    const span = document.createElement('span');
-                                    span.textContent = pokemon.name;
-
-                                    li.appendChild(img);
-                                    li.appendChild(span);
-                                    suggestionList.appendChild(li);
-
-                                    li.addEventListener('click', () => {
-                                        inputField.value = pokemon.name;
-                                        suggestionList.innerHTML = '';
-                                        suggestionList.style.display = 'none';
-                                    });
+                <button type="submit" id="arrow">▶</button>
+            </form>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const inputField = document.getElementById('inputField');
+                    const pokemonImg = document.getElementById('pokemon');
+                    const backgroundDiv = document.getElementById('background');
+                    const streakElement = document.getElementById('streak'); // Streak element
+                    let correctPokemonName = backgroundDiv.dataset.pokemonName;
+                    let streak = 0; // Initialize streak
+            
+                    console.log(correctPokemonName);
+            
+                    document.getElementById('pokemonForm').addEventListener('submit', async function (event) {
+                        event.preventDefault();
+                        const userInput = inputField.value.trim().toLowerCase();
+                        if (userInput === correctPokemonName.toLowerCase()) {
+                            pokemonImg.style.filter = 'none'; // Remove filter
+                            console.log('Correct Pokémon name entered!');
+                            inputField.value = ''; 
+            
+                            // Send POST request to update Pokémon
+                            try {
+                                const response = await fetch('/updatePokemonHealth', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({ pokemonName: correctPokemonName }),
                                 });
-
-                                if (filteredSuggestions.length > 0) {
-                                    suggestionList.style.display = 'block';
-                                } else {
-                                    suggestionList.style.display = 'none';
+                                const result = await response.json();
+                                console.log(`Initial HP: ${result.initialHP}`);
+                                console.log(`Updated HP: ${result.updatedHP}`);
+                                console.log(`Updated Streak: ${result.updatedStreak}`);
+            
+                                
+                                streak = result.updatedStreak;
+                                streakElement.textContent = `Streak: ${streak}`;
+                            } catch (error) {
+                                console.error('Error updating Pokémon health and streak:', error);
+                            }
+            
+                            // Wait for 3 seconds
+                            setTimeout(async () => {
+                                try {
+                                    console.log('Fetching next Pokémon...');
+                                    const response = await fetch('/nextPokemon');
+                                    console.log('Response status:', response.status);
+                                    const data = await response.json();
+                                    console.log('Response data:', data);
+                                    if (data) {
+                                        // Update Pokémon 
+                                        pokemonImg.src = data.randomSprite; 
+                                        correctPokemonName = data.pokemonName; 
+                                        backgroundDiv.dataset.pokemonName = data.pokemonName;
+                                        pokemonImg.style.filter = 'brightness(0)'; 
+                                    } else {
+                                        console.log('No data received for the next Pokémon.');
+                                    }
+                                } catch (error) {
+                                    console.error('Error fetching next Pokémon:', error);
                                 }
-                            } else {
-                                suggestionList.style.display = 'none';
-                            }
-                        });
-
-                        document.addEventListener('click', (e) => {
-                            if (!inputField.contains(e.target) && !suggestionList.contains(e.target)) {
-                                suggestionList.style.display = 'none';
-                            }
-                        });
+                            }, 3000);
+                        } else {
+                            console.log('Incorrect Pokémon name entered!');
+                            pokemonImg.classList.add('shake'); // Add jiggle animation 
+                            setTimeout(() => {
+                                pokemonImg.classList.remove('shake'); // Remove jiggle animation 
+                            }, 500);
+                        }
                     });
-                </script>
+                });
+            </script>
+
+             
 
 
-                <h2 id="guesStreak"> streak </h2>
+               
             </main>
             <footer>
                 <button><a href="mainpage">Terug</a></button>
