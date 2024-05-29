@@ -96,20 +96,26 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    }
 
-
+    .stat-higher {
+      color: green;
   }
-
-  .sectionPokemonCompare {
-    text-align: left;
-    background-color: white;
-    width: 20rem;
-    padding: 2rem;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: solid;
-    margin-bottom: 2rem;
+  
+  .stat-lower {
+      color: red;
   }
+    
+    .sectionPokemonCompare{
+      text-align: left;
+      background-color: white;
+      width: 20rem;
+      padding: 2rem;
+      margin-left: auto;
+      margin-right: auto;
+      border-style: solid;
+      margin-bottom: 2rem;
+    }
 
   .comparePokemonName {
     background-color: white;
@@ -144,12 +150,12 @@
     border-style: solid;
   }
 
-  .mainContentPokedex {
+  .mainContentPokedex{
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns:  1fr ;
     grid-template-rows: 5rem 30rem 15rem;
     border-style: solid 5px;
-    padding: 4rem;
+    padding: 4rem ;
     width: 80rem;
 
   }
@@ -158,29 +164,25 @@
     grid-column: 1;
     grid-row: 1;
     text-align: center;
-  }
-
-  .InfoPokemonPokedex {
-    grid-column: 1;
-    grid-row: 3;
-
-  }
-
-  .PokedexList {
-    background-image: url(/assets/img/wp3170171.webp);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    grid-column: 1;
-    grid-row: 2;
-    font-size: 0.7rem;
-    text-align: center;
-    width: 350px;
-    height: 400px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-left: 25rem;
-  }
+   }
+  
+   
+  
+    .PokedexList{
+      background-image: url(/assets/img/wp3170171.webp);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover; 
+      grid-column: 1;
+      grid-row: 2;
+      font-size: 0.7rem;
+      text-align: center;
+      width: 350px;
+      height: 400px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-left: 25rem;
+    }
 
   .pokedexNameSection {
     border: solid black;
@@ -1193,12 +1195,12 @@
     margin-top: -8.5rem;
   }
 
-  .mainContentPokedex {
+  .mainContentPokedex{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr ;
     grid-template-rows: 5rem 40rem;
-    background-size: cover;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background-size: cover; 
+    border: 2px solid rgba(255,255,255,0.3);
     backdrop-filter: blur(20px);
     border-style: solid 5px;
     padding: 4rem;
@@ -1206,33 +1208,47 @@
 
   }
 
-  .PokedexName {
-    grid-column: 1;
-    grid-row: 1;
-    text-align: center;
-  }
+ 
+.pokedexSearchAndFilter {
+    margin-bottom: 1rem;
+    
+}
 
-  .InfoPokemonPokedex {
-    grid-column: 2;
-    grid-row: 1/2;
-  }
+.pokedexList {
+  max-height:  600px; /* Stel de maximale hoogte in voor scrollen */
+  overflow-y: auto; /* Voeg een verticale scroll toe indien nodig */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
 
-  .PokedexList {
-    background-image: url(/assets/img/wp3170171.webp);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    grid-column: 1;
-    grid-row: 2;
-    font-size: 0.7rem;
+.pokemonCard {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
     text-align: center;
-    width: 360px;
-    height: 650px;
-    padding-left: 1rem;
-    padding-top: 8.5rem;
-    padding-right: 1rem;
-    margin-left: 4rem;
-  }
+}
+
+.pokemonImage {
+    max-width: 100px;
+    margin: auto;
+}
+
+.pokemonName {
+    font-weight: bold;
+}
+
+.statusIndicator {
+  display: flex; /* Gebruik flexbox om de statusindicator in het midden te plaatsen */
+  justify-content: center; /* Centreer horizontaal */
+}
+
+.statusIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; /* Maak de indicator een cirkel */
+}
 
   .selectedPokemonPokedex {
     margin-left: 10rem;
@@ -1245,28 +1261,31 @@
   .pokedexDescription {
     border: solid black;
     padding: 2rem;
-    max-width: 40rem;
+    max-width: 40rem ;
     margin-right: 2rem;
     margin-top: 2rem;
     background-color: white;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .pokedexNameSection {
     border: solid black;
-    max-width: 40rem;
+    max-width: 40rem ;
     margin-right: 2rem;
     margin-bottom: 2rem;
     background-color: white;
     border-radius: 25px;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    margin-left: 4rem;
+    margin-left: auto;
   }
+
+  
 
   .pokedexNameDescription {
     font-size: 1.5rem;
     text-align: center;
-
   }
 
   .pokedexDescriptionText {
@@ -1283,47 +1302,13 @@
     height: 2rem;
   }
 
-  .pokedexSearchAndFilter input {
-    width: 20.8rem;
-  }
+    .pokedexSearchAndFilter input{
+      width: 20.8rem;
+    }
+ 
 
-  table {
-    display: block;
-    height: 380px;
-    overflow-y: scroll;
-
-  }
-
-  th a {
-    color: #ffffff;
-    text-decoration: none;
-  }
-
-  table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    font-weight: bold;
-
-  }
-
-  table th,
-  table td {
-    padding: 12px 15px;
-  }
-
-  table tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-
-  table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
-
-  table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-  }
-
-  .apmon-logo {
+ 
+.apmon-logo{
     width: 350px;
     height: 100px;
   }
@@ -1922,11 +1907,28 @@ main>img {
 
 
 
-.pokedexBottom {
+.pokedexBottom{
   margin-top: 1rem;
 }
 
+
 .PokedexBottomButtons {
+  border: solid black;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin-right: 1rem;
+}
+
+.compareBottomButtons{
+  border: solid black;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin-right: 1rem;
+}
+
+.compareBottomButtons{
   border: solid black;
   background-color: white;
   padding: 0.5rem;

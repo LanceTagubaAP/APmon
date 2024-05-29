@@ -3,7 +3,7 @@ import { getFirst151Pokemon } from "./apicall";
 import { Pokemon, User } from "./interfaces";
 import dotenv from "dotenv";
 
-import { connect, fetchAndInsertPokemons, getPokemon, getPokemonCollection, seed, login, getUserById, registerUser, updateCatchedFromUser, getRankName, handleAttack, getPokemonFromUser } from "./database";
+import { connect, fetchAndInsertPokemons, getPokemon, getPokemonCollection, seed, login, getUserById, registerUser, updateCatchedFromUser, getRankName, getEvolutionDetails, handleAttack, getPokemonFromUser } from "./database";
 import session from "./session";
 import { secureMiddleware } from "./secureMiddleware";
 import { loginRouter } from "./routes/loginRouter";
@@ -265,38 +265,118 @@ app.get("/battlechoose", secureMiddleware, async (req, res) => {
 
 });
 
-app.get("/pokedex", (req, res) => {
+app.get("/pokedex", secureMiddleware, async(req, res) => {
     const fixedPokemonId = 1;
     const fixedPokemon = data.find(p => p.id === fixedPokemonId);
 
-    res.render("pokedex", { data: data, fixedPokemon: fixedPokemon });
+    if (req.session.user) {
+        let userId = req.session.user._id;
+        if (userId) {  // Check if userId is defined
+            let foundUser = await getUserById(userId);
+            if (foundUser) {  // Check if foundUser is not null
+                let userpetId = foundUser.userPetId;
+                let userPokemon = foundUser.userPokemons[userpetId - 1];
+                let rankName = getRankName(foundUser);
+                res.render("pokedex", {
+                    user: foundUser,
+                    pokemon: userPokemon,
+                    rankName: rankName,
+                    data: data,
+                    fixedPokemon: fixedPokemon
+                });
+            } else {
+                res.status(404).send("User not found");
+            }
+        } else {
+            res.status(400).send("User ID is not defined");
+        }
+    } else {
+        res.status(401).send("User not logged in");
+    }
+
+
 });
 
-app.get("/pokedex/:id", (req, res) => {
-    const pokemonId = parseInt(req.params.id);
-    const pokemon = data.find(p => p.id === pokemonId);
-    if (pokemon) {
-        res.render("pokedexDetail", {
-            pokemon: pokemon,
-            data: data
-        });
-    } else {
-        res.status(404).send("Pokemon not found");
+app.get("/pokedex/:id", secureMiddleware, async (req, res) => {
+    const pokemonId = parseInt(req.params.id, 10);
+    
+    // Check if pokemonId is a valid number
+    if (isNaN(pokemonId)) {
+        return res.status(400).send("Invalid Pokémon ID");
+    }
+
+    try {
+        const pokemon = await getPokemon(pokemonId);
+        
+        if (!pokemon) {
+            return res.status(404).send("Pokémon not found");
+        }
+
+        if (req.session.user) {
+            let userId = req.session.user._id;
+            if (userId) {
+                let foundUser = await getUserById(userId);
+                if (foundUser) {
+                    let userpetId = foundUser.userPetId;
+                    let userPokemon = foundUser.userPokemons[userpetId - 1];
+                    let rankName = getRankName(foundUser);
+
+                    // Call the getEvolutionDetails function to get evolution details
+                    const evolutionDetails = await getEvolutionDetails(pokemon.evolutionDetails, pokemon.name);
+                    res.render("pokedexDetail", {
+                        user: foundUser,
+                        pokemon: userPokemon,
+                        rankName: rankName,
+                        data: data,
+                        pokemonDetail: pokemon,
+                        evolutionDetails: evolutionDetails
+                    });
+                } else {
+                    res.status(404).send("User not found");
+                }
+            } else {
+                res.status(400).send("User ID is not defined");
+            }
+        } else {
+            res.status(401).send("Unauthorized");
+        }
+    } catch (error) {
+        console.error(`Failed to retrieve Pokémon with ID ${pokemonId}`, error);
+        res.status(500).send("Internal Server Error");
     }
 });
 
 
-app.get("/compare/:id", (req, res) => {
+
+app.get("/compare/:id",secureMiddleware, async(req, res) => {
     const pokemonId = parseInt(req.params.id);
     const pokemon = data.find(p => p.id === pokemonId);
-    if (pokemon) {
-        res.render("compare", {
-            pokemon: pokemon,
-            data: data
-        });
+    if (req.session.user) {
+        let userId = req.session.user._id;
+        if (userId) {  // Check if userId is defined
+            let foundUser = await getUserById(userId);
+            if (foundUser) {  // Check if foundUser is not null
+                let userpetId = foundUser.userPetId;
+                let userPokemon = foundUser.userPokemons[userpetId - 1];
+                let rankName = getRankName(foundUser);
+                res.render("compare", {
+                    user: foundUser,
+                    pokemon: userPokemon,
+                    rankName: rankName,
+                    data: data,
+                    pokemonCompare:pokemon
+                });
+            } else {
+                res.status(404).send("User not found");
+            }
+        } else {
+            res.status(400).send("User ID is not defined");
+        }
     } else {
-        res.status(404).send("Pokemon not found");
+        res.status(401).send("Pokemon not found");
     }
+
+
 });
 
 
@@ -376,6 +456,7 @@ app.listen(app.get("port"), async () => {
     await connect();
     await seed();
     await fetchAndInsertPokemons();
+    
 
     data = await getPokemonCollection();
 
