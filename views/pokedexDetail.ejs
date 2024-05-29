@@ -1,64 +1,47 @@
 <%- include("partials/top") %>
-    <title>APMon</title>
+<title>APMon</title>
 </head>
 <body id="pokeDex">
 <%- include("partials/header") %>
-    <main class="pokedexMain">
-        <div class="mainContentPokedex">
-
-         <div class="PokedexName">
-         </div>   
-
-         <div class="pokedexSearchAndFilter">
-            <form action="/action_page.php">
-              <input type="text" placeholder="Zoeken.." name="search">
-            </form>
-          </div>
-
+<main class="pokedexMain">
+    <div class="mainContentPokedex">
         <div class="InfoPokemonPokedex">
-            
             <section class="pokedexNameSection">
-                <p class="pokedexNameDescription"><%- pokemon.id %>. <%- pokemon.name %></p>            
+                <p class="pokedexNameDescription"><%- pokemonDetail.id %>. <%- pokemonDetail.name %></p>            
             </section>    
-        <img class="selectedPokemonPokedex" src="<%- pokemon.front_default %>" alt="">
-        <section class="pokedexDescription">
-            <p class="pokedexDescriptionText">TYPE: <%- pokemon.types %></p>
-            <p class="pokedexDescriptionText">LEVENSPUNTEN: <%- pokemon.maxHealth %></p>
-            <p class="pokedexDescriptionText">AANVALSPUNTEN: <%- pokemon.attack %></p>
-            <p class="pokedexDescriptionText">VERDEDIGINGSPUNTEN: <%- pokemon.defense %></p>
-            <p class="pokedexDescriptionText"><%- pokemon.description %></p>
-        </section>
-        <div class="pokedexBottom">
-            <button class="PokedexBottomButtons"><a href="/mainpage"> Partner</a></button>
-         <button class="PokedexBottomButtons"><a href="/compare/<%= pokemon.id %>"> Vergelijken</a></button>
-         <button class="PokedexBottomButtons"><a href="/mainpage">Terug</a></button>
+            <img class="selectedPokemonPokedex" src="<%- pokemonDetail.front_default %>" alt="<%- pokemonDetail.name %>">
+            <img class="selectedPokemonPokedex" src="<%- evolutionDetails.front_default %>" alt="<%- pokemonDetail.name %>">
+            
+            <% evolutionDetails.forEach(evolution => { %>
+                <img class="selectedPokemonPokedex" src="<%- evolution.front_default %>" alt="<%- evolution.name %>">
+            <% }) %>
+            
+            <section class="pokedexDescription">
+                <p class="pokedexDescriptionText">TYPE: <%- pokemonDetail.types.join(', ') %></p>
+                <p class="pokedexDescriptionText">LEVENSPUNTEN: <%- pokemonDetail.maxHealth %></p>
+                <p class="pokedexDescriptionText">AANVALSPUNTEN: <%- pokemonDetail.attack %></p>
+                <p class="pokedexDescriptionText">VERDEDIGINGSPUNTEN: <%- pokemonDetail.defense %></p>
+                <p class="pokedexDescriptionText"><%- pokemonDetail.description %></p>
+                <section class="evolutionSection">
+                    <h4>Evolution Chain</h4>
+                    <ul>
+                        <% evolutionDetails.forEach(evolution => { %>
+                            <li class="<%= evolution.isCurrent ? 'current' : '' %>">
+                                <%= evolution.name.charAt(0).toUpperCase() + evolution.name.slice(1) %>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </section>
+            </section>
+            <section class="evolutionSection">
+                
+            </section>
+            <div class="pokedexBottom">
+                <button class="PokedexBottomButtons"><a href="/mainpage">Partner</a></button>
+                <button class="PokedexBottomButtons"><a href="/compare/<%= pokemonDetail.id %>">Vergelijken</a></button>
+                <button class="PokedexBottomButtons"><a href="/pokedex">Terug</a></button>
+            </div>
         </div>
     </div>
-
-    <div class="PokedexList">
-        <table>
-            <tbody>
-                <% for (let pokemon of data) { %>
-                    <tr>
-                        <td><%- pokemon.id %></td>
-                        <td><a href="/pokedex/<%= pokemon.id %>"><img src="<%- pokemon.icon %>" alt=""> <%- pokemon.name %></a></td>
-                        <td><% if (pokemon.isCatched) { %>
-                            <div class="text-center">
-                                <div class="rounded-circle bg-success" style="width: 20px; height: 20px;"></div>
-                            </div>
-                        <% } else { %>
-                            <div class="text-center">
-                                <div class="rounded-circle bg-danger" style="width: 20px; height: 20px;"></div>
-                            </div>
-                        <% } %> </td>
-                    </tr>
-                <% } %>
-            </tbody>
-        </table>
-    </div>
-
-
-
-</div>
-    </main>
+</main>
 <%- include("partials/bottom") %>

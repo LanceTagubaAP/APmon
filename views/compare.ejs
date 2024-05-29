@@ -6,22 +6,48 @@
     <%- include("partials/header") %>
         <div class="pokemonCompare">
             <section class="yourPokemon">
-                <p class="comparePokemonName">Mijn pokemon</p>
-                <img class="pokemonCompareIMG" src="assets/img/Placeholder-Pikachu.png" alt="">
+                <p class="comparePokemonName"><%- pokemon.name %></p>
+                <img class="pokemonCompareIMG" src="<%- pokemon.front_default %>" alt="">
                 <section class="sectionPokemonCompare">
-                    <p>Levenspunten: 50</p>
-                    <p>Aanval: 80</p>
-                    <p>Verdediging: 60</p>
+                    <p>Levenspunten: 
+                        <span class="<%= pokemon.health > pokemonCompare.health ? 'stat-higher' : 'stat-lower' %>">
+                            <%- pokemon.health %>
+                        </span>
+                    </p>
+                    <p>Aanval: 
+                        <span class="<%= pokemon.attack > pokemonCompare.attack ? 'stat-higher' : 'stat-lower' %>">
+                            <%- pokemon.attack %>
+                        </span>
+                    </p>
+                    <p>Verdediging: 
+                        <span class="<%= pokemon.defense > pokemonCompare.defense ? 'stat-higher' : 'stat-lower' %>">
+                            <%- pokemon.defense %>
+                        </span>
+                    </p>
                 </section>
             </section>
         
             <section class="otherPokemon">
-                <p class="comparePokemonName"><img src="<%- pokemon.icon %>" alt=""> <%- pokemon.name%></p>
-                <img class="pokemonCompareIMG" src="<%- pokemon.front_default %>" alt="">
+                <p class="comparePokemonName">
+                    <img src="<%- pokemonCompare.icon %>" alt=""> <%- pokemonCompare.name %>
+                </p>
+                <img class="pokemonCompareIMG" src="<%- pokemonCompare.front_default %>" alt="<%- pokemonCompare.name %>">
                 <section class="sectionPokemonCompare">
-                    <p>Levenspunten: <%- pokemon.health %></p>
-                    <p>Aanval: <%- pokemon.attack %></p>
-                    <p>Verdediging: <%- pokemon.defense %></p>
+                    <p>Levenspunten: 
+                        <span class="<%= pokemonCompare.health > pokemon.health ? 'stat-higher' : 'stat-lower' %>">
+                            <%- pokemonCompare.health %>
+                        </span>
+                    </p>
+                    <p>Aanval: 
+                        <span class="<%= pokemonCompare.attack > pokemon.attack ? 'stat-higher' : 'stat-lower' %>">
+                            <%- pokemonCompare.attack %>
+                        </span>
+                    </p>
+                    <p>Verdediging: 
+                        <span class="<%= pokemonCompare.defense > pokemon.defense ? 'stat-higher' : 'stat-lower' %>">
+                            <%- pokemonCompare.defense %>
+                        </span>
+                    </p>
                 </section>
             </section>
         </div>
