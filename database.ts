@@ -151,8 +151,6 @@ export async function getPokemon(id:number) {
     return pokemon;
     
 }
-<<<<<<< HEAD
-=======
 export async function updateHPfromPokemon(id: number, newHealth: number): Promise<void> {
     try {
         // Log the input parameters
@@ -180,7 +178,6 @@ export async function updateHPfromPokemon(id: number, newHealth: number): Promis
         console.error('Error updating Pokémon health:', error);
     }
 }
->>>>>>> battle
 
 export async function getPokemonFromUser(userId: ObjectId | undefined, pokemonId: number) {
     if (!userId) {
@@ -420,27 +417,6 @@ export async function registerUser(userName: string, email: string, password: st
     }
 } 
 
-<<<<<<< HEAD
-async function fetchEvolutionChain(url: string): Promise<string[]> {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch evolution chain from URL ${url}`);
-        }
-
-        const data = await response.json();
-        let evolutions: string[] = [];
-
-        let current = data.chain;
-        while (current) {
-            evolutions.push(current.species.name);
-            current = current.evolves_to[0];
-        }
-
-        return evolutions;
-    } catch (error) {
-        console.error(`Failed to retrieve evolution chain`, error);
-=======
 export async function fetchEvolutionChain(id: number) {
     try {
         const speciesResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`);
@@ -453,12 +429,10 @@ export async function fetchEvolutionChain(id: number) {
         return evolutionData;
     } catch (error) {
         console.error(`Failed to fetch evolution chain for Pokemon with ID ${id}`, error);
->>>>>>> battle
         throw error;
     }
 }
 
-<<<<<<< HEAD
 export async function getUserPokemonsSortedByIsCatched(userId: ObjectId) {
 
     const user = await usersCollection.findOne({ _id: new ObjectId(userId) });
@@ -502,48 +476,10 @@ export async function updatePartnerPokemon(userId: ObjectId, newPokemonId: numbe
         }
     } catch (error) {
         console.error('Fout bij het bijwerken van de gebruikerspartner:', error);
-=======
-
-export async function getEvolutionDetails(evolutionChain: any, pokemonName: string) {
-    console.log("Evolution chain:", evolutionChain); // Log evolution chain data
-
-    try {
-        const evolutionDetails: any[] = [];
-        let currentStage = evolutionChain.chain;
-
-        while (currentStage) {
-            const speciesName = currentStage.species.name;
-            const evolvesTo = currentStage.evolves_to;
-
-            console.log("Fetching data for:", speciesName); // Log species being fetched
-
-            // Fetch additional details for the current evolution stage using fetchPokemonData
-            const pokemonData = await fetchPokemonData(speciesName);
-            console.log("Data fetched successfully for:", speciesName); // Log successful data fetch
-
-            evolutionDetails.push({
-                name: speciesName,
-                isCurrent: speciesName.toLowerCase() === pokemonName.toLowerCase(),
-                front_default: pokemonData.front_default // Use front_default from pokemonData
-            });
-
-            if (evolvesTo.length > 0) {
-                currentStage = evolvesTo[0];
-            } else {
-                currentStage = null;
-            }
-        }
-
-        console.log("Evolution details:", evolutionDetails); // Log evolution details
-        return evolutionDetails;
-    } catch (error) {
-        console.error("Error fetching evolution details:", error); // Log any errors that occur
->>>>>>> battle
         throw error;
     }
 }
 
-<<<<<<< HEAD
 export async function updateUserStreak(userId: ObjectId): Promise<boolean> {
     try {
         const result = await usersCollection.updateOne(
@@ -587,6 +523,4 @@ export async function updatePokemonHealthStreak(userId: ObjectId, pokemonName: s
 
 
 
-=======
->>>>>>> battle
 
