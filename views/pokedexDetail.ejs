@@ -8,6 +8,7 @@
         <div class="InfoPokemonPokedex">
             <section class="pokedexNameSection">
                 <p class="pokedexNameDescription"><%- pokemonDetail.id %>. <%- pokemonDetail.name %></p>            
+<<<<<<< HEAD
             </section>   
             <div style="text-align: center;">
                 <img class="selectedPokemonPokedex" src="<%- pokemonDetail.front_default %>" alt="">
@@ -15,16 +16,33 @@
             </div>
             <section class="pokedexDescription">
                 <p class="pokedexDescriptionText">TYPE: <%- pokemonDetail.types %></p>
+=======
+            </section>    
+            <img class="selectedPokemonPokedex" src="<%- pokemonDetail.front_default %>" alt="<%- pokemonDetail.name %>">
+            
+            <section class="pokedexDescription">
+                <p class="pokedexDescriptionText">TYPE: <%- pokemonDetail.types.join(', ') %></p>
+>>>>>>> battle
                 <p class="pokedexDescriptionText">LEVENSPUNTEN: <%- pokemonDetail.maxHealth %></p>
                 <p class="pokedexDescriptionText">AANVALSPUNTEN: <%- pokemonDetail.attack %></p>
                 <p class="pokedexDescriptionText">VERDEDIGINGSPUNTEN: <%- pokemonDetail.defense %></p>
                 <p class="pokedexDescriptionText"><%- pokemonDetail.description %></p>
+<<<<<<< HEAD
             </section>
           
             <div class="pokedexBottom">
                 <form action="/pokedex/<%= pokemonDetail.id %>" method="POST">
                     <button type="submit" class="PokedexBottomButtons">Partner</button>
                 </form>
+=======
+                
+            </section>
+            
+                
+            </section>
+            <div class="pokedexBottom">
+                <button class="PokedexBottomButtons"><a href="/mainpage">Partner</a></button>
+>>>>>>> battle
                 <button class="PokedexBottomButtons"><a href="/compare/<%= pokemonDetail.id %>">Vergelijken</a></button>
                 <button class="PokedexBottomButtons"><a href="/pokedex">Terug</a></button>
             </div>
