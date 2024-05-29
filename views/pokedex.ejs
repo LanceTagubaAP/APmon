@@ -9,15 +9,16 @@
             <div class="pokedexContainer">
                 <div class="pokedexSearchAndFilter">
                     <form action="/pokedex" method="GET">
-                        <input type="text" placeholder="zoek pokemon" name="search" id="searchInput">
-                        <button type="submit">Zoeken</button>
+                        <input type="text" placeholder="zoek een pokemon" name="searchInput" id="searchInput">
+                        <button type="submit" name="action" value="search">Zoeken</button>
+                        <button style="margin-left: 2rem;" type="submit" name="action" value="sort">Catched</button>
                     </form>
                 </div>
                 <div class="pokedexList">
-                    <% for (let pokemon of user.userPokemons) { %>
+                    <% for (let pokemon of data) { %>
                         <div class="pokemonCard">
                             <a href="/pokedex/<%= pokemon.id %>">
-                                <img class="pokemonImage" src="<%- pokemon.icon %>"  alt="">
+                                <img class="pokemonImage" src="<%- pokemon.front_default %>"  alt="">
                                 <p class="pokemonName"><%- pokemon.name %></p>
                                 <% if (pokemon.isCatched) { %>
                                     <div class="statusIndicator">
@@ -31,6 +32,9 @@
                             </a>
                         </div>
                     <% } %>
+                </div>
+                <div class="pokedexBottom">
+                    <button class="PokedexBottomButtons"><a href="/mainpage">Terug</a></button>
                 </div>
             </div>
 

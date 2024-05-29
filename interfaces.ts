@@ -20,7 +20,7 @@ export interface Pokemon{
     front_default : string
     back_default : string
     icon : string
-
+    evolutions : string[]
 }
 export interface User{
     _id?: ObjectId;

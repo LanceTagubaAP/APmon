@@ -68,6 +68,8 @@ async function fetchPokemonData(id: number): Promise<Pokemon> {
 
         const [pokemon, species] = await Promise.all([pokemonResponse.json(), speciesResponse.json()]);
         const description = species.flavor_text_entries.find((entry: any) => entry.language.name === 'en').flavor_text;
+        const evolutionChainUrl = species.evolution_chain.url;
+        const evolutions = await fetchEvolutionChain(evolutionChainUrl);
 
         return {
             id: pokemon.id,
@@ -80,14 +82,16 @@ async function fetchPokemonData(id: number): Promise<Pokemon> {
             description: description,
             isCatched: false,
             front_default: pokemon.sprites.front_default,
-            back_default : pokemon.sprites.back_default,
-            icon : ""
+            back_default: pokemon.sprites.back_default,
+            icon: "",
+            evolutions: evolutions
         };
     } catch (error) {
         console.error(`Failed to retrieve data for Pokemon with ID ${id}`, error);
         throw error;
     }
 }
+
 
 async function getFirst151PokemonFromAPI(): Promise<Pokemon[]> {
     const pokemonData: Pokemon[] = [];
@@ -138,17 +142,9 @@ export async function seed() {
     
 }
 export async function getPokemon(id:number) {
-    const pokemon = await collection.findOne<Pokemon>({ id: id });
-
-    if (!pokemon) {
-        throw new Error(`Pokemon with ID ${id} not found`);
-    }
-
-    const evolutionChain = await fetchEvolutionChain(id);
-    const evolutionDetails = await getEvolutionDetails(evolutionChain, pokemon.name);
-
-    return { ...pokemon, evolutionDetails };
+    return await collection.findOne<Pokemon>({id : id});
 }
+
 export async function getPokemonFromUser(userId: ObjectId | undefined, pokemonId: number) {
     if (!userId) {
         throw new Error('User ID is required');
@@ -345,6 +341,7 @@ export async function registerUser(userName: string, email: string, password: st
             userPokemons: await getPokemonCollection(), // Dit moet worden ingesteld afhankelijk van je vereisten
             rank: Rank.Beginner,
             streak: 0,
+
         };
 
 
@@ -359,61 +356,75 @@ export async function registerUser(userName: string, email: string, password: st
     }
 } 
 
-export async function fetchEvolutionChain(id: number) {
+async function fetchEvolutionChain(url: string): Promise<string[]> {
     try {
-        const speciesResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`);
-        const speciesData = await speciesResponse.json();
-
-        const evolutionChainUrl = speciesData.evolution_chain.url;
-        const evolutionResponse = await fetch(evolutionChainUrl);
-        const evolutionData = await evolutionResponse.json();
-
-        return evolutionData;
-    } catch (error) {
-        console.error(`Failed to fetch evolution chain for Pokemon with ID ${id}`, error);
-        throw error;
-    }
-}
-
-
-export async function getEvolutionDetails(evolutionChain: any, pokemonName: string) {
-    console.log("Evolution chain:", evolutionChain); // Log evolution chain data
-
-    try {
-        const evolutionDetails: any[] = [];
-        let currentStage = evolutionChain.chain;
-
-        while (currentStage) {
-            const speciesName = currentStage.species.name;
-            const evolvesTo = currentStage.evolves_to;
-
-            console.log("Fetching data for:", speciesName); // Log species being fetched
-
-            // Fetch additional details for the current evolution stage using fetchPokemonData
-            const pokemonData = await fetchPokemonData(speciesName);
-            console.log("Data fetched successfully for:", speciesName); // Log successful data fetch
-
-            evolutionDetails.push({
-                name: speciesName,
-                isCurrent: speciesName.toLowerCase() === pokemonName.toLowerCase(),
-                front_default: pokemonData.front_default // Use front_default from pokemonData
-            });
-
-            if (evolvesTo.length > 0) {
-                currentStage = evolvesTo[0];
-            } else {
-                currentStage = null;
-            }
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch evolution chain from URL ${url}`);
         }
 
-        console.log("Evolution details:", evolutionDetails); // Log evolution details
-        return evolutionDetails;
+        const data = await response.json();
+        let evolutions: string[] = [];
+
+        let current = data.chain;
+        while (current) {
+            evolutions.push(current.species.name);
+            current = current.evolves_to[0];
+        }
+
+        return evolutions;
     } catch (error) {
-        console.error("Error fetching evolution details:", error); // Log any errors that occur
+        console.error(`Failed to retrieve evolution chain`, error);
         throw error;
     }
 }
 
+export async function getUserPokemonsSortedByIsCatched(userId: ObjectId) {
+
+    const user = await usersCollection.findOne({ _id: new ObjectId(userId) });
+    if (!user) throw new Error('User not found');
+
+    const caughtPokemons = user.userPokemons.filter(pokemon => pokemon.isCatched);
+    
+    const sortedPokemons = caughtPokemons.sort((a: Pokemon, b: Pokemon) => {
+        return (a.isCatched === b.isCatched) ? 0 : a.isCatched ? -1 : 1;
+    });
+
+    return sortedPokemons;
+}
+
+export async function updatePartnerPokemon(userId: ObjectId, newPokemonId: number): Promise<void> {
+    try {
+        const foundUser = await usersCollection.findOne({ _id: userId });
+
+        if (foundUser) {
+            // Zoek de huidige Pokémon van de gebruiker
+            const currentPokemon = foundUser.userPokemons.find(pokemon => pokemon.id === foundUser.userPetId);
+
+            // Controleer of de huidige Pokémon bestaat en gevangen is
+            if (currentPokemon && currentPokemon.isCatched) {
+                // Voer de update alleen uit als de huidige Pokémon gevangen is
+                const result = await usersCollection.updateOne(
+                    { _id: userId }, 
+                    { $set: { userPetId: newPokemonId } }
+                );
+
+                if (result.matchedCount === 0) {
+                    console.log('Geen gebruiker gevonden met de opgegeven ID.');
+                } else {
+                    console.log('Gebruikerspartner succesvol bijgewerkt.');
+                }
+            } else {
+                console.log('Huidige Pokémon is niet gevangen, dus kan niet worden gewijzigd.');
+            }
+        } else {
+            console.log('Gebruiker niet gevonden.');
+        }
+    } catch (error) {
+        console.error('Fout bij het bijwerken van de gebruikerspartner:', error);
+        throw error;
+    }
+}
 
 export async function updateUserStreak(userId: ObjectId): Promise<boolean> {
     try {

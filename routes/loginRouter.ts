@@ -26,7 +26,7 @@ export function loginRouter() {
 
     router.post("/logout", secureMiddleware, async (req, res) => {
         req.session.destroy((err) => {
-            res.redirect("/login");
+            res.redirect("/titleScreen");
         });
     });
 
