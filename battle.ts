@@ -31,6 +31,7 @@ export function inflictDamage(myPokemon: Pokemon, otherPokemon: Pokemon) {
     return {
         myPokemon : myPokemon,
         otherPokemon : otherPokemon,
+        damage : Math.round(damage)
     }
 
 

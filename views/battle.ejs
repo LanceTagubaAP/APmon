@@ -13,7 +13,7 @@
             <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
               aria-valuemax="100">
               <p class="textBeforeHP">HP </p>
-              <div class="progress-bar bg-success" style="width: 100%"></div>
+              <div id="progressB" class="progress-bar bg-success" style="width: 100%"></div>
             </div>
           </div>
           <div class="EnemyPokemon">
@@ -29,7 +29,7 @@
             <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
               aria-valuemax="100">
               <p class="textBeforeHP">HP </p>
-              <div class="progress-bar bg-success" style="width: 100%"></div>
+              <div id="progressA" class="progress-bar bg-success" style="width: 100%"></div>
             </div>
           </div>
           <div class="AllyPokemon">
@@ -38,9 +38,8 @@
         </div>
 
         <div class="infoBattle">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus consequuntur minus, excepturi
-            dolore vitae architecto totam repellendus eos distinctio culpa ullam. In vel voluptatum natus a amet ipsam,
-            voluptatem doloremque!</p>
+          <p id="battleMessage">Hallo <%= user.userName %>! Je gevecht met <%= pokemon.name %> tegen <%=
+                  enemyPokemon.name %> gaat van start! Kies een optie! </p>
         </div>
 
         <div class="commands">
@@ -55,16 +54,15 @@
         document.addEventListener("DOMContentLoaded", () => {
           const attackButton = document.querySelector(".attack");
           const catchButton = document.querySelector(".catch");
-          const urlPath = window.location.pathname;
-          const battleId = urlPath.split("/").pop();
+
 
 
           attackButton.addEventListener("click", async () => {
             console.log("clicked attack");
             try {
               // Make a POST request to the backend route to handle attacks
-               urlPath = window.location.pathname;
-               battleId = urlPath.split("/").pop();
+              const urlPath = window.location.pathname;
+              const battleId = urlPath.split("/").pop();
 
 
               const response = await fetch(`/battle/${battleId}`, {
@@ -82,10 +80,29 @@
               if (response.ok) {
                 // Parse the response JSON
                 const updated = await response.json();
+                console.log(updated);
+
+                console.log(`Other Pokémon HP: ${updated.turn2.otherPokemon.health}`);
+                console.log(`My Pokémon HP: ${updated.turn2.myPokemon.health}`);
+
+                const remainingA = (updated.turn2.otherPokemon.health / updated.turn2.otherPokemon.maxHealth) * 100;
+                const remainingB = (updated.turn2.myPokemon.health / updated.turn2.myPokemon.maxHealth) * 100;
+
+
 
                 // Update HP values on the page
-                document.getElementById("userHP").textContent = `User Pokémon HP: ${updated.updatedMyPokemon.health}`;
-                document.getElementById("enemyHP").textContent = `Enemy Pokémon HP: ${updated.updatedEnemyPokemon.health}`;
+
+                document.getElementById("progressA").style = `width: ${remainingA}%`;
+                document.getElementById("progressB").style = `width: ${remainingB}%`;
+
+
+                document.getElementById("battleMessage").textContent = `${updated.turn2.otherPokemon.name} heeft ${updated.turn2.myPokemon.name} ${updated.turn1.damage} schade gegeven en  ${updated.turn1.otherPokemon.name} heeft ${updated.turn1.myPokemon.name} ${updated.turn2.damage} gegeven schade. `
+                if (updated.turn2.otherPokemon.health <= 0 || updated.turn2.myPokemon.health <= 0) {
+                  attackButton.disabled = true;
+                  catchButton.disabled = true;
+                  document.getElementById("battleMessage").append(`Gevecht voorbij! Je hebt ${updated.turn2.myPokemon.name} kunnen vangen door hem verslaan `);
+                }
+
               } else {
                 console.error("Attack failed:", response.statusText);
               }
@@ -96,8 +113,8 @@
           catchButton.addEventListener("click", async () => {
             console.log("Catch clicked");
             try {
-               urlPath = window.location.pathname;
-               battleId = urlPath.split("/").pop();
+              urlPath = window.location.pathname;
+              battleId = urlPath.split("/").pop();
 
             } catch (error) {
               console.error("Error catching:", error);
@@ -112,6 +129,32 @@
 
               })
             });
+
+            if (response.ok) {
+              // Parse the response JSON
+              const updated = await response.json();
+
+
+              console.log(`${updated.catched}`);
+
+
+              if (updated.catched) {
+                document.getElementById("battleMessage").textContent = `Je hebt de pokemon kunnen vangen!`
+                attackButton.disabled = true;
+                catchButton.disabled = true;
+              }
+              else {
+                document.getElementById("battleMessage").textContent = `De pokemon is kunnen ontsnappen! `
+                
+              }
+
+
+
+              // Update HP values on the page
+
+            } else {
+              console.error("Attack failed:", response.statusText);
+            }
 
 
 

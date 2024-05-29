@@ -140,6 +140,34 @@ export async function seed() {
 export async function getPokemon(id:number) {
     return await collection.findOne<Pokemon>({id : id});
 }
+export async function updateHPfromPokemon(id: number, newHealth: number): Promise<void> {
+    try {
+        // Log the input parameters
+        console.log(`Updating Pokémon with id ${id} to new health ${newHealth}`);
+
+        // Perform the update operation
+        const result = await collection.updateOne(
+            { id: id }, // Filter criteria
+            { $set: { health: newHealth } } // Update operation
+        );
+
+        // Log the result of the update operation
+        console.log('Update result:', result);
+
+        // Check if any documents matched the filter criteria
+        if (result.matchedCount === 0) {
+            console.log(`No Pokémon found with id ${id}`);
+        } else if (result.modifiedCount === 0) {
+            console.log(`No changes made to the health of Pokémon with id ${id}`);
+        } else {
+            console.log(`Successfully updated health for Pokémon with id ${id} globally`);
+        }
+    } catch (error) {
+        // Log any errors that occur
+        console.error('Error updating Pokémon health:', error);
+    }
+}
+
 export async function getPokemonFromUser(userId: ObjectId | undefined, pokemonId: number) {
     if (!userId) {
         throw new Error('User ID is required');
@@ -217,28 +245,55 @@ export const updateUserRank = async (userId: ObjectId, newRank: Rank): Promise<b
     }
 };
 
-export function handleAttack(myPokemon : Pokemon , enemyPokemon : Pokemon){
+export function handleAttack(myPokemon : Pokemon , enemyPokemon : Pokemon,user : User){
     const turn1 = inflictDamage(myPokemon,enemyPokemon);
     const turn2 = inflictDamage(turn1.otherPokemon,turn1.myPokemon);
-    //TODO BattleLog message meegeven
-    return [turn2.myPokemon,turn2.otherPokemon];
-}
+    //let message = `${myPokemon.name} heeft ${enemyPokemon.name} -${turn1.damage} gegeven en ${enemyPokemon.name} heeft ${myPokemon.name} -${turn2.damage} gegeven `;
+    if (user._id) {
+        updateHPFromUser(String(turn1.myPokemon.id),user._id,turn2.otherPokemon.health);
+        updateHPfromPokemon((enemyPokemon.id),turn2.myPokemon.health );
 
-export async function updateHPFromUser(pokemonId : number, userId : ObjectId,newHP:number) {
+    }
     
+    return [turn2,turn1];
+}
+export async function handleOneAttack(myPokemon : Pokemon,enemyPokemon : Pokemon, user : User) {
+    const turn1 = inflictDamage(myPokemon,enemyPokemon);
+    if (user._id) {
+        updateHPFromUser(String(turn1.myPokemon.id),user._id,turn1.myPokemon.health - turn1.damage);
+    }
+    return turn1;
+} 
+
+export async function updateHPFromUser(pokemonId: string, userId: ObjectId, newHP: number): Promise<void> {
     try {
+        const pokemonIdInt = parseInt(pokemonId);
+
+        // Log the input parameters
+        console.log(`Updating HP for Pokémon with id ${pokemonIdInt} for user ${userId} to new HP ${newHP}`);
+
+        // Perform the update operation
         const result = await usersCollection.updateOne(
-            { id: userId, 'userPokemons.id': pokemonId },
-            { $set: { 'userPokemons.$.HP': newHP } }
+            { _id: userId, 'userPokemons.id': pokemonIdInt },
+            { $set: { 'userPokemons.$.health': newHP } }
         );
 
+        // Log the query and update result
+        console.log('Query:', { _id: userId, 'userPokemons.id': pokemonIdInt });
+        console.log('Update:', { $set: { 'userPokemons.$.HP': newHP } });
+        console.log('Update result:', result);
+
+        // Check if any documents matched the filter criteria
         if (result.matchedCount === 0) {
             console.log('No user or Pokémon found with the provided IDs.');
+        } else if (result.modifiedCount === 0) {
+            console.log('No changes made to the Pokémon HP.');
         } else {
-            console.log('Pokémon catch status updated successfully.');
+            console.log('Pokémon HP updated successfully.');
         }
     } catch (error) {
-        console.error('Error updating Pokémon HP status:', error);
+        // Log any errors that occur
+        console.error('Error updating Pokémon HP:', error);
     }
 }
 

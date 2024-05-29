@@ -3,7 +3,7 @@ import { getFirst151Pokemon } from "./apicall";
 import { Pokemon, User } from "./interfaces";
 import dotenv from "dotenv";
 
-import { connect, fetchAndInsertPokemons,getPokemon,getPokemonCollection,seed, login, getUserById, registerUser,updateCatchedFromUser, getRankName , handleAttack,getPokemonFromUser } from "./database";
+import { connect, fetchAndInsertPokemons,getPokemon,getPokemonCollection,seed, login, getUserById, registerUser,updateCatchedFromUser, getRankName , handleAttack,getPokemonFromUser, updateHPFromUser, handleOneAttack, updateHPfromPokemon } from "./database";
 import session from "./session";
 import { secureMiddleware } from "./secureMiddleware";
 import { loginRouter } from "./routes/loginRouter";
@@ -153,8 +153,18 @@ app.post("/battle/:id", async (req, res) => {
                     let enemyPokemon = await getPokemon(parseInt(req.params.id));
                     let myPokemon = await getPokemonFromUser(myUser?._id, myUser?.userPetId);
                     if (enemyPokemon) {
-                        const [updatedMyPokemon, updatedEnemyPokemon] = handleAttack(myPokemon, enemyPokemon);
-                        res.json({ updatedMyPokemon, updatedEnemyPokemon });
+                        const [turn2, turn1] = handleAttack(myPokemon, enemyPokemon,myUser);
+                        // updateHPFromUser(myPokemon.id,myUser._id)
+                        if (turn2.myPokemon.health <= 0) {
+                            if (myUser?._id) {
+                                updateCatchedFromUser(String(turn2.myPokemon.id),myUser?._id);
+                                updateHPfromPokemon(turn2.myPokemon.id,turn2.myPokemon.maxHealth);
+                                updateHPFromUser(String(turn2.otherPokemon.id),myUser._id,turn2.otherPokemon.maxHealth);
+                            }
+                            
+                        }
+                        
+                        res.json({ turn2, turn1 });
                     }
 
 
@@ -165,8 +175,22 @@ app.post("/battle/:id", async (req, res) => {
                 let myUser = await getUserById(req.session.user._id);
                 if (myUser) {
                     let enemyPokemon = await getPokemon(parseInt(req.params.id));
+                    let myPokemon = await getPokemonFromUser(myUser?._id, myUser?.userPetId);
                     if (enemyPokemon) {
                         const catched = catchPokemon(enemyPokemon?.health,enemyPokemon?.maxHealth);
+                        let turn1;
+                        if (myUser._id) {
+                            if (!catched) {
+                                turn1 = handleOneAttack(enemyPokemon, myPokemon,myUser);
+                                
+                            } else {
+                                console.log("CATCHED NICE")
+                                updateCatchedFromUser(String(enemyPokemon.id),myUser._id)
+                            }
+                        }
+                        res.json({catched,turn1});
+                        
+                        
                         
 
 
